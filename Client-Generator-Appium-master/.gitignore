@@ -1,0 +1,6 @@
+Logs
+Reports
+*/.DS_Store
+node_modules
+package-lock.json
+mbaas_ios-swift_test

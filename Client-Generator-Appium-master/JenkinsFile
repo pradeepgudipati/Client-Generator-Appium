@@ -1,0 +1,24 @@
+node {
+  // Delete any existing artefacts
+  stage('Delete Workspace') {
+    deleteDir()
+  }
+  // Git clone the repo into the workspace
+  stage('Git Clone') {
+    git 'git@github.com:appcelerator/Client-Generator-Appium.git'
+  }
+  // Install the required npm modules
+  stage('Install npm Modules') {
+    sh 'npm install'
+  }
+  // Execute the suite, using colours for the ANSI escape codes
+  stage('Run Tests') {
+    ansiColor('xterm') {
+      sh 'npm run test'
+    }
+  }
+  // Update the local test report
+  stage('Publish Results') {
+    junit 'Reports/*.xml'
+  }
+}
