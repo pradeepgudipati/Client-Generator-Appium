@@ -1,5 +1,7 @@
 Logs
 Reports
-*/.DS_Store
+.DS_Store
 node_modules
 package-lock.json
+mbaas_ios-swift_test
+mbaas_android_test
