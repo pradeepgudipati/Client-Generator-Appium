@@ -2,9 +2,9 @@
 
 const
 	driver = global.driver,
-	webdriver = global.webdriver;
-
-// Currently the keyboard refuses to drop, so is in the way of the button press
+	webdriver = global.webdriver,
+	user = require(`${global.projRoot}/Config/data_config.js`).user,
+	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser;
 
 describe('User Creation - Positive', () => {
 	before(() => {
@@ -19,46 +19,42 @@ describe('User Creation - Positive', () => {
 		return driver.resetApp();
 	});
 
-	afterEach(() => {
-		return driver.hideKeyboard();
-	});
-
 	it('Enter a first name', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="First Name"]')
-			.sendKeys('Wilson')
-			.elementByXPath('//XCUIElementTypeTextField[@value="Wilson"]')
+			.sendKeys(tempUser.firstName)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.firstName}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Enter a last name', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Last Name"]')
-			.sendKeys('Luu')
-			.elementByXPath('//XCUIElementTypeTextField[@value="Luu"]')
+			.sendKeys(tempUser.lastName)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.lastName}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Enter a user name', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="User Name"]')
-			.sendKeys('wluu')
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu"]')
+			.sendKeys(tempUser.username)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.username}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Enter an email', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Email ID"]')
-			.sendKeys('wluu@appcelerator.com')
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu@appcelerator.com"]')
+			.sendKeys(tempUser.email)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.email}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Enter a password', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys('MonkeyLord!')
+			.sendKeys(tempUser.password)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="•••••••••••"]')
 			.isDisplayed().should.become(true);
 	});
@@ -66,7 +62,7 @@ describe('User Creation - Positive', () => {
 	it('Confirm the password', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Confirm Password"]')
-			.sendKeys('MonkeyLord!')
+			.sendKeys(tempUser.password)
 			.elementsByXPath('//XCUIElementTypeSecureTextField[@value="•••••••••••"]')
 			.then(elements => {
 				elements.length.should.equal(2);
@@ -75,12 +71,14 @@ describe('User Creation - Positive', () => {
 
 	it('Create the user', () => {
 		return driver
+			.elementById('Done')
+			.click()
 			.elementById('CREATE')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
-			.then(value => {
-				value.includes('code = 200').should.equal(true);
+			.then(text => {
+				text.should.include('code = 200');
 			});
 	});
 });

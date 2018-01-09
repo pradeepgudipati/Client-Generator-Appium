@@ -2,7 +2,8 @@
 
 const
 	driver = global.driver,
-	webdriver = global.webdriver;
+	webdriver = global.webdriver,
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
 // Querying a user calls the delete method?
 
@@ -31,8 +32,8 @@ describe.skip('User Query - Negative', () => {
 	it('Enter the Value', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Enter value"]')
-			.sendKeys('Wilson')
-			.elementByXPath('//XCUIElementTypeTextField[@value="Wilson"]')
+			.sendKeys(user.firstName)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${user.firstName}"]`)
 			.isDisplayed().should.become(true);
 	});
 

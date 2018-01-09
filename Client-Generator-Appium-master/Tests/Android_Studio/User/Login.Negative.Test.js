@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	adminUser = require('../../Config/data_config.js').adminUser;
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
 describe('User Login - Negative', () => {
 	before(() => {
@@ -23,9 +23,9 @@ describe('User Login - Negative', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(adminUser.username)
+			.sendKeys(user.username)
 			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.text().should.become(adminUser.username);
+			.text().should.become(user.username);
 	});
 
 	it('Enter Password', () => {
@@ -44,8 +44,10 @@ describe('User Login - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('"code":401');
-				text.should.include('"message":"Invalid email\\/username or password."');
+				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
+				text.meta.code.should.equal(401);
+				text.meta.status.should.equal('fail');
+				text.meta.message.should.equal('Invalid email/username or password.');
 			});
 	});
 });

@@ -21,8 +21,8 @@ class mocha_helper {
 			let mocha = new Mocha({
 				fullTrace: false,
 				useColors: true,
-				timeout: 60000,
-				slow: 50000,
+				timeout: 30000,
+				slow: 25000,
 				reporter: 'mocha-jenkins-reporter',
 				reporterOptions: {
 					junit_report_name: 'Tests',
@@ -31,51 +31,29 @@ class mocha_helper {
 				}
 			});
 
-			const dir = path.join(global.projRoot, 'Tests', project);
+			const
+				dir = path.join(global.projRoot, 'Tests', project),
+				files = require(`${global.projRoot}/Tests/${project}/TestOrder.js`).tests;
 
-			getTests(dir)
-				.then(files => {
-					// Add all of the test files one by one
-					files.forEach(file => {
-						if(!file.includes('.DS_Store')) mocha.addFile(file);
-					});
-
-					mocha.run()
-						.on('test end', data => {
-							if(data.pending) {
-								Output.log(`${data.title}: skipped`);
-							} else {
-								Output.log(`${data.title}: ${data.state}`);
-							}
-						})
-						.on('end', data => {
-							resolve();
-						});
-				})
-				.catch(err => reject(err));
-		});
-	}
-}
-
-/*******************************************************************************
- * Collect all test files for the desired platform and test application
- *
- * @param {String} dir - The directory location of the test files
- ******************************************************************************/
-function getTests(dir) {
-	return new Promise((resolve, reject) => {
-		let tests = [];
-
-		fs.readdir(dir, (err, files) => {
-			if(err) reject(err);
-
+			// Add all of the test files one by one
 			files.forEach(file => {
-				tests.push(path.join(dir, file));
+				mocha.addFile(path.join(dir, file));
 			});
 
-			resolve(tests);
+			// Start the Mocha execution
+			mocha.run()
+				.on('test end', data => {
+					if(data.pending) {
+						Output.log(`${data.title}: skipped`);
+					} else {
+						Output.log(`${data.title}: ${data.state}`);
+					}
+				})
+				.on('end', data => {
+					resolve();
+				});
 		});
-	});
+	}
 }
 
 module.exports = mocha_helper;

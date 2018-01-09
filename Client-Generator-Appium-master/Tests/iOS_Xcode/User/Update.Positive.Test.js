@@ -2,7 +2,8 @@
 
 const
 	driver = global.driver,
-	webdriver = global.webdriver;
+	webdriver = global.webdriver,
+	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser;
 
 // Cannot click the update button because the keyboard isn't droppable
 
@@ -14,9 +15,9 @@ describe.skip('User Update - Positive', () => {
 			.elementById('Login User')
 			.click()
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys('wluu')
+			.sendKeys(tempUser.username)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys('MonkeyLord!')
+			.sendKeys(tempUser.password)
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
@@ -31,13 +32,13 @@ describe.skip('User Update - Positive', () => {
 
 	it('Open the page, and check that the details auto fill', () => {
 		return driver
-			.waitForElementByXPath('//XCUIElementTypeTextField[@value="Wilson"]', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.firstName}"]`, webdriver.asserters.isDisplayed, 10000)
 			.isDisplayed().should.become(true)
-			.elementByXPath('//XCUIElementTypeTextField[@value="Luu"]')
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.lastName}"]`)
 			.isDisplayed().should.become(true)
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu"]')
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.username}"]`)
 			.isDisplayed().should.become(true)
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu@appcelerator.com"]')
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.username}"]`)
 			.isDisplayed().should.become(true)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
 			.isDisplayed().should.become(true)
@@ -47,13 +48,13 @@ describe.skip('User Update - Positive', () => {
 
 	it('Change the Email of the User', () => {
 		return driver
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu@appcelerator.com"]')
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.email}"]`)
 			.clear()
-			.sendKeys('wluu@axway.com')
+			.sendKeys(tempUser.secondEmail)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys('MonkeyLord!')
+			.sendKeys(tempUser.password)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Confirm Password"]')
-			.sendKeys('MonkeyLord!')
+			.sendKeys(tempUser.password)
 			.hideKeyboard()
 			.elementById('UPDATE')
 			.click()

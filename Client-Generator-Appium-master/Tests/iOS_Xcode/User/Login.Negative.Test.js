@@ -2,9 +2,12 @@
 
 const
 	driver = global.driver,
-	webdriver = global.webdriver;
+	webdriver = global.webdriver,
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('User Login - Positive', () => {
+// App crashes if you attempt to login with invalid credentials
+
+describe('User Login - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -20,16 +23,16 @@ describe('User Login - Positive', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys('wluu')
-			.elementByXPath('//XCUIElementTypeTextField[@value="wluu"]')
+			.sendKeys(user.username)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${user.username}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Enter Password', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys('MonkeyLord!')
-			.elementByXPath('//XCUIElementTypeSecureTextField[@value="•••••••••••"]')
+			.sendKeys('IncorrectPassword')
+			.elementByXPath('//XCUIElementTypeSecureTextField[@value="•••••••••••••••••"]')
 			.isDisplayed().should.become(true);
 	});
 
@@ -40,11 +43,8 @@ describe('User Login - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				// text.includes('email = "wluu@appcelerator.com"').should.equal(true);
-				// text.includes('"first_name" = Wilson').should.equal(true);
-				// text.includes('"last_name" = Luu').should.equal(true);
 				console.log(text);
-				text.includes('code = 200').should.equal(true);
+				text.includes('code = 401').should.equal(true);
 			});
 	});
 });

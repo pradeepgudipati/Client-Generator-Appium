@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	adminUser = require('../../Config/data_config.js').adminUser;
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
 describe('ACL Creation - Positive', () => {
 	before(() => {
@@ -15,9 +15,9 @@ describe('ACL Creation - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Login User")')
 			.click()
 			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(adminUser.username)
+			.sendKeys(user.username)
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.sendKeys(adminUser.password)
+			.sendKeys(user.password)
 			.elementById('com.example.axway.mbaas:id/users_login_button1')
 			.click()
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Success!")', webdriver.asserters.isDisplayed, 10000)
@@ -46,9 +46,9 @@ describe('ACL Creation - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_select_readers_button1')
 			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${adminUser.firstName} ${adminUser.lastName}")`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${user.firstName} ${user.lastName}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${adminUser.firstName} ${adminUser.lastName}")`)
+			.elementByAndroidUIAutomator(`new UiSelector().text("${user.firstName} ${user.lastName}")`)
 			.getAttribute('checked')
 			.then(checked => {
 				checked.should.equal('true');
@@ -60,9 +60,9 @@ describe('ACL Creation - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_select_writers_button2')
 			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${adminUser.firstName} ${adminUser.lastName}")`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${user.firstName} ${user.lastName}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${adminUser.firstName} ${adminUser.lastName}")`)
+			.elementByAndroidUIAutomator(`new UiSelector().text("${user.firstName} ${user.lastName}")`)
 			.getAttribute('checked')
 			.then(checked => {
 				checked.should.equal('true');
@@ -75,6 +75,9 @@ describe('ACL Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_create_button3')
 			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
-			.text().should.become('Created!')
+			.getAttribute('text')
+			.then(text => {
+				console.log(JSON.parse('{' + text.split('{').slice(1).join('{')));
+			});
 	});
 });

@@ -3,9 +3,12 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	adminUser = require('../../Config/data_config.js').adminUser;
+	user = require(`${global.projRoot}/Config/data_config.js`).user,
+	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser;
 
-describe('User Remove - Positive', () => {
+// FIXME: Appium hangs the suite if this page is loaded
+
+describe.skip('User Remove - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -15,9 +18,9 @@ describe('User Remove - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Login User")')
 			.click()
 			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(adminUser.username)
+			.sendKeys(user.username)
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.sendKeys(adminUser.password)
+			.sendKeys(user.password)
 			.elementById('com.example.axway.mbaas:id/users_login_button1')
 			.click()
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Success!")', webdriver.asserters.isDisplayed, 10000)
@@ -38,8 +41,22 @@ describe('User Remove - Positive', () => {
 			.click();
 	});
 
+	it('Enter Username', () => {
+		return driver
+			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
+			.sendKeys(tempUser.username)
+			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
+			.text().should.become(tempUser.username);
+	});
+
 	it('Remove the Normal User', () => {
-		// Appium hangs on this page
-		false.should.equal(true);
+		return driver
+			.elementById('com.example.axway.mbaas:id/users_remove_button1')
+			.click()
+			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
+			.getAttribute('text')
+			.then(text => {
+				text.should.include('Removed!');
+			});
 	});
 });

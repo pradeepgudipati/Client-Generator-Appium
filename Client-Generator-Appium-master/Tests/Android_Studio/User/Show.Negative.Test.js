@@ -25,8 +25,10 @@ describe('User Show - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('"code":401');
-				text.should.include('"message":"You need to sign in or sign up before continuing."');
+				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
+				text.meta.code.should.equal(401);
+				text.meta.status.should.equal('fail');
+				text.meta.message.should.equal('You need to sign in or sign up before continuing.');
 			});
 	});
 });

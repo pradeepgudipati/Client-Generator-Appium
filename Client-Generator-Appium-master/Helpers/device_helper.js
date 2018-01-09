@@ -29,7 +29,7 @@ class device_helper {
 					} else {
 						const
 							cmd = `${process.env.ANDROID_HOME}/tools/emulator`,
-							args = ['-avd', devName, '-skin', '1080x1920', '-logcat', 'log'];
+							args = ['-avd', devName, '-skin', '1080x1920', '-logcat', '*:v', '-no-snapshot-save', '-no-snapshot-load', '-no-boot-anim'];
 
 						const prc = spawn(cmd, args);
 						prc.stdout.on('data', data => {
@@ -139,7 +139,7 @@ function getDevices() {
  ******************************************************************************/
 function killPID(pid) {
 	return new Promise((resolve, reject) => {
-		ps.kill(pid, err => {
+		ps.kill(pid, 'SIGKILL', err => {
 			(err) ? reject(err): resolve();
 		});
 	});

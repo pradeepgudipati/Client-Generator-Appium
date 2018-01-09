@@ -3,9 +3,11 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	adminUser = require('../../Config/data_config.js').adminUser;
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('User Logout - Positive', () => {
+// FIXME: Appium hangs the suite if this page is loaded
+
+describe.skip('User Show - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -15,15 +17,15 @@ describe('User Logout - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Login User")')
 			.click()
 			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(adminUser.username)
+			.sendKeys(user.username)
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.sendKeys(adminUser.password)
+			.sendKeys(user.password)
 			.elementById('com.example.axway.mbaas:id/users_login_button1')
 			.click()
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Success!")', webdriver.asserters.isDisplayed, 10000)
 			.elementById('android:id/button1')
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Logout Current User")')
+			.elementByAndroidUIAutomator('new UiSelector().text("Show Current User")')
 			.click();
 	});
 
@@ -31,9 +33,5 @@ describe('User Logout - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('User Should be able to Logout', () => {
-		return driver
-			.waitForElementByAndroidUIAutomator('new UiSelector().text("Logged out!")', webdriver.asserters.isDisplayed, 10000)
-			.isDisplayed().should.become(true);
-	});
+	it('Check User Details Are Correct', () => {});
 });
