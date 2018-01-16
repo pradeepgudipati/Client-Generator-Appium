@@ -6,7 +6,7 @@ const
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Permissions - Positive', () => {
+describe('ACL Permissions - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Access Control')
@@ -25,12 +25,20 @@ describe('ACL Permissions - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
-			.elementById('Check')
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-			.getAttribute('value')
-			.then(text => {
-				text.should.equal('Please login to get user details');
-			});
+			.isDisplayed().should.become(true)
+			
 	});
+
+
+	it('Show ACL Permissions', () => {
+		return driver
+		.elementById('Check')
+		.click()
+		.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+		.getAttribute('value')
+		.then(text => {
+			text.should.equal('Please login to get user details');
+		});
+  
+	  });
 });

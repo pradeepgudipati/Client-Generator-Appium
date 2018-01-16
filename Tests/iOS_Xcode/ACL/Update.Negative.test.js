@@ -6,32 +6,45 @@ const
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Delete - Negative', () => {
+describe('ACL Update - Negative', () => {
 	before(() => {
 		return driver
+			.elementById('Axway')
+			.click()
 			.elementById('Access Control')
 			.click()
-			.waitForElementById('Show ACL', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Update User in ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Update"]', webdriver.asserters.isDisplayed, 10000);
 	});
 
 	after(() => {
 		return driver.resetApp();
 	});
 
-	it('Attempt to Delete the ACL', () => {
+	it('Update an ACL', () => {
 		return driver
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
 			.isDisplayed().should.become(true)
+		
+			// .elementById('Select Readers')
+			// .click()
+			// .waitForElementById(`${user.firstName} ${user.lastName}`)
+			// .click()
+			// .elementById('Done')
+			// .click()
+			// .elementById('Select Writers')
+			// .click()
+			// .waitForElementById(`${user.firstName} ${user.lastName}`)
+			// .click()
 	});
 
+	it('Update ACL',() => {
 
-	it('Delete ACL', () => {
-		return driver
-			.elementById('Delete ACL')
+	  return driver
+			.elementById('Update ACL')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
@@ -39,6 +52,7 @@ describe('ACL Delete - Negative', () => {
 				text.should.include('code = 400');
 				text.should.include('message = "Failed to authenticate user"');
 			});
+
 	});
 
 });

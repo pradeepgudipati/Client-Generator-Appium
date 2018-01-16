@@ -39,7 +39,12 @@ describe('ACL Show - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
-			.elementById('Show ACL')
+			.isDisplayed().should.become(true)
+	});
+
+	it('Show ACL',() => {
+		  return driver
+		  	.elementById('Show ACL')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
@@ -50,5 +55,8 @@ describe('ACL Show - Positive', () => {
 				text.should.include('"public_read" = 0');
 				text.should.include('"public_write" = 0');
 			});
+
+
 	});
+
 });

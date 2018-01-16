@@ -39,6 +39,11 @@ describe('ACL Delete - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
+			.isDisplayed().should.become(true)
+	});
+
+	it('Delete  ACL', () => {
+		return driver
 			.elementById('Delete ACL')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)

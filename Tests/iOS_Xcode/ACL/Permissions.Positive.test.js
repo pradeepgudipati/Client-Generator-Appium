@@ -39,7 +39,13 @@ describe('ACL Permissions - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
-			.elementById('Check')
+			.isDisplayed().should.become(true)
+			
+	});
+
+	it('Show ACL Permissions', () => {
+	  return driver
+	  		.elementById('Check')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
@@ -49,5 +55,6 @@ describe('ACL Permissions - Positive', () => {
 				text.should.include('"read_permission" = 1');
 				text.should.include('"write_permission" = 1');
 			});
+
 	});
 });

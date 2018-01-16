@@ -24,14 +24,22 @@ describe('ACL Show - Negative', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name)
 			.hideKeyboard()
-			.elementById('Show ACL')
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-			.getAttribute('value')
-			.then(text => {
-				text.should.include('code = 400');
-				text.should.include('"method_name" = showAcl');
-				text.should.include('message = "Invalid ACL name"');
-			});
+			.isDisplayed().should.become(true)
+			
 	});
+
+	it('Show ACL',() => {
+		return driver
+		  .elementById('Show ACL')
+		  .click()
+		  .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+		  .getAttribute('value')
+		  .then(text => {
+			text.should.include('code = 400');
+			text.should.include('"method_name" = showAcl');
+			text.should.include('message = "Invalid ACL name"');
+		  });
+
+
+  });
 });
