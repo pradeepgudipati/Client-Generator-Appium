@@ -28,13 +28,17 @@ exports.tests = [
 
 	// Tests for the User module
 	'User/Create.Positive.Test.js',
+	'User/Create.Negative.Test.js',
 	'User/Login.Positive.Test.js',
 	'User/Login.Negative.Test.js',
 	'User/Logout.Positive.Test.js',
+	'User/Logout.Negative.Test.js',
+	'User/Query.Positive.Test.js',
 	'User/Query.Negative.Test.js',
 	'User/Show.Positive.Test.js',
 	'User/Show.Negative.Test.js',
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
-	'User/Remove.Positive.Test.js'
+	'User/Remove.Positive.Test.js',
+	'User/Remove.Negative.Test.js'
 ]
