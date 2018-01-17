@@ -3,7 +3,8 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
+	//creating instance to get data placed in data config file
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl, 
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
 describe('ACL Create - Positive', () => {
@@ -14,12 +15,13 @@ describe('ACL Create - Positive', () => {
 			.elementById('Login User')
 			.click()
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
+			.sendKeys(user.username) //binding static information to input fields
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
+			.sendKeys(user.password) //binding static information to input fields
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
+			//will wait for 10000 seconds when alert is being display
+			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000) 
 			.click()
 			.elementById('Axway')
 			.click()
@@ -34,32 +36,26 @@ describe('ACL Create - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('Create an ACL', () => {
+	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
-			.sendKeys(acl.name)
+			.sendKeys(acl.name) //binding static information to input fields
 			.hideKeyboard()
-			.isDisplayed().should.become(true)
-			// .elementById('Select Readers')
-			// .click()
-			// .waitForElementById(`${user.firstName} ${user.lastName}`)
-			// .click()
-			// .elementById('Done')
-			// .click()
-			// .elementById('Select Writers')
-			// .click()
-			// .waitForElementById(`${user.firstName} ${user.lastName}`)
-			// .click()
+			//In this case we need readers and writers due to some limitation in appium we are directly binding data  
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
 			
 	});
 
 	it('Create ACL',()=>{
 	  return driver
-			.elementById('Create ACL')
+			.elementById('Create ACL') //will search for element id namely create acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
-			.then(text => {
+			.then(text => { //Api response is handled
 				text.should.include('code = 200');
 				text.should.include('"method_name" = createAcl');
 				text.should.include(`name = "${acl.name}"`);

@@ -3,6 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
+	//creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
@@ -14,9 +15,9 @@ describe('ACL Update - Positive', () => {
 			.elementById('Login User')
 			.click()
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
+			.sendKeys(user.username) //binding static information to input fields
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
+			.sendKeys(user.password) //binding static information to input fields
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
@@ -34,31 +35,22 @@ describe('ACL Update - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('Update an ACL', () => {
+	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
-			.sendKeys(acl.name)
+			.sendKeys(acl.name) //binding static information to input fields
 			.hideKeyboard()
-			.isDisplayed().should.become(true)
-		
-			// .elementById('Select Readers')
-			// .click()
-			// .waitForElementById(`${user.firstName} ${user.lastName}`)
-			// .click()
-			// .elementById('Done')
-			// .click()
-			// .elementById('Select Writers')
-			// .click()
-			// .waitForElementById(`${user.firstName} ${user.lastName}`)
-			// .click()
-			// .elementById('Done')
-			// .click()
+            //In this case we need readers and writers due to some limitation in appium we are directly binding data  
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
 			
 	});
 
 	it('Update ACL',()=>{
 		return driver
-		.elementById('Update ACL')
+		.elementById('Update ACL') //will search for element id namely update acl
 		.click()
 		.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 		.getAttribute('value')
