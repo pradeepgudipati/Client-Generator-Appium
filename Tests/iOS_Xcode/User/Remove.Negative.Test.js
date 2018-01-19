@@ -28,7 +28,7 @@ describe('User Remove - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
-				console.log(text);
+				text.includes('code = 400').should.equal(true);
 				text.includes('status = fail').should.equal(true);
 			});
 	});

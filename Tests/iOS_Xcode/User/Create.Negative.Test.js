@@ -78,8 +78,10 @@ describe('User Creation - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
-				console.log(text);
 				text.includes('status = fail').should.equal(true);
+				text.includes('message = "Invalid Email Address."').should.equal(true);
+				text.includes('"method_name" = createUser').should.equal(true);
+				text.includes('code = 400').should.equal(true);
 			
 			
 			});

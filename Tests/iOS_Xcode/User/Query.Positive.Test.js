@@ -7,7 +7,7 @@ const
 
 // Querying a user calls the delete method?
 
-describe.skip('User Query - Negative', () => {
+describe('User Query - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -15,9 +15,9 @@ describe.skip('User Query - Negative', () => {
 			.elementById('Login User')
 			.click()
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(tempUser.username)
+			.sendKeys(user.username)
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(tempUser.password)
+			.sendKeys(user.password)
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
@@ -54,7 +54,6 @@ describe.skip('User Query - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				console.log(text);
 				text.includes('code = 200').should.equal(true);
 				text.includes('status = ok').should.equal(true);
 			});
