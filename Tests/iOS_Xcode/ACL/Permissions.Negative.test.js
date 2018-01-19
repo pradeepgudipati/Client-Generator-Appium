@@ -23,10 +23,11 @@ describe('ACL Permissions - Negative', () => {
 
 	it('Enter ACL name', () => {
 		return driver
-			.elementById('Enter ACL name')
-			.sendKeys(acl.name) //binding static information to input fields
-			.hideKeyboard()
-			
+		.elementById('Enter ACL name')
+		.sendKeys(acl.name) //binding static information to input fields
+		.hideKeyboard()
+		.elementById(acl.name)
+		.isDisplayed().should.become(true)
 	});
 
 

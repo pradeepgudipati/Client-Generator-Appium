@@ -10,15 +10,12 @@ const
 describe('ACL Create - Negative', () => {
 	before(() => {
 		return driver
-			.elementById('Axway')
-			.click()
-			.elementById('Access Control')
-			.click()
-			//will wait for 10000 seconds when alert is being display
-			.waitForElementById('Create ACL', webdriver.asserters.isDisplayed, 10000)
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
-	});
+			.elementById('Enter ACL name')
+			.sendKeys(acl.name) //binding static information to input fields
+			.hideKeyboard()
+			.elementById(acl.name)
+			.isDisplayed().should.become(true)
+		});
 
 	after(() => {
 		return driver.resetApp();

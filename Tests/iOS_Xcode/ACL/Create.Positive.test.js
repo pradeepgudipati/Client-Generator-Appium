@@ -41,11 +41,8 @@ describe('ACL Create - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name) //binding static information to input fields
 			.hideKeyboard()
-			//In this case we need readers and writers due to some limitation in appium we are directly binding data  
-			.waitForElementById(`${user.firstName} ${user.lastName}`)
-			.click()
-			.waitForElementById(`${user.firstName} ${user.lastName}`)
-			.click()
+			.elementById(acl.name)
+			.isDisplayed().should.become(true)
 			
 	});
 
