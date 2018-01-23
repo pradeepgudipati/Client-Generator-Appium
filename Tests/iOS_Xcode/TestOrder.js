@@ -1,6 +1,14 @@
 'use strict';
 
 exports.tests = [
+
+	//Tests for the Geo Fence module
+	'GeoFence/Update.GeoFence.Positive.test',
+	'GeoFence/Update.GeoFence.Negative.test',
+	'GeoFence/Create.GeoFence.Positive.test.js',
+	'GeoFence/Create.GeoFence.Negative.test.js',
+
+
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',

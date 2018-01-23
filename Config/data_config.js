@@ -43,3 +43,21 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
+
+exports.geofence = {
+
+	name: 'Banglore',
+	latitude:  '12.4567',
+	longitude: '77.256',
+	radius: '1'
+
+};
+
+exports.updategeofence = {
+
+	name: 'Delhi',
+	latitude:  '28.45',
+	longitude: '77.456',
+	radius: '1'
+
+};
