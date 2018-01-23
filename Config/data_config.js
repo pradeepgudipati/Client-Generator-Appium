@@ -43,3 +43,10 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
+exports.customObject = {
+	className: 'Test',
+	propertyKey: 'UserName',
+	propertyValue: 'Harika',
+	queryId: '5a66f83493e7370284025a49',
+	loginQueryId: '5a66f8795bbb6a027f0255f9'
+};
