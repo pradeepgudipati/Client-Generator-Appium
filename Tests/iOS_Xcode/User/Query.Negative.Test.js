@@ -7,7 +7,7 @@ const
 
 // Querying a user calls the delete method?
 
-describe.skip('User Query - Negative', () => {
+describe('User Query - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Users')

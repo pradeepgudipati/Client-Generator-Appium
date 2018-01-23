@@ -7,7 +7,7 @@ const
 
 // Cannot click the update button because the keyboard isn't droppable
 
-describe.skip('User Update - Positive', () => {
+describe('User Update - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -61,7 +61,6 @@ describe.skip('User Update - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				console.log(text);
 				text.includes('code = 200').should.equal(true);
 			});
 	});

@@ -30,6 +30,7 @@ exports.tests = [
 	'User/Create.Positive.Test.js',
 	'User/Create.Negative.Test.js',
 	'User/Login.Positive.Test.js',
+	'User/Login.Negative.Test.js',
 	'User/Logout.Positive.Test.js',
 	'User/Query.Positive.Test.js',
 	'User/Query.Negative.Test.js',
