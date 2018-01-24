@@ -30,9 +30,7 @@ describe('Place Update - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[@name="University of Huddersfield"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Update Place')
-			.click()
-			.waitForElementById('Update Place', webdriver.asserters.isDisplayed, 10000)
-			.isDisplayed().should.become(true);
+			.click();
 	});
 
 	after(() => {
@@ -41,14 +39,15 @@ describe('Place Update - Positive', () => {
 
 	it('Update the Country Text Field', () => {
 		return driver
-			.elementByXPath('//XCUIElementTypeTextField[@value="England"]')
-			.clear()
-			.sendKeys(tempPlace.secondCountry)
-			.elementByXPath('//XCUIElementTypeTextField[@value="Great Britain"]')
-			.isDisplayed().should.become(true);
+		.waitForElementById("Queensgate", webdriver.asserters.isDisplayed, 10000)
+		.elementByXPath('//XCUIElementTypeTextField[@value="Queensgate"]')
+		.clear()
+		.sendKeys(tempPlace.secondCountry)
+		.elementByXPath('//XCUIElementTypeTextField[@value="Great Britain"]')
+		.isDisplayed().should.become(true);
 	});
 
-	it('Push the Update', () => {
+	it('Update Place', () => {
 		return driver
 			.elementById('Done')
 			.click()

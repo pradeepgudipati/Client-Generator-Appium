@@ -26,8 +26,7 @@ describe('Place Search - Positive', () => {
 			.elementById('Places')
 			.click()
 			.waitForElementById('Search Place', webdriver.asserters.isDisplayed, 10000)
-			.click()
-			.waitForElementById('Search', webdriver.asserters.isDisplayed, 10000);
+			.click();
 	});
 
 	after(() => {
@@ -36,17 +35,24 @@ describe('Place Search - Positive', () => {
 
 	it('Enter the Place Name', () => {
 		return driver
-			.elementByXPath('//XCUIElementTypeTextField[@value="Place Name"]')
+			.waitForElementById('Axway',webdriver.asserters.isDisplayed, 10000)
+			.elementById('Allow')
+			.click()
+			.waitForElementById('Place Name',webdriver.asserters.isDisplayed, 10000)
 			.sendKeys(tempPlace.name)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempPlace.name}"]`)
 			.isDisplayed().should.become(true);
 	});
 
 	it('Search for the Place', () => {
-		// return driver
-		// 	.elementById('Search')
-		// 	.click()
-		// 	.elementById('Error in current location'); // This isn't the correct outcome
-		true.should.equal(false);
+		return driver
+			.elementById('Search')
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			.getAttribute('name')
+			.then(text => {
+				text.should.include('code = 200');
+				text.should.include('"method_name" = searchPlace');
+			})
 	});
 });

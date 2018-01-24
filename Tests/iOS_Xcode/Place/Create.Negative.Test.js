@@ -6,21 +6,9 @@ const
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
-describe('Place Create - Positive', () => {
+describe('Place Create - Negative', () => {
 	before(() => {
 		return driver
-			.elementById('Users')
-			.click()
-			.elementById('Login User')
-			.click()
-			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
-			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
-			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
-			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
-			.click()
 			.elementById('Axway')
 			.click()
 			.elementById('Places')
@@ -44,7 +32,7 @@ describe('Place Create - Positive', () => {
 
 	it('Enter the Place Address', () => {
 		return driver
-			.elementByXPath('//XCUIElementTypeTextField[@value="Address"]') 
+			.elementByXPath('//XCUIElementTypeTextField[@value="Address"]') // Currently spelt incorrectly in the app
 			.sendKeys(tempPlace.address)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempPlace.address}"]`)
 			.isDisplayed().should.become(true);
@@ -107,16 +95,8 @@ describe('Place Create - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				text.should.include('code = 200');
-				text.should.include('"method_name" = createPlace');
-				text.should.include(`name = "${tempPlace.name}"`);
-				text.should.include(`address = ${tempPlace.address}`);
-				text.should.include(`city = ${tempPlace.city}`);
-				text.should.include(`state = "${tempPlace.state}"`);
-				text.should.include(`"postal_code" = "${tempPlace.postcode}"`);
-				text.should.include(`country = ${tempPlace.country}`);
-				text.should.include(`latitude = "${tempPlace.latitude}"`);
-				text.should.include(`longitude = "${tempPlace.longitude}"`);
+                text.should.include('code = 400');
+				text.should.include('message = "Failed to authenticate user"');
 			});
 	});
 });

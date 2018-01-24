@@ -27,10 +27,8 @@ describe('Place Delete - Positive', () => {
 			.click()
 			.waitForElementById('Query Place', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath(`//XCUIElementTypeStaticText[@name="tempPlace.name"]`, webdriver.asserters.isDisplayed, 10000)
-			.click()
-			.waitForElementById('Delete Place', webdriver.asserters.isDisplayed, 10000)
-			.isDisplayed().should.become(true);
+			.waitForElementByXPath(`//XCUIElementTypeStaticText[@name="University of Huddersfield"]`, webdriver.asserters.isDisplayed, 10000)
+			.click();
 	});
 
 	after(() => {
