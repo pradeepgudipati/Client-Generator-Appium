@@ -4,7 +4,9 @@ const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
+	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace,
+	place = require(`${global.projRoot}/Config/data_config.js`).place;
+
 
 describe('Place Update - Positive', () => {
 	before(() => {
@@ -37,13 +39,13 @@ describe('Place Update - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('Update the Country Text Field', () => {
+	it('Update the City Text Field', () => {
 		return driver
-		.waitForElementById("Queensgate", webdriver.asserters.isDisplayed, 10000)
-		.elementByXPath('//XCUIElementTypeTextField[@value="Queensgate"]')
+		.waitForElementById(tempPlace.city, webdriver.asserters.isDisplayed, 10000)
+		.elementByXPath('//XCUIElementTypeTextField[@value="Huddersfield"]')
 		.clear()
-		.sendKeys(tempPlace.secondCountry)
-		.elementByXPath('//XCUIElementTypeTextField[@value="Great Britain"]')
+		.sendKeys(place.city)
+		.elementByXPath('//XCUIElementTypeTextField[@value="San Jose"]')
 		.isDisplayed().should.become(true);
 	});
 
@@ -60,10 +62,10 @@ describe('Place Update - Positive', () => {
 				text.should.include('"method_name" = updatePlace');
 				text.should.include(`name = "${tempPlace.name}"`);
 				text.should.include(`address = ${tempPlace.address}`);
-				text.should.include(`city = ${tempPlace.city}`);
+				text.should.include(`city = "${place.city}"`);
 				text.should.include(`state = "${tempPlace.state}"`);
 				text.should.include(`"postal_code" = "${tempPlace.postcode}"`);
-				text.should.include(`country = "${tempPlace.secondCountry}"`);
+				text.should.include(`country = ${tempPlace.country}`);
 				text.should.include(`latitude = "${tempPlace.latitude}"`);
 				text.should.include(`longitude = "${tempPlace.longitude}"`);
 			});
