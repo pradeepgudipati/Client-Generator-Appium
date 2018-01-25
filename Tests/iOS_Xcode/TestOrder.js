@@ -3,10 +3,11 @@
 exports.tests = [
 
 	//Tests for the Geo Fence module
-	'GeoFence/Update.GeoFence.Positive.test',
-	'GeoFence/Update.GeoFence.Negative.test',
-	'GeoFence/Create.GeoFence.Positive.test.js',
-	'GeoFence/Create.GeoFence.Negative.test.js',
+	
+	 'GeoFence/Create.GeoFence.Positive.test.js',
+	 'GeoFence/Create.GeoFence.Negative.test.js',
+	 'GeoFence/Update.GeoFence.Positive.test',
+	 'GeoFence/Update.GeoFence.Negative.test',
 
 
 	// Tests for the Chat module

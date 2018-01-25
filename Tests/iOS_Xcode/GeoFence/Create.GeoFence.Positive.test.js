@@ -69,9 +69,7 @@ describe('GeoFence Create - Positive', () => {
 			.then(text => { //Api response is handled
 				text.should.include('code = 200');
 				text.should.include('"method_name" = createGeoFence');
-				text.should.include(`name = "${geofence.name}"`);
-				text.should.include('"public_read" = 0');
-				text.should.include('"public_write" = 0');
+				text.should.include(`name = ${geofence.name}`);
 			});
 
 
