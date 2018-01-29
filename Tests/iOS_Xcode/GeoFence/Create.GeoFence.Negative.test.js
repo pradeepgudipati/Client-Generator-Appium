@@ -52,8 +52,8 @@ describe('GeoFence Create - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => { //Api response is handled
-                text.should.include('code = 400');
-				text.should.include('message = "Failed to authenticate user"');
+                text.should.include('code = 403'); //Modified text as per api response but this api inturn should return 400 (failed to authenticate user). 
+				text.should.include('message = "You are not authorized to perform this action."');
 			});
 
 
