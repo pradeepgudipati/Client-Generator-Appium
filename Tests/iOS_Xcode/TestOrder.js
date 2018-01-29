@@ -38,6 +38,7 @@ exports.tests = [
 	'User/Show.Negative.Test.js',
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
-	'User/Remove.Positive.Test.js',
-	'User/Remove.Negative.Test.js'
+	'User/Remove.Negative.Test.js',
+	'User/Remove.Positive.Test.js'
+	
 ]

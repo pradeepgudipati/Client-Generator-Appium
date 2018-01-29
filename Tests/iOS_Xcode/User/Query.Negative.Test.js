@@ -44,7 +44,6 @@ describe('User Query - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				console.log(text);
 				text.includes('code = 403').should.equal(true);
 			});
 	});
