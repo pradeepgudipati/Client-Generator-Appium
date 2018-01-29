@@ -10,11 +10,12 @@ const
 describe('ACL Create - Negative', () => {
 	before(() => {
 		return driver
-			.elementById('Enter ACL name')
-			.sendKeys(acl.name) //binding static information to input fields
-			.hideKeyboard()
-			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.elementById('Access Control')
+			.click()
+			.waitForElementById('Create ACL', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
+
 		});
 
 	after(() => {
@@ -23,14 +24,11 @@ describe('ACL Create - Negative', () => {
 
 	it('Enter ACL name', () => {
 		return driver
-			.elementById('Enter ACL name')
-			.sendKeys(acl.name) //binding static information to input fields
-			.hideKeyboard()
-			//In this case we need readers and writers due to some limitation in appium we are directly binding data  
-			.waitForElementById(`${user.firstName} ${user.lastName}`) 
-			.click()
-			.waitForElementById(`${user.firstName} ${user.lastName}`)
-			.click()
+		.elementById('Enter ACL name')
+		.sendKeys(acl.name) //binding static information to input fields
+		.hideKeyboard()
+		.elementById(acl.name)
+		.isDisplayed().should.become(true)
 			
 	});
 	it('Create ACL',()=>{
