@@ -25,7 +25,7 @@ describe('Query Remove Object - Positive', () => {
 			.click()
 			.elementById('Custom Objects')
 			.click()
-			.waitForElementById('Create Custom Object', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Query Custom Object', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeTextField[@value="Class Name"]', webdriver.asserters.isDisplayed, 10000);
 
@@ -41,27 +41,23 @@ describe('Query Remove Object - Positive', () => {
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.className}"]`)
 			.isDisplayed().should.become(true);
 	});
-	it('Get a Query Object', () => {
+	
+	it('Remove Query Object', () => {
 		return driver
 			.elementById('Query')
             .click()
-            .sleep(10000)
-            .waitForElementById(`${customObject.loginQueryId}`)
+			.waitForElementById(`${customObject.loginQueryId}`, webdriver.asserters.isDisplayed, 10000)
             .click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
-			.click();
-	});
-	it('Remove Query Object', () => {
-		return driver
-			.waitForElementById('Update values',webdriver.asserters.isDisplayed, 10000)
-			.elementByXPath('//XCUIElementTypeButton[@name="Remove"]')
+			.click()
+			.elementByXPath('//XCUIElementTypeButton[@name="Delete"]')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				text.should.includes('code = 200').should.equal(true);
+				text.includes('code = 200').should.equal(true);
                 text.should.include('"method_name" = deleteObjects');
-                text.should.includes('status = ok').should.equal(true);
+				text.should.include('status = ok');
 			});
 	});
 });

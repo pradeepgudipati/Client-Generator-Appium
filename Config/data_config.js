@@ -46,7 +46,9 @@ exports.acl = {
 exports.customObject = {
 	className: 'Test',
 	propertyKey: 'UserName',
-	propertyValue: 'Harika',
-	queryId: '5a66f83493e7370284025a49',
-	loginQueryId: '5a66f8795bbb6a027f0255f9'
+	propertyValue: 'TestName',
+	propertyKeyUpdate: 'UserName1',
+	propertyValueUpdate: 'TestName1',
+	queryId: '5a68aece5bbb6a027502691a',
+	loginQueryId: '5a68adbd93e737027c026eec'
 };

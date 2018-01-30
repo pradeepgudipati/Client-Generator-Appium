@@ -50,7 +50,7 @@ describe('Create Object - Negative', () => {
 			.getAttribute('value')
 			.then(text => {
                 text.includes('code = 400').should.equal(true);
-                text.includes('status = fail').should.equal(true);
+				text.should.include('status = fail');
 			});
 	});
 });

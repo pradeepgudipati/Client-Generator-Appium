@@ -54,14 +54,14 @@ describe('Create Object - Positive', () => {
 		.elementById('Add New Property')
 		.click();
     });
-    // it('Enter a new property key value', () => {
-	// 	return driver
-	// 		.elementByXPath('//XCUIElementTypeTextField[@value="UserName"]')
-	// 	    .sendKeys(customObject.propertyValue)
-	// 		.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyValue}"]`)
-    //         .isDisplayed().should.become(true)
+    it('Enter a new property key value', () => {
+		return driver
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"]`)
+		    .sendKeys(customObject.propertyValue)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyValue}"]`)
+            .isDisplayed().should.become(true)
 
-	// });
+	 });
 	it('Create a Custom Object', () => {
 		return driver
 			.elementById('Create')

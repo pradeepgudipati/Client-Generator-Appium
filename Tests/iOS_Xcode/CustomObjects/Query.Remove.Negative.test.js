@@ -27,27 +27,22 @@ describe('Query Remove Object - Negative', () => {
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.className}"]`)
 			.isDisplayed().should.become(true);
 	});
-	it('Get a Query Object', () => {
-		return driver
-			.elementById('Query')
-            .click()
-            .sleep(10000)
-            .waitForElementById(`${customObject.queryId}`)
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
-			.click();
-	});
+	
 	it('Remove Query Object', () => {
 		return driver
-
-			.waitForElementById('Update values',webdriver.asserters.isDisplayed, 10000)
-			.elementByXPath('//XCUIElementTypeButton[@name="Remove"]')
+			.elementById('Query')
+			.click()
+			.waitForElementById(`${customObject.queryId}`, webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.elementByXPath('//XCUIElementTypeButton[@name="Delete"]')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-                text.should.include('"method_name" = deleteObjects');
-                text.should.includes('status = fail').should.equal(true);
+				text.should.include('"method_name" = deleteObjects');
+				text.should.include('status = fail');
 			});
 	});
 });
