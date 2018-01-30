@@ -40,6 +40,7 @@ const
             return driver
             .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 10000)
             .click()
+            .sleep(10000);
         });
 
 

@@ -48,7 +48,8 @@ const
             .elementById('Show SubCollection')
             .click()
             .waitForElementById('Show SubCollection', webdriver.asserters.isDisplayed, 10000)
-            .isDisplayed().should.become(true);
+            .isDisplayed().should.become(true)
+            .sleep(10000);
 
         });
 

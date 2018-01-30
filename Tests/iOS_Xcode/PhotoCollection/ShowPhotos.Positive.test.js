@@ -21,13 +21,13 @@ const
 			.sendKeys(user.password)
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('OK', webdriver.asserters.isDisplayed, 5000)
 			.click()
 			.elementById('Axway')
             .click()
             .elementById('Photo Collections')
             .click()
-            .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 10000)
+            .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
             .click()
         });
 
@@ -37,7 +37,7 @@ const
 
         it('Choose Photo Collection name', () => {
             return driver
-            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 10000)
+            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
             .click()
         });
 
@@ -46,8 +46,9 @@ const
             return driver
             .elementById('Show Photos')
             .click()
-            .waitForElementById('Show Photos', webdriver.asserters.isDisplayed, 10000)
-            .isDisplayed().should.become(true);
+            .waitForElementById('Show Photos', webdriver.asserters.isDisplayed, 5000)
+            .isDisplayed().should.become(true)
+            .sleep(10000);
 
         });
 
