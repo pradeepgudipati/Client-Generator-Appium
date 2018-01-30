@@ -43,3 +43,9 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
+
+exports.photocollection = {
+
+	name: 'Axway Photo Collections',
+	updatedName: 'Test Axway Collections'
+};
