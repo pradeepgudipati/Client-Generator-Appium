@@ -43,7 +43,7 @@ describe('User Login - Negative', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				text.includes('code = 401').should.equal(true);
+				text.includes('Invalid email/username or password').should.equal(true);
 			});
 	});
 });
