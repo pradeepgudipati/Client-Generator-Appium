@@ -43,3 +43,7 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
+
+exports.chat = {
+	message: 'Hello axway group'
+};

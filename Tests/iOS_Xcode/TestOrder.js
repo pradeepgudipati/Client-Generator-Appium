@@ -2,11 +2,12 @@
 
 exports.tests = [
 	// Tests for the Chat module
-	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',
+	'Chat/Create.Negative.Test.js',
 	'Chat/Query.Positive.Test.js',
-
-	// Tests for the Place module
+	'Chat/Query.Negative.Test.js',
+	
+	//Tests for the Place module
 	'Place/Create.Positive.Test.js',
 	'Place/Search.Positive.Test.js',
 	'Place/Search.Negative.Test.js',
