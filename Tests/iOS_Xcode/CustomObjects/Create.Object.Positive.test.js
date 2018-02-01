@@ -56,7 +56,7 @@ describe('Create Object - Positive', () => {
     });
     it('Enter a new property key value', () => {
 		return driver
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"]`)
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"][2]`)
 		    .sendKeys(customObject.propertyValue)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyValue}"]`)
             .isDisplayed().should.become(true)
