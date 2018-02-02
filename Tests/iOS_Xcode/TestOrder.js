@@ -1,7 +1,16 @@
 'use strict';
 
 exports.tests = [
-	// Tests for the Chat module
+  
+	//Tests for the Photo module
+	'Photos/Create.Photo.Positive.test.js',
+	'Photos/Create.Photo.Negative.test.js',
+	'Photos/Query.PhotoUpdate.Positive.test.js',
+	'Photos/Query.PhotoUpdate.Negative.test.js',
+	'Photos/Query.PhotoDelete.Negative.test.js',
+	'Photos/Query.PhotoDelete.Positive.test.js',
+
+	//Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',
 	'Chat/Query.Positive.Test.js',
