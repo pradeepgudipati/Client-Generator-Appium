@@ -35,15 +35,15 @@ describe('Photo Delete - Positive', () => {
 		return driver.resetApp();
 	});
 
-	// it('Delete a Photo', () => {
-	// 	return driver
-	// 	.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
-	// 	.click()
-	// 	.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-	// 	.getAttribute('name')
-	// 	.then(text => {
-	// 		text.includes('code = 200').should.equal(true);
-	// 		text.includes('status = ok');
-	// 	});
-	// });
+	it('Delete a Photo', () => {
+		return driver
+		.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
+		.click()
+		.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+		.getAttribute('name')
+		.then(text => {
+			text.includes('code = 200').should.equal(true);
+			text.includes('status = ok');
+		});
+	});
 });
