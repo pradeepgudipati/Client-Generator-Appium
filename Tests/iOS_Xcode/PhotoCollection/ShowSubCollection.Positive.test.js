@@ -47,10 +47,13 @@ const
             return driver
             .elementById('Show SubCollection')
             .click()
-            .waitForElementById('Show SubCollection', webdriver.asserters.isDisplayed, 10000)
-            .isDisplayed().should.become(true)
-            .sleep(10000);
-
+            .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+            .getAttribute('name')
+            .then(text => {
+                text.should.include('code = 200');
+                text.should.include('"method_name" = showCollectionSubcollections');
+                
+            });
         });
 
     });

@@ -16,7 +16,7 @@ const
             .elementById('Photo Collections')
             .click()
             .waitForElementById('Create Photo Collection', webdriver.asserters.isDisplayed, 10000)
-			.click()
+			.click();
 	
 
         });
@@ -44,7 +44,7 @@ const
             .then(text => {
                 text.should.include('code = 400');
 				text.should.include('message = "Failed to authenticate user"');
-            })
+            });
 
         });
 

@@ -29,17 +29,12 @@ const
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
             .click()
+            .waitForElementById(photocollection.updatedName, webdriver.asserters.isDisplayed, 5000)
+            .click();
         });
 
         after(() => {
             return driver.resetApp();
-        });
-
-        it('Choose Photo Collection name', () => {
-
-            return driver
-            .waitForElementById(photocollection.updatedName, webdriver.asserters.isDisplayed, 5000)
-            .click()
         });
 
         it('Remove photo colection', () => {
@@ -51,7 +46,7 @@ const
             .elementById('Ok')
             .click()
             .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-            .getAttribute('name')
+            .getAttribute('value')
             .then(text => {
              text.should.include('Deleted Successfully');
         });

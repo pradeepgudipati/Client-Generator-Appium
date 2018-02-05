@@ -28,7 +28,7 @@ const
             .elementById('Photo Collections')
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
-            .click()
+            .click();
         });
 
         after(() => {
@@ -39,7 +39,7 @@ const
 
             return driver
             .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
-            .click()
+            .click();
         });
 
         it('Update photo colection name', () => {

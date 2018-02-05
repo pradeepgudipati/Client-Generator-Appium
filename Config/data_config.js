@@ -46,6 +46,6 @@ exports.acl = {
 
 exports.photocollection = {
 
-	name: 'Axway Photo Collections',
-	updatedName: 'Test Axway Collections'
+	name: 'Axway Test Photo Collection xy',
+	updatedName: 'Test Axway Test Photo Collection xy'
 };

@@ -28,7 +28,7 @@ const
             .elementById('Photo Collections')
             .click()
             .waitForElementById('Create Photo Collection', webdriver.asserters.isDisplayed, 10000)
-			.click()
+			.click();
 	
 
         });
@@ -57,7 +57,7 @@ const
 				text.should.include('code = 200');
                 text.should.include('"method_name" = createCollection');
                 text.should.include(`name = "${photocollection.name}"`);
-            })
+            });
 
         });
 

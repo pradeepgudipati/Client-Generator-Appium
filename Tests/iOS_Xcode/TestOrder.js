@@ -5,7 +5,6 @@ exports.tests = [
 	//Tests for the Photo Collection module
 	'PhotoCollection/Create.Positive.test.js',
 	'PhotoCollection/Create.Negative.test.js',
-	'PhotoCollection/Search.Positive.test.js',
 	'PhotoCollection/ShowPhotos.Positive.test.js',
 	'PhotoCollection/ShowSubCollection.Positive.test.js',
 	'PhotoCollection/Update.Positive.test.js',

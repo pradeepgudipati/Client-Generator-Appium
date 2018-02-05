@@ -46,9 +46,13 @@ const
             return driver
             .elementById('Show Photos')
             .click()
-            .waitForElementById('Show Photos', webdriver.asserters.isDisplayed, 5000)
-            .isDisplayed().should.become(true)
-            .sleep(10000);
+            .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+            .getAttribute('name')
+            .then(text => {
+                text.should.include('code = 200');
+                text.should.include('"method_name" = showCollectionPhotos');
+                
+            });
 
         });
 
