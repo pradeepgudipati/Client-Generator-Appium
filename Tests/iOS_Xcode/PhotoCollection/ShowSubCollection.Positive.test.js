@@ -29,17 +29,12 @@ const
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 10000)
             .click()
+            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 10000)
+            .click();
         });
 
         after(() => {
             return driver.resetApp();
-        });
-
-        it('Choose Photo Collection name', () => {
-
-            return driver
-            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 10000)
-            .click()
         });
 
         it('Show SubCollection', () => {

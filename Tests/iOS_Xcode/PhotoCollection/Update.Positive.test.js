@@ -28,18 +28,13 @@ const
             .elementById('Photo Collections')
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
+            .click()
+            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
             .click();
         });
 
         after(() => {
             return driver.resetApp();
-        });
-
-        it('Choose Photo Collection name', () => {
-
-            return driver
-            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
-            .click();
         });
 
         it('Update photo colection name', () => {
