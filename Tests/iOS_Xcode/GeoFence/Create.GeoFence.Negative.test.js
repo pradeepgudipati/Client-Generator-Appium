@@ -12,10 +12,9 @@ describe('GeoFence Create - Negative', () => {
 		return driver
 			.elementById('Geo Fences')
 			.click()
-			.waitForElementById('Create Geo Fence', webdriver.asserters.isDisplayed, 10000)
-			.click();
-			// .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
-	});
+			.elementById('Create Geo Fence')
+			.click()
+		});
 
 	after(() => {
 		return driver.resetApp();

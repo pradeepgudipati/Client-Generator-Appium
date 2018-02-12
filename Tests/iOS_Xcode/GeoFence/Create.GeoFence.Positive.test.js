@@ -27,9 +27,8 @@ describe('GeoFence Create - Positive', () => {
 			.click()
 			.elementById('Geo Fences')
 			.click()
-			.waitForElementById('Create Geo Fence', webdriver.asserters.isDisplayed, 10000)
-			.click();
-			// .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
+			.elementById('Create Geo Fence')
+			.click()
 	});
 
 	after(() => {

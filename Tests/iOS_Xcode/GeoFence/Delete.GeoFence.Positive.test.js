@@ -8,7 +8,7 @@ const
     updategeofence = require(`${global.projRoot}/Config/data_config.js`).updategeofence, 
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('GeoFence Update - Positive', () => {
+describe('GeoFence Delete - Positive', () => {
 	before(() => {
         return driver
          	.elementById('Users')
@@ -28,42 +28,33 @@ describe('GeoFence Update - Positive', () => {
 			.click()
 			.elementById('Geo Fences')
 			.click()
-			.waitForElementById('Query Geo Fence', webdriver.asserters.isDisplayed, 5000)
+			.waitForElementById('Query Geo Fence', webdriver.asserters.isDisplayed, 10000)
             .click()
-            .waitForElementById(geofence.name, webdriver.asserters.isDisplayed, 5000)
+            .waitForElementById(geofence.name, webdriver.asserters.isDisplayed, 10000)
 			.isDisplayed().should.become(true);
 	});
 
 	after(() => {
 		return driver.resetApp();
-	});
+    });
 
-	it('Change Geo Fence Name', () => {
-		return driver       
-			.elementById(geofence.name)
-			.click() 	
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${geofence.name}"]`)
-			.clear()
-			.sendKeys(updategeofence.name)
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${updategeofence.name}"]`)
-			.isDisplayed().should.become(true);
+    it('Choose a geo fence',() => {
 
-	});
+        return driver
+        .elementById(geofence.name)
+        .click()
 
-	it('Update Geo Fence',()=>{
-	  return driver
-			.elementById('Update') //will search for element id namely create Geo Fence
+    });
+    
+	it('Delete Geo Fence',()=>{
+      return driver
+			.elementById('Delete') //will search for element id namely create Geo Fence
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => { //Api response is handled
 				text.should.include('code = 200');
-				text.should.include('"method_name" = updateGeoFence');
-				text.should.include(`name = "${updategeofence.name}"`);
-				text.should.include('"public_read" = 0');
-				text.should.include('"public_write" = 0');
+				text.should.include('"method_name" = destroyGeoFence');
 			});
-
-
 	});
 });

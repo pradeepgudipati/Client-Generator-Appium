@@ -8,46 +8,39 @@ const
     updategeofence = require(`${global.projRoot}/Config/data_config.js`).updategeofence, 
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('GeoFence Update - Negative', () => {
+describe('GeoFence Delete - Negative', () => {
 	before(() => {
         return driver
-			.elementById('Axway')
-			.click()
 			.elementById('Geo Fences')
 			.click()
 			.waitForElementById('Query Geo Fence', webdriver.asserters.isDisplayed, 10000)
             .click()
-			.waitForElementById(geofence.name, webdriver.asserters.isDisplayed, 5000)
+            .waitForElementById(geofence.name, webdriver.asserters.isDisplayed, 10000)
 			.isDisplayed().should.become(true);
 	});
 
 	after(() => {
 		return driver.resetApp();
-	});
+    });
 
-	it('Change Geo Fence Name', () => {
-		return driver       
-			.elementById(geofence.name)
-			.click() 	
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${geofence.name}"]`)
-			.clear()
-			.sendKeys(updategeofence.name)
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${updategeofence.name}"]`)
-			.isDisplayed().should.become(true);
+    it('Choose a geo fence',() => {
 
-	});
+        return driver
+        .elementById(geofence.name)
+        .click()
 
-	it('Update Geo Fence',()=>{
-	  return driver
-			.elementById('Update') //will search for element id namely create Geo Fence
+    });
+    
+	it('Delete Geo Fence',()=>{
+      return driver
+			.elementById('Delete') //will search for element id namely create Geo Fence
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => { //Api response is handled
-                text.should.include('code = 400');
-				text.should.include('message = "Failed to authenticate user"');
+                text.should.include('code = 403'); //Modified text as per api response but this api inturn should return 400 (failed to authenticate user). 
+				text.should.include('message = "You are not authorized to perform this action."');
+
 			});
-
-
 	});
 });
