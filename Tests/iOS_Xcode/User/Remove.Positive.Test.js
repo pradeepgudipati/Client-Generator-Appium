@@ -32,7 +32,7 @@ describe('User Remove - Positive', () => {
 	it('Click on the User Remove Button', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="EmailId"]')
-			.sendKeys(tempUser.email)
+			.sendKeys(tempUser.secondEmail)
 			.elementById('Delete')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
