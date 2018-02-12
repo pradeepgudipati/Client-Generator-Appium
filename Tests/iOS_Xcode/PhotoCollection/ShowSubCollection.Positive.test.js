@@ -30,11 +30,18 @@ const
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 10000)
             .click()
             .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 10000)
-            .click();
+            .isDisplayed().should.become(true);
         });
 
         after(() => {
             return driver.resetApp();
+        });
+        it('Open the Photo Collection', () => {
+            return driver
+                .elementById(photocollection.name)
+                .click()
+                .elementById('Show SubCollection')
+                .isDisplayed().should.become(true);
         });
 
         it('Show SubCollection', () => {
