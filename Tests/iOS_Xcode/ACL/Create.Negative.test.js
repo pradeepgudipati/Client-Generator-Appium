@@ -7,16 +7,16 @@ const
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Delete - Negative', () => {
+describe('ACL Create - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Access Control')
 			.click()
-			//will wait for 10000 seconds
-			.waitForElementById('Show ACL', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Create ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
-	});
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
+
+		});
 
 	after(() => {
 		return driver.resetApp();
@@ -29,19 +29,20 @@ describe('ACL Delete - Negative', () => {
 		.hideKeyboard()
 		.elementById(acl.name)
 		.isDisplayed().should.become(true)
+			
 	});
-
-
-	it('Delete ACL', () => { //will search for element id namely delete acl
+	it('Create ACL',()=>{
 		return driver
-			.elementById('Delete ACL')
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-			.getAttribute('value')
-			.then(text => {
+			  .elementById('Create ACL') //will search for element id namely create acl
+			  .click()
+			  .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			  .getAttribute('value')
+			  .then(text => {
 				text.should.include('code = 400');
 				text.should.include('message = "Failed to authenticate user"');
-			});
-	});
-
+	
+			  });
+  
+  
+	  });
 });

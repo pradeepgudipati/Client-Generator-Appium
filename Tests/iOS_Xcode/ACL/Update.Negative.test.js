@@ -7,15 +7,16 @@ const
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Delete - Negative', () => {
+describe('ACL Update - Negative', () => {
 	before(() => {
 		return driver
+			.elementById('Axway')
+			.click()
 			.elementById('Access Control')
 			.click()
-			//will wait for 10000 seconds
-			.waitForElementById('Show ACL', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Update User in ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Update"]', webdriver.asserters.isDisplayed, 10000);
 	});
 
 	after(() => {
@@ -31,10 +32,10 @@ describe('ACL Delete - Negative', () => {
 		.isDisplayed().should.become(true)
 	});
 
+	it('Update ACL',() => {
 
-	it('Delete ACL', () => { //will search for element id namely delete acl
-		return driver
-			.elementById('Delete ACL')
+	  return driver
+			.elementById('Update ACL') //will search for element id namely update acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
@@ -42,6 +43,7 @@ describe('ACL Delete - Negative', () => {
 				text.should.include('code = 400');
 				text.should.include('message = "Failed to authenticate user"');
 			});
+
 	});
 
 });
