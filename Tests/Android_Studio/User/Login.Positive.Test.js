@@ -33,8 +33,7 @@ describe('User Login - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
 			.sendKeys(user.password)
 			.sleep(2000) // Wait for all of the password to be dotted out
-			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.text().should.become('••••••••');
+			
 	});
 
 	it('User Should be able to Login', () => {

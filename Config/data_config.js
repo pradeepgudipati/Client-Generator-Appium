@@ -17,6 +17,24 @@ exports.tempUser = {
 	secondEmail: 'wluu@axway.com'
 };
 
+exports.tempUser1 = {
+	username: 'wluu1 ',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson1',
+	lastName: 'Luu1',
+	email: 'wluu1@appcelerator.com',
+	secondEmail: 'wluu1@axway.com'
+};
+
+exports.tempUser2 = {
+	username: 'wluu2 ',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
+};
+
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',

@@ -33,8 +33,7 @@ describe('User Login - Negative', () => {
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
 			.sendKeys('IncorrectPassword')
 			.sleep(2000) // Wait for all of the password to be dotted out
-			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.text().should.become('•••••••••••••••••');
+		
 	});
 
 	it('Should get an Invalid User Warning', () => {

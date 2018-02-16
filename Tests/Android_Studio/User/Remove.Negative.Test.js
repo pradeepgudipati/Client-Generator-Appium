@@ -3,26 +3,14 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser1;
 
-describe('User Remove - Positive', () => {
+describe('User Remove - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
 			.click()
 			.elementByAndroidUIAutomator('new UiSelector().text("Users")')
-			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Login User")')
-			.click()
-			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(user.username)
-			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.sendKeys(user.password)
-			.elementById('com.example.axway.mbaas:id/users_login_button1')
-			.click()
-			.waitForElementByAndroidUIAutomator('new UiSelector().text("Success!")', webdriver.asserters.isDisplayed, 10000)
-			.elementById('android:id/button1')
 			.click()
 			.elementByAndroidUIAutomator('new UiSelector().text("Remove User")')
 			.click();
@@ -54,7 +42,8 @@ describe('User Remove - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('Removed!');
+				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
+				text.meta.status.should.equal('fail');
 			});
 	});
 });
