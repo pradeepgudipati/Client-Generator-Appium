@@ -1,0 +1,16 @@
+{
+    "extends": ["axway/env-node"],
+    "globals": {
+      "_logging",
+      "describe",
+      "before",
+      "after",
+      "it"
+    },
+    "rules": {
+      "security/detect-non-literal-require":"off",
+      "security/detect-non-literal-regexp":"off",
+      "security/detect-child-process":"off",
+      "valid-jsdoc":"off"
+    }
+}
