@@ -3,9 +3,10 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Show - Positive', () => {
+describe('ACL Delete - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -26,8 +27,9 @@ describe('ACL Show - Positive', () => {
 			.back()
 			.elementByAndroidUIAutomator('new UiSelector().text("Access Control Lists")')
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Show ACL")')
+			.elementByAndroidUIAutomator('new UiSelector().text("Update Users in ACL")')
 			.click();
+			
 	});
 
 	after(() => {
@@ -36,20 +38,21 @@ describe('ACL Show - Positive', () => {
 
 	it('Enter ACL Name', () => {
 		return driver
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
-			.sendKeys('Test_ACL')
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
-			.text().should.become('Test_ACL');
+			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_name_field')
+			.sendKeys(acl.name)
+			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_name_field')
+			.hideKeyboard()
+			.text().should.become(acl.name);
 	});
 
-	it('Show the ACL', () => {
+	it('Delete ACL', () => {
 		return driver
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_show_button3')
+			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_remove_users_button4')
 			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				console.log(JSON.parse('{' + text.split('{').slice(1).join('{')));
+				text.should.equal(`Removed!`)
 			});
 	});
 });
