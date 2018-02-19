@@ -41,8 +41,8 @@ describe('ACL Delete - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_name_field')
 			.sendKeys(acl.name)
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_name_field')
-			.hideKeyboard()
-			.text().should.become(acl.name);
+			.text().should.become(acl.name)
+			.hideKeyboard();
 	});
 
 	it('Delete ACL', () => {
