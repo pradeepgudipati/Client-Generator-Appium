@@ -41,5 +41,5 @@ exports.tempPlace = {
 };
 
 exports.acl = {
-	name: 'Appcelerator Test ACL'
+	name: 'Axway ACL Test'
 };
