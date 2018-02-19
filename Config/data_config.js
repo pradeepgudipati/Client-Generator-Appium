@@ -26,7 +26,7 @@ exports.tempUser1 = {
 	secondEmail: 'wluu1@axway.com'
 };
 
-exports.tempUser2 = {
+exports.tempUserCreate = {
 	username: 'wluu2 ',
 	password: 'MonkeyLord!',
 	firstName: 'Wilson2',

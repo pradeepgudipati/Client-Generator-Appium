@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser2;
+	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUserCreate;
 
 describe('User Creation - Negative', () => {
 	before(() => {
