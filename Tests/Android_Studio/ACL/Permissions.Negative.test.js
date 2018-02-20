@@ -39,7 +39,7 @@ describe('ACL Permissions - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('');
+				text.should.equal('Please Login to get data');
 			});
 	});
 });

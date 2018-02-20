@@ -52,7 +52,7 @@ describe('ACL Delete - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.equal(`Removed!`)
+				text.should.equal(`Removed!`);
 			});
 	});
 });

@@ -41,5 +41,9 @@ exports.tempPlace = {
 };
 
 exports.acl = {
-	name: 'Test_ACL'
+	name: 'Test_ACL',
+	readerName: 'testios name',
+	writerName: 'testios name',
+	updateReaderName: 'test11 name',
+	updateWiterName: 'test11 name'
 };

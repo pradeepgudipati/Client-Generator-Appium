@@ -53,7 +53,8 @@ describe('ACL Permissions - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('');
+				text.should.include('"code":200');
+				text.should.include('"status":"ok"');
 			});
 	});
 });

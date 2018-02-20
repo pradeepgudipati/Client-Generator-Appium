@@ -38,7 +38,8 @@ describe('ACL Delete - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				console.log(JSON.parse('{' + text.split('{').slice(1).join('{')));
+				text.should.include('"status":"fail"');
+				text.should.include('"code":400');
 			});
 	});
 });
