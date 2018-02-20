@@ -5,7 +5,7 @@ const
     driver = global.driver,
     webdriver = global.webdriver,
     user = require(`${global.projRoot}/Config/data_config.js`).user,
-    photocollection = require(`${global.projRoot}/Config/data_config.js`).photocollection
+    photocollection = require(`${global.projRoot}/Config/data_config.js`).photocollection;
 
     describe('Remove - Photo Collection - Positive',() => {
     
@@ -29,7 +29,7 @@ const
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
             .click()
-            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
+            .waitForElementById(photocollection.updatedName, webdriver.asserters.isDisplayed, 5000)
             .click();
         });
 
