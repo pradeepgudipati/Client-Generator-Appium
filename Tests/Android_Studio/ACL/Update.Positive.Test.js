@@ -48,28 +48,34 @@ describe('ACL Update - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_select_readers_button1')
 			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}")`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}"`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}")`)
+			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}"`)
 			.getAttribute('checked')
 			.then(checked => {
 				checked.should.equal('true');
 				return driver.back();
-			});
+			})
+			.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
+			.elementById('android:id/button1')
+			.click();	
 	});
 	
 	it('Update Users in Writers List', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_select_writers_button2')
 			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}")`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}"`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}")`)
+			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}"`)
 			.getAttribute('checked')
 			.then(checked => {
 				checked.should.equal('true');
 				return driver.back();
-			});
+			})
+			.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
+			.elementById('android:id/button1')
+			.click();	
 	});
 
 	it('Update the ACL', () => {
