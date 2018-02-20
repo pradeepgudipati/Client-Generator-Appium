@@ -7,7 +7,7 @@ const
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-describe('ACL Delete - Positive', () => {
+describe('ACL Update - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -26,9 +26,9 @@ describe('ACL Delete - Positive', () => {
 			.click()
 			.elementById('Access Control')
 			.click()
-			.waitForElementById('Show ACL', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Update User in ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Update"]', webdriver.asserters.isDisplayed, 10000);
 	});
 
 	after(() => {
@@ -42,17 +42,21 @@ describe('ACL Delete - Positive', () => {
 		.hideKeyboard()
 		.elementById(acl.name)
 		.isDisplayed().should.become(true)
+			
 	});
 
-	it('Delete  ACL', () => { //will search for element id namely delete acl
+	it('Update ACL',()=>{
 		return driver
-			.elementById('Delete ACL')
-			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-			.getAttribute('value')
-			.then(text => {
-				text.should.include('code = 200');
-				text.should.include('"method_name" = deleteAcl');
-			});
-	});
+		.elementById('Update ACL') //will search for element id namely update acl
+		.click()
+		.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+		.getAttribute('value')
+		.then(text => {
+			text.should.include('code = 200');
+			text.should.include('"method_name" = updateAcl');
+			text.should.include(`name = "${acl.name}"`);
+			text.should.include('"public_read" = 0');
+			text.should.include('"public_write" = 0');
+		});
+	  });
 });
