@@ -43,10 +43,8 @@ describe('User Login - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
-				text.meta.code.should.equal(401);
-				text.meta.status.should.equal('fail');
-				text.meta.message.should.equal('Invalid email/username or password.');
+				text.should.include('"status":"fail"');
+				text.should.include('"code":401');
 			});
 	});
 });

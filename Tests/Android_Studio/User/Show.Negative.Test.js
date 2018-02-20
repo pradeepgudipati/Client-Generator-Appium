@@ -24,9 +24,8 @@ describe('User Show - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
-				text.meta.code.should.equal(400);
-				text.meta.status.should.equal('fail');
+				text.should.include('"status":"fail"');
+				text.should.include('"code":400');
 			});
 	});
 });

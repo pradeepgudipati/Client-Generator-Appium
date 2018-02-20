@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUserCreate;
+	newUser = require(`${global.projRoot}/Config/data_config.js`).newUserCreate;
 
 describe('User Creation - Negative', () => {
 	before(() => {
@@ -23,39 +23,39 @@ describe('User Creation - Negative', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
-			.sendKeys(tempUser.username)
+			.sendKeys(newUser.username)
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
-			.text().should.become(tempUser.username);
+			.text().should.become(newUser.username);
 	});
 
 	it('Enter Password', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_field')
-			.sendKeys(tempUser.password)
+			.sendKeys(newUser.password)
 			.sleep(2000) // Wait for all of the password to be dotted out
 	});
 
 	it('Enter Password Again', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_conf_field')
-			.sendKeys(tempUser.password)
+			.sendKeys(newUser.password)
 			.sleep(2000) // Wait for all of the password to be dotted out
 	});
 
 	it('Enter First Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
-			.sendKeys(tempUser.firstName)
+			.sendKeys(newUser.firstName)
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
-			.text().should.become(tempUser.firstName);
+			.text().should.become(newUser.firstName);
 	});
 
 	it('Enter Last Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
-			.sendKeys(tempUser.lastName)
+			.sendKeys(newUser.lastName)
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
-			.text().should.become(tempUser.lastName)
+			.text().should.become(newUser.lastName)
 			.hideKeyboard();
 	});
 
@@ -75,10 +75,9 @@ describe('User Creation - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
-				text.meta.code.should.equal(400);
-				text.meta.status.should.equal('fail');
-				text.meta.method_name.should.equal('createUser');
+				text.should.include('"status":"fail"');
+				text.should.include('"code":400');
+				text.should.include('"method_name":"createUser"');
 			});
 	});
 });

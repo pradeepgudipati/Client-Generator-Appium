@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUserCreate;
+	newUser = require(`${global.projRoot}/Config/data_config.js`).newUserCreate;
 
 describe('User Creation - Positive', () => {
 	before(() => {
@@ -23,48 +23,48 @@ describe('User Creation - Positive', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
-			.sendKeys(tempUser.username)
+			.sendKeys(newUser.username)
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
-			.text().should.become(tempUser.username);
+			.text().should.become(newUser.username);
 	});
 
 	it('Enter Password', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_field')
-			.sendKeys(tempUser.password)
+			.sendKeys(newUser.password)
 			.sleep(2000) // Wait for all of the password to be dotted out
 	});
 
 	it('Enter Password Again', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_conf_field')
-			.sendKeys(tempUser.password)
+			.sendKeys(newUser.password)
 			.sleep(2000) // Wait for all of the password to be dotted out
 	});
 
 	it('Enter First Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
-			.sendKeys(tempUser.firstName)
+			.sendKeys(newUser.firstName)
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
-			.text().should.become(tempUser.firstName);
+			.text().should.become(newUser.firstName);
 	});
 
 	it('Enter Last Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
-			.sendKeys(tempUser.lastName)
+			.sendKeys(newUser.lastName)
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
-			.text().should.become(tempUser.lastName)
+			.text().should.become(newUser.lastName)
 			.hideKeyboard();
 	});
 
 	it('Enter Email', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_email_field')
-			.sendKeys(tempUser.email)
+			.sendKeys(newUser.email)
 			.elementById('com.example.axway.mbaas:id/users_create_email_field')
-			.text().should.become(tempUser.email)
+			.text().should.become(newUser.email)
 			.hideKeyboard();
 	});
 
@@ -75,7 +75,7 @@ describe('User Creation - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.equal(`User ${tempUser.username}Created!!`)
+				text.should.equal(`User ${newUser.username}Created!!`);
 			});
 	});
 });

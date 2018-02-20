@@ -3,7 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser1;
+	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserDetails;
 
 describe('User Remove - Negative', () => {
 	before(() => {
@@ -30,9 +30,9 @@ describe('User Remove - Negative', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.sendKeys(tempUser.username)
+			.sendKeys(userDetails.username)
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.text().should.become(tempUser.username);
+			.text().should.become(userDetails.username);
 	});
 
 	it('Remove the Normal User', () => {
@@ -42,8 +42,7 @@ describe('User Remove - Negative', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
-				text.meta.status.should.equal('fail');
+				text.should.include('"status":"fail"');
 			});
 	});
 });

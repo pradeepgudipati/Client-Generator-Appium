@@ -4,7 +4,7 @@ const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser1;
+	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserDetails;
 
 describe('User Remove - Positive', () => {
 	before(() => {
@@ -42,9 +42,9 @@ describe('User Remove - Positive', () => {
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.sendKeys(tempUser.username)
+			.sendKeys(userDetails.username)
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.text().should.become(tempUser.username);
+			.text().should.become(userDetails.username);
 	});
 
 	it('Remove the Normal User', () => {

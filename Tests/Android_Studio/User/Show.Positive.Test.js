@@ -36,9 +36,8 @@ describe('User Show - Positive', () => {
 			.waitForElementById('com.example.axway.mbaas:id/users_show_me_text_view', 10000)
 			.getAttribute('text')
 			.then(text => {
-				text = JSON.parse('{' + text.split('{').slice(1).join('{'));
-				text.meta.code.should.equal(200);
-				text.meta.status.should.equal('ok');
+				text.should.include('ok');
+				text.should.include('200');
 			});
 	});
 });
