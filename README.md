@@ -1,4 +1,4 @@
-# Client Generator Appium
+# Client Generator Appium  [Build Status](https://travis-ci.org/pradeepgudipati/Client-Generator-Appium.svg?branch=master)
 An Appium testing framework for the SDK client generator sample applications.
 
 ## Running

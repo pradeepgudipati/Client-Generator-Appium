@@ -3,7 +3,6 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser;
 
 describe('User Creation - Positive', () => {

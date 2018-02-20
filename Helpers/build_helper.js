@@ -7,7 +7,7 @@ const
 	Output = require('./output_helper.js');
 
 class build_helper {
-	/*****************************************************************************
+	/** ***************************************************************************
 	 * Build the application for a given platform, and return the built
 	 * applications path to the main process
 	 *
@@ -32,10 +32,10 @@ class build_helper {
 				appPath,
 				error = false;
 
-			switch(project) {
+			switch (project) {
 				case 'iOS_Xcode':
 					cmd = 'xcodebuild';
-					args = ['build', '-project', projPath, '-destination', `platform=iOS Simulator,name=${devName},OS=${devVers}`, '-sdk', `iphonesimulator`];
+					args = [ 'build', '-project', projPath, '-destination', `platform=iOS Simulator,name=${devName},OS=${devVers}`, '-sdk', 'iphonesimulator' ];
 					appPath = path.join(projRoot, 'build', 'Release-iphonesimulator', `${config.appName}.app`);
 					break;
 				case 'Android_Studio':
@@ -47,7 +47,7 @@ class build_helper {
 					fs.chmodSync(gradle, '0755');
 					// Specify command and arguments
 					cmd = path.join('bash');
-					args = [gradle, 'assembleDebug', '-p', projRoot];
+					args = [ gradle, 'assembleDebug', '-p', projRoot ];
 					break;
 			}
 
@@ -59,10 +59,12 @@ class build_helper {
 				Output.debug(data);
 				// Appc CLI doesn't provide an error code on fail, so need to monitor the output and look for issues manully
 				// If statement is there so that [WARN] flags are ignored on stderr
-				if(data.toString().includes('[ERROR]')) error = true;
+				if (data.toString().includes('[ERROR]')) {
+					error = true;
+				}
 			});
 			prc.on('exit', code => {
-				(code !== 0 || error === true) ? reject(`Failed on application build`): Output.finish(resolve, appPath);
+				(code !== 0 || error === true) ? reject('Failed on application build') : Output.finish(resolve, appPath);
 			});
 		});
 	}
