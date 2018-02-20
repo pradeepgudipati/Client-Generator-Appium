@@ -6,7 +6,6 @@ before_install:
   - npm install -g bower
   - npm install
   - npm install travis-github-lint-status;
-  - bower install
 script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_NODE_VERSION" == "node" ]; then
      ./node_modules/travis-github-lint-status/index.js;
