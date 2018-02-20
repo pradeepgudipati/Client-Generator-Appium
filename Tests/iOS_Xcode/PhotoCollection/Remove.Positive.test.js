@@ -21,7 +21,7 @@ const
 			.sendKeys(user.password)
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 5000)
+			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Axway')
             .click()
@@ -29,7 +29,7 @@ const
             .click()
             .waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
             .click()
-            .waitForElementById(photocollection.updatedName, webdriver.asserters.isDisplayed, 5000)
+            .waitForElementById(photocollection.name, webdriver.asserters.isDisplayed, 5000)
             .click();
         });
 
@@ -48,7 +48,8 @@ const
             .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
             .getAttribute('value')
             .then(text => {
-             text.should.include('Deleted Successfully');
+                text.should.include('code = 200');
+                text.should.include('"method_name" = deleteCollection');
         });
 
     });
