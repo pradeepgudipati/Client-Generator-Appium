@@ -8,9 +8,9 @@ install:
   
 script:
   - ./node_modules/.bin/eslint-changes
-  - grunt travis -v
     grunt.registerTask('travis', [
     'if-missing:esri_slurp:travis',
     'jshint'
     ]);
+    - grunt travis -v
     
