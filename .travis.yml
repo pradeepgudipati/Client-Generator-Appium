@@ -10,7 +10,6 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_NODE_VERSION" == "node" ]; then
      ./node_modules/travis-github-lint-status/index.js;
      fi;
-     npm run coverage;
   - grunt travis -v
     grunt.registerTask('travis', [
     'if-missing:esri_slurp:travis',
