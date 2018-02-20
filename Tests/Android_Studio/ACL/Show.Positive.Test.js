@@ -3,7 +3,9 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
+	user = require(`${global.projRoot}/Config/data_config.js`).user,
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
+
 
 describe('ACL Show - Positive', () => {
 	before(() => {
@@ -37,9 +39,9 @@ describe('ACL Show - Positive', () => {
 	it('Enter ACL Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
-			.sendKeys('Test_ACL')
+			.sendKeys(acl.name)
 			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
-			.text().should.become('Test_ACL');
+			.text().should.become(acl.name);
 	});
 
 	it('Show the ACL', () => {
@@ -49,7 +51,8 @@ describe('ACL Show - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				console.log(JSON.parse('{' + text.split('{').slice(1).join('{')));
+				text.should.include('"code":200');
+				text.should.include('"status":"ok"');
 			});
 	});
 });
