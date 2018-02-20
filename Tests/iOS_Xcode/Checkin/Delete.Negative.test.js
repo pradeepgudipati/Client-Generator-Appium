@@ -23,8 +23,7 @@ describe('Checkin Query Delete - Negative', () => {
 		return driver
         .elementById(`Checked in to ${place.name}`)
         .click()
-		.waitForElementByClassName('XCUIElementTypeTextView', webdriver.asserters.isDisplayed, 10000)
-		.elementById('Delete')
+		.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
         .click()
         .waitForElementById('Ok', webdriver.asserters.isDisplayed, 10000)
 		.click()
