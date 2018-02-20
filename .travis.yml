@@ -3,14 +3,15 @@ node_js:
   - "8"
 install:
   - npm install eslint-changes
-  - npm install
+  - npm install jshint
   - npm install travis-github-lint-status;
+  - npm install
   
 script:
   - ./node_modules/.bin/eslint-changes
-    grunt.registerTask('travis', [
+  - grunt.registerTask('travis', [
     'if-missing:esri_slurp:travis',
     'jshint'
     ]);
-    - grunt travis -v
+  - grunt travis -v
     
