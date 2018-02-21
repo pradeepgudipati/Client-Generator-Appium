@@ -2,7 +2,8 @@
 
 const
 	driver = global.driver,
-	webdriver = global.webdriver;
+	webdriver = global.webdriver,
+	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserDetails;
 
 // Querying a user details
 
@@ -21,7 +22,7 @@ describe('User Query - Positive', () => {
 
 	it('Get the users list and check the response', () => {
 		return driver
-			.waitForElementById('a', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById(userDetails.username, webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByClassName('XCUIElementTypeTextView', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
