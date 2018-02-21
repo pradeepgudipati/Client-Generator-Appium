@@ -60,7 +60,9 @@ describe('Update user - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('Updated!');
+				text.should.include('"status":"ok"');
+				text.should.include('"code":200');
+				text.should.include('"method_name":"updateUser"');
 			});
 			
 	});
