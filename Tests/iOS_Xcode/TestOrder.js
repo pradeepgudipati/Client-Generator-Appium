@@ -1,7 +1,7 @@
 'use strict';
 
 exports.tests = [
-	
+
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',
@@ -23,12 +23,15 @@ exports.tests = [
 
 	// Tests for the ACL module
 	'ACL/Create.Positive.test.js',
+	'ACL/Create.Negative.test.js',
+	'ACL/Update.Positive.test.js',
+	'ACL/Update.Negative.test.js',
 	'ACL/Show.Positive.test.js',
 	'ACL/Show.Negative.test.js',
 	'ACL/Permissions.Positive.test.js',
 	'ACL/Permissions.Negative.test.js',
-	'ACL/Delete.Positive.test.js',
 	'ACL/Delete.Negative.test.js',
+	'ACL/Delete.Positive.test.js',
 
 	// Tests for the User module
 	'User/Create.Positive.Test.js',
@@ -41,4 +44,4 @@ exports.tests = [
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
 	'User/Remove.Positive.Test.js'
-]
+];
