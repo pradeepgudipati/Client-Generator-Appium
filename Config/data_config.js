@@ -51,4 +51,5 @@ exports.customObject = {
 	propertyValueUpdate: 'TestName1',
 	queryId: '5a68aece5bbb6a027502691a',
 	loginQueryId: '5a68adbd93e737027c026eec'
+
 };
