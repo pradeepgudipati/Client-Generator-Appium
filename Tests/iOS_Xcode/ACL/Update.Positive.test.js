@@ -5,7 +5,7 @@ const
 	//creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-describe('ACL Create - Positive', () => {
+describe('ACL Update - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -18,16 +18,15 @@ describe('ACL Create - Positive', () => {
 			.sendKeys(user.password) //binding static information to input fields
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
-			//will wait for 10000 seconds when alert is being display
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Axway')
 			.click()
 			.elementById('Access Control')
 			.click()
-			.waitForElementById('Create ACL', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Update User in ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
+			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Update"]', webdriver.asserters.isDisplayed, 10000);
 	});
 	after(() => {
 		return driver.resetApp();
@@ -40,15 +39,15 @@ describe('ACL Create - Positive', () => {
 			.elementById(acl.name)
 			.isDisplayed().should.become(true)
 	});
-	it('Create ACL', () => {
+	it('Update ACL', () => {
 		return driver
-			.elementById('Create ACL') //will search for element id namely create acl
+			.elementById('Update ACL') //will search for element id namely update acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
-			.then(text => { //Api response is handled
+			.then(text => {
 				text.should.include('code = 200');
-				text.should.include('"method_name" = createAcl');
+				text.should.include('"method_name" = updateAcl');
 				text.should.include(`name = "${acl.name}"`);
 				text.should.include('"public_read" = 0');
 				text.should.include('"public_write" = 0');

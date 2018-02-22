@@ -7,25 +7,27 @@ const
 	Output = require('./output_helper.js');
 
 class git_helper {
-	/*****************************************************************************
+	/** ***************************************************************************
 	 * Clone the repo from GitHub, into the local directory
 	 *
 	 * @param {Object} repo - The Git repo URL to be cloned from
 	 ****************************************************************************/
 	static cloneRepo(repo) {
 		return new Promise((resolve, reject) => {
-			Output.info(`Cloning GitHub repo... `);
+			Output.info('Cloning GitHub repo... ');
 
 			const
 				dir = repo.split('/').pop(),
-				projRoot = path.join(global.projRoot, dir)
+				projRoot = path.join(global.projRoot, dir);
 
 			// Remove the repo if it is already in the local project, to allow the latest one to be downloaded
-			if(fs.existsSync(projRoot)) fs.removeSync(projRoot);
+			if (fs.existsSync(projRoot)) {
+				fs.removeSync(projRoot);
+			}
 
 			let
 				cmd = 'git',
-				args = ['clone', repo];
+				args = [ 'clone', repo ];
 
 			const prc = spawn(cmd, args);
 			prc.stdout.on('data', data => {
@@ -35,12 +37,12 @@ class git_helper {
 				Output.debug(data);
 			});
 			prc.on('exit', code => {
-				(code !== 0) ? reject(`Error Cloning Repo`): Output.finish(resolve, null);
+				(code !== 0) ? reject('Error Cloning Repo') : Output.finish(resolve, null);
 			});
 		});
 	}
 
-	/*****************************************************************************
+	/** ***************************************************************************
 	 * Remove the project from the local directory
 	 *
 	 * @param {Object} config - The object containing project details
@@ -54,7 +56,7 @@ class git_helper {
 				repoPath = path.join(global.projRoot, dir);
 
 			fs.remove(repoPath, err => {
-				(err) ? reject(err): Output.finish(resolve, null);
+				(err) ? reject(err) : Output.finish(resolve, null);
 			});
 		});
 	}

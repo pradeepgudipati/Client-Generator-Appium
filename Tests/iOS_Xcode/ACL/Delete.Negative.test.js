@@ -1,30 +1,32 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
+	// creating instance to get data placed in data config file
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
 describe('ACL Delete - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Access Control')
 			.click()
+			// will wait for 10000 seconds
 			.waitForElementById('Show ACL', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
-	it('Attempt to Delete the ACL', () => {
+	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
-			.sendKeys(acl.name)
+			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
+			.elementById(acl.name)
+			.isDisplayed().should.become(true);
+	});
+	it('Delete ACL', () => { // will search for element id namely delete acl
+		return driver
 			.elementById('Delete ACL')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
