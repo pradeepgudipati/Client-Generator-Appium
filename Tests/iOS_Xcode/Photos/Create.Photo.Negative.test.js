@@ -1,9 +1,7 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver;
-
 describe('Photo Create - Negative', () => {
 	before(() => {
 		return driver
@@ -14,11 +12,9 @@ describe('Photo Create - Negative', () => {
 			.waitForElementById('Select Photo From Gallery', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Create a Photo', () => {
 		return driver
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="OK"]', webdriver.asserters.isDisplayed, 10000)
@@ -35,6 +31,5 @@ describe('Photo Create - Negative', () => {
 				text.includes('code = 400').should.equal(true);
 				text.includes('status = fail');
 			});
-           
 	});
 });

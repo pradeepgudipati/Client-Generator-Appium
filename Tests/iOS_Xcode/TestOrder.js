@@ -1,7 +1,7 @@
 'use strict';
 exports.tests = [
 
-	//Tests for the Photo module
+	// Tests for the Photo module
 	'Photos/Create.Photo.Positive.test.js',
 	'Photos/Create.Photo.Negative.test.js',
 	'Photos/Query.PhotoUpdate.Positive.test.js',
