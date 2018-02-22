@@ -42,7 +42,7 @@ describe('Create Object - Positive', () => {
 			.elementByXPath('//XCUIElementTypeTextField[@value="New Propert Key"]')
 			.sendKeys(customObject.propertyKey)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"]`)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Add new property', () => {
 		return driver
@@ -54,7 +54,7 @@ describe('Create Object - Positive', () => {
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"][2]`)
 			.sendKeys(customObject.propertyValue)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyValue}"]`)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Create a Custom Object', () => {
 		return driver

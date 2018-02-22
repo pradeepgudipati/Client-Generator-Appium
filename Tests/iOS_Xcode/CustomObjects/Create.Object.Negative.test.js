@@ -27,7 +27,7 @@ describe('Create Object - Negative', () => {
 			.elementByXPath('//XCUIElementTypeTextField[@value="New Propert Key"]')
 			.sendKeys(customObject.propertyKey)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.propertyKey}"]`)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Add new property', () => {
 		return driver
