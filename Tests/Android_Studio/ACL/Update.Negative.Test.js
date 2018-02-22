@@ -3,8 +3,7 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
 
 describe('ACL Update - Negative', () => {
 	before(() => {
@@ -32,34 +31,38 @@ describe('ACL Update - Negative', () => {
 
 	it('Update Users in Readers List', () => {
 		return driver
-			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_select_readers_button1')
-			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}"`, webdriver.asserters.isDisplayed, 10000)
-			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}"`)
-			.getAttribute('checked')
-			.then(checked => {
-				checked.should.equal('true');
-				return driver.back();
-			});
+		.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_select_readers_button1')
+		.click()
+		.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}")`, webdriver.asserters.isDisplayed, 10000)
+		.click()
+		.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateReaderName}")`)
+		.getAttribute('checked')
+		.then(checked => checked.should.equal('true'))
+		.back()
+		.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
+		.text().should.become('Selected');
 	});
 
 	it('Update Users in Writers List', () => {
 		return driver
+			.elementById('android:id/button1')
+			.click()
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_select_writers_button2')
 			.click()
-			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}"`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}"`)
+			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.updateWiterName}")`)
 			.getAttribute('checked')
-			.then(checked => {
-				checked.should.equal('true');
-				return driver.back();
-			});
+			.then(checked => checked.should.equal('true'))
+			.back()
+			.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
+			.text().should.become('Selected');	
 	});
 
 	it('Update the ACL', () => {
 		return driver
+			.elementById('android:id/button1')
+			.click()
 			.elementById('com.example.axway.mbaas:id/access_control_lists_update_users_add_users_button3')
 			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
