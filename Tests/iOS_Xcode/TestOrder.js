@@ -1,5 +1,4 @@
 'use strict';
-
 exports.tests = [
 
 	//Tests for the Photo Collection module
