@@ -1,6 +1,7 @@
 'use strict';
 
 exports.tests = [
+
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',
@@ -17,6 +18,8 @@ exports.tests = [
 	'Checkin/Create.Checkin.Positive.test.js',
 	'Checkin/Create.Checkin.Negative.test.js',
 	'Checkin/Query.Positive.test.js',
+	'Checkin/Delete.Negative.test.js',
+	'Checkin/Delete.Positive.test.js',
 
 	// Tests for the ACL module
 	'ACL/Create.Positive.test.js',
