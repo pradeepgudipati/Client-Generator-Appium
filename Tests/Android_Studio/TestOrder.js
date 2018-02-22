@@ -1,7 +1,6 @@
 'use strict';
 exports.tests = [
 
-
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
 	'ACL/Show.Positive.Test.js',
@@ -19,5 +18,4 @@ exports.tests = [
     'User/User.Update.Negative.Test.js',
     'User/Remove.Negative.Test.js',
     'User/Remove.Positive.Test.js'
-
-]
+];
