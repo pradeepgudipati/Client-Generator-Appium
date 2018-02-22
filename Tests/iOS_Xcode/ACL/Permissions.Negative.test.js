@@ -1,11 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	// creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
-
 describe('ACL Permissions - Negative', () => {
 	before(() => {
 		return driver
@@ -15,11 +13,9 @@ describe('ACL Permissions - Negative', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Check Permissions"]', webdriver.asserters.isDisplayed, 10000);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
@@ -28,7 +24,6 @@ describe('ACL Permissions - Negative', () => {
 			.elementById(acl.name)
 			.isDisplayed().should.become(true);
 	});
-
 	it('Show ACL Permissions', () => {
 		return driver
 			.elementById('Check') // will search for element id namely check

@@ -5,7 +5,7 @@ const driver = global.driver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	place = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
-describe('Checkin Query - Positive', () => {
+describe('Checkin Query Delete - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -33,16 +33,19 @@ describe('Checkin Query - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('Get Checkin Details', () => {
+	it('Get Details and  Delete Checkin', () => {
 		return driver
 			.elementById(`Checked in to ${place.name}`)
 			.click()
-			.waitForElementByClassName('XCUIElementTypeTextView', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementById('Ok', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
 				text.should.include('code = 200');
-				text.should.include('"method_name" = showCheckins');
-				text.should.include(`message = "Checked in to ${place.name}"`);
+				text.should.include('"method_name" = deleteCheckin');
 			});
 	});
 });

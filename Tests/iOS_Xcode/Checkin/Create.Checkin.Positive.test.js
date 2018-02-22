@@ -1,7 +1,6 @@
 'use strict';
 
-const
-	driver = global.driver,
+const driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	place = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
