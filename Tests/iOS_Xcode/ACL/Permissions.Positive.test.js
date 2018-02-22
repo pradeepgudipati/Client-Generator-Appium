@@ -37,7 +37,7 @@ describe('ACL Permissions - Positive', () => {
 			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
 			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Show ACL Permissions', () => {
 		return driver

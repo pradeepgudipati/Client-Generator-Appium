@@ -37,7 +37,7 @@ describe('ACL Delete - Positive', () => {
 			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
 			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Delete  ACL', () => { // will search for element id namely delete acl
 		return driver

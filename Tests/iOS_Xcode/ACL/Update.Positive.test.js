@@ -37,7 +37,7 @@ describe('ACL Update - Positive', () => {
 			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
 			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Update ACL', () => {
 		return driver
