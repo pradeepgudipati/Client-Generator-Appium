@@ -21,19 +21,19 @@ describe('Checkin Query Delete - Negative', () => {
 
 	it('Get Details and  Delete Checkin', () => {
 		return driver
-        .elementById(`Checked in to ${place.name}`)
-        .click()
-		.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
-        .click()
-        .waitForElementById('Ok', webdriver.asserters.isDisplayed, 10000)
-		.click()
-		.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-        .getAttribute('value')
-        .then(text => {
-            text.should.include('code = 403');
-            text.should.include('"method_name" = deleteCheckin');
-            text.should.include('status = fail');
-            
-        });
+			.elementById(`Checked in to ${place.name}`)
+			.click()
+			.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementById('Ok', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			.getAttribute('value')
+			.then(text => {
+				text.should.include('code = 403');
+				text.should.include('"method_name" = deleteCheckin');
+				text.should.include('status = fail');
+
+			});
 	});
 });
