@@ -24,7 +24,7 @@ describe('GeoFence Delete - Negative', () => {
 	});
 	it('Delete Geo Fence', () => {
 		return driver
-			.elementById('Delete') // will search for element id namely create Geo Fence
+			.elementById('Delete') // will search for element id namely delete Geo Fence
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')

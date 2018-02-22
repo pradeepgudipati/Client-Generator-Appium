@@ -46,7 +46,7 @@ describe('GeoFence Update - Positive', () => {
 	});
 	it('Update Geo Fence', () => {
 		return driver
-			.elementById('Update') // will search for element id namely create Geo Fence
+			.elementById('Update') // will search for element id namely update Geo Fence
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
