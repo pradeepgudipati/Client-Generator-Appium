@@ -1,12 +1,10 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	// creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
 describe('ACL Show - Positive', () => {
 	before(() => {
 		return driver
@@ -30,11 +28,9 @@ describe('ACL Show - Positive', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
@@ -43,7 +39,6 @@ describe('ACL Show - Positive', () => {
 			.elementById(acl.name)
 			.isDisplayed().should.become(true);
 	});
-
 	it('Show ACL', () => {
 		return driver
 			.elementById('Show ACL') // will search for element id namely show acl

@@ -1,12 +1,10 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	//creating instance to get data placed in data config file
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl, 
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
 describe('ACL Create - Positive', () => {
 	before(() => {
 		return driver
@@ -21,7 +19,7 @@ describe('ACL Create - Positive', () => {
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
 			//will wait for 10000 seconds when alert is being display
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000) 
+			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Axway')
 			.click()
@@ -31,11 +29,9 @@ describe('ACL Create - Positive', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Create"]', webdriver.asserters.isDisplayed, 10000);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
@@ -43,11 +39,9 @@ describe('ACL Create - Positive', () => {
 			.hideKeyboard()
 			.elementById(acl.name)
 			.isDisplayed().should.become(true)
-			
 	});
-
-	it('Create ACL',()=>{
-	  return driver
+	it('Create ACL', () => {
+		return driver
 			.elementById('Create ACL') //will search for element id namely create acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
@@ -59,7 +53,5 @@ describe('ACL Create - Positive', () => {
 				text.should.include('"public_read" = 0');
 				text.should.include('"public_write" = 0');
 			});
-
-
 	});
 });
