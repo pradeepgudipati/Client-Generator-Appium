@@ -20,7 +20,7 @@ describe('GeoFence Delete - Negative', () => {
 	it('Choose a geo fence', () => {
 		return driver
 			.elementById(updategeofence.name)
-			.click()
+			.click();
 	});
 	it('Delete Geo Fence', () => {
 		return driver

@@ -10,7 +10,7 @@ describe('GeoFence Create - Negative', () => {
 			.elementById('Geo Fences')
 			.click()
 			.elementById('Create Geo Fence')
-			.click()
+			.click();
 	});
 	after(() => {
 		return driver.resetApp();
@@ -32,7 +32,7 @@ describe('GeoFence Create - Negative', () => {
 			.elementById('Radius')
 			.sendKeys(geofence.radius) // binding static information to input fields
 			.elementById(geofence.radius)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Create Geo Fence', () => {
 		return driver
