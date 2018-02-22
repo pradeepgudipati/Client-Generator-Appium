@@ -36,22 +36,22 @@ class appium_helper {
 			// Fill in the rest of the capabilities
 			cap.noReset = false;
 			cap.deviceReadyTimeout = 20;
-			if(project.toLowerCase().includes('android')) {
+			if (project.toLowerCase().includes('android')) {
 				cap.fullReset = true;
 				cap.platformName = 'Android';
 				cap.automationName = 'Appium';
-			} else if(project.toLowerCase().includes('ios')) {
+			} else if (project.toLowerCase().includes('ios')) {
 				cap.platformName = 'iOS';
 				cap.automationName = 'XCUITest';
 			}
 			// if logging is enabled, just need to call _logging once i.e. register logging events once
-			if(wLogs && !this.logOn) {
+			if (wLogs && !this.logOn) {
 				this.logOn = true;
 				_logging(this.driver);
 			}
 
 			this.driver.init(cap, err => {
-				(err) ? reject(err): Output.finish(resolve, null);
+				(err) ? reject(err) : Output.finish(resolve, null);
 			});
 		});
 	}
@@ -61,7 +61,7 @@ class appium_helper {
 			Output.info('Stopping WebDriver Instance... ');
 
 			this.driver.quit(err => {
-				(err) ? reject(err): Output.finish(resolve, null);
+				(err) ? reject(err) : Output.finish(resolve, null);
 			});
 		});
 	}
@@ -85,7 +85,7 @@ class appium_helper {
 		});
 	}
 
-	/*******************************************************************************
+	/** *****************************************************************************
 	 * Starts a local Appium server running as a child process
 	 *
 	 * @param {Object} server - the server property from test_config.js
@@ -96,23 +96,23 @@ class appium_helper {
 
 			let
 				appiumExe = path.join(__dirname, '..', 'node_modules', '.bin', 'appium'),
-				flags = ['--log-no-colors'];
+				flags = [ '--log-no-colors' ];
 
 			const prc = spawn(appiumExe, flags);
 
 			prc.stdout.on('data', output => {
-				Output.debug(output)
+				Output.debug(output);
 				const line = output.toString().trim();
 
 				const
 					regStr = `started on (0\\.0\\.0\\.0|${server.host})\\:${server.port}$`,
 					isRunning = new RegExp(regStr, 'g').test(line);
-				if(isRunning) {
+				if (isRunning) {
 					Output.finish(resolve, null);
 				}
 			});
 			prc.stderr.on('data', output => {
-				Output.debug(output)
+				Output.debug(output);
 				reject(output.toString());
 			});
 			prc.on('error', err => {
@@ -132,15 +132,15 @@ class appium_helper {
 			};
 
 			ps.lookup(data, (lookupErr, results) => {
-				if(lookupErr) {
+				if (lookupErr) {
 					reject(lookupErr);
 				} else {
 					let settings = {
 						timeout: 120 // Investigate cause of slow process exit
 					};
-					if(results.length > 0) {
+					if (results.length > 0) {
 						ps.kill(results[0].pid, settings, killErr => {
-							(killErr) ? reject(killErr): Output.finish(resolve, null);
+							(killErr) ? reject(killErr) : Output.finish(resolve, null);
 						});
 					} else {
 						Output.skip(resolve, null);

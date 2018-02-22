@@ -5,7 +5,7 @@ const driver = global.driver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	place = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
-describe('Checkin Query - Positive', () => {
+describe('Checkin Create - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -24,24 +24,24 @@ describe('Checkin Query - Positive', () => {
 			.click()
 			.elementById('Checkins')
 			.click()
-			.waitForElementById('Query Checkin', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Create Checkin', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementById(`Checked in to ${place.name}`, webdriver.asserters.isDisplayed, 10000);
+			.waitForElementById(place.name, webdriver.asserters.isDisplayed, 10000);
 	});
 
 	after(() => {
 		return driver.resetApp();
 	});
 
-	it('Get Checkin Details', () => {
+	it('Create a Checkin', () => {
 		return driver
-			.elementById(`Checked in to ${place.name}`)
+			.elementById(place.name)
 			.click()
-			.waitForElementByClassName('XCUIElementTypeTextView', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
 				text.should.include('code = 200');
-				text.should.include('"method_name" = showCheckins');
+				text.should.include('"method_name" = createCheckin');
 				text.should.include(`message = "Checked in to ${place.name}"`);
 			});
 	});
