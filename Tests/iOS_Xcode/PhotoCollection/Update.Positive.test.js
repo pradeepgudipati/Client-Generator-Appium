@@ -4,7 +4,7 @@ const
 	webdriver = global.webdriver,
 	// creating instance to get data placed in data config file
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	photocollection = require(`${global.projRoot}/Config/data_config.js`).photocollection
+	photocollection = require(`${global.projRoot}/Config/data_config.js`).photocollection;
 describe('Update - Photo Collection - Positive', () => {
 	before(() => {
 		return driver

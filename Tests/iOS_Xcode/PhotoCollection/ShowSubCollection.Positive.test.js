@@ -41,7 +41,7 @@ describe('ShowSubCollection - Photo Collection - Positive', () => {
 	});
 	it('Show SubCollection', () => {
 		return driver
-			.elementById('Show SubCollection') // will remove the selected photo subcollection
+			.elementById('Show SubCollection') // will show the selected photo subcollection
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
