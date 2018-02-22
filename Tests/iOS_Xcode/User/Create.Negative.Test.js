@@ -82,8 +82,6 @@ describe('User Creation - Negative', () => {
 				text.includes('message = "Invalid Email Address."').should.equal(true);
 				text.includes('"method_name" = createUser').should.equal(true);
 				text.includes('code = 400').should.equal(true);
-			
-			
 			});
 	});
 });

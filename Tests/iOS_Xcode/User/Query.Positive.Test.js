@@ -31,6 +31,5 @@ describe('User Query - Positive', () => {
 				text.should.include('"method_name" = showUsers');
 				text.should.include('status = ok');
 			});
-	
 	});
 });
