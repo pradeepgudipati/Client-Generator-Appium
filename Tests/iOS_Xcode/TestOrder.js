@@ -1,16 +1,12 @@
 'use strict';
-
 exports.tests = [
 
-<<<<<<< HEAD
 	// Tests for the CustomObjects module
 	'CustomObjects/Create.Object.Positive.test.js',
 	'CustomObjects/Create.Object.Negative.test.js',
 	'CustomObjects/Query.Remove.Negative.test.js',
 	'CustomObjects/Query.Remove.Positive.test.js',
-	
-=======
->>>>>>> f699af831371134ed8ba76d286fee05df8b3aa75
+
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',

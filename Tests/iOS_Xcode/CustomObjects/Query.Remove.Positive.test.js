@@ -1,11 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	customObject = require(`${global.projRoot}/Config/data_config.js`).customObject;
-
 describe('Query Remove Object - Positive', () => {
 	before(() => {
 		return driver
@@ -28,26 +26,23 @@ describe('Query Remove Object - Positive', () => {
 			.waitForElementById('Query Custom Object', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeTextField[@value="Class Name"]', webdriver.asserters.isDisplayed, 10000);
-
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-    it('Enter a class name', () => {
+	it('Enter a class name', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Class Name"]')
 			.sendKeys(customObject.className)
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.className}"]`)
 			.isDisplayed().should.become(true);
 	});
-	
 	it('Remove Query Object', () => {
 		return driver
 			.elementById('Query')
-            .click()
+			.click()
 			.waitForElementById(`${customObject.loginQueryId}`, webdriver.asserters.isDisplayed, 10000)
-            .click()
+			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementByXPath('//XCUIElementTypeButton[@name="Delete"]')
@@ -56,7 +51,7 @@ describe('Query Remove Object - Positive', () => {
 			.getAttribute('name')
 			.then(text => {
 				text.includes('code = 200').should.equal(true);
-                text.should.include('"method_name" = deleteObjects');
+				text.should.include('"method_name" = deleteObjects');
 				text.should.include('status = ok');
 			});
 	});
