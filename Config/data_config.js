@@ -1,5 +1,4 @@
 'use strict';
-
 exports.user = {
 	username: 'admin',
 	password: 'password',
@@ -7,7 +6,6 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-
 exports.tempUser = {
 	username: 'wluu',
 	password: 'MonkeyLord!',
@@ -16,25 +14,14 @@ exports.tempUser = {
 	email: 'wluu@appcelerator.com',
 	secondEmail: 'wluu@axway.com'
 };
-
-exports.newUserDetails = {
-	username: 'wluu1 ',
+exports.newUserCreateAndDetails = {
+	username: 'wluu3 ',
 	password: 'MonkeyLord!',
-	firstName: 'Wilson1',
-	lastName: 'Luu1',
-	email: 'wluu1@appcelerator.com',
-	secondEmail: 'wluu1@axway.com'
+	firstName: 'Wilson3',
+	lastName: 'Luu3',
+	email: 'wluu3@appcelerator.com',
+	secondEmail: 'wluu3@axway.com'
 };
-
-exports.newUserCreate = {
-	username: 'wluu2 ',
-	password: 'MonkeyLord!',
-	firstName: 'Wilson2',
-	lastName: 'Luu2',
-	email: 'wluu2@appcelerator.com',
-	secondEmail: 'wluu2@axway.com'
-};
-
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -45,7 +32,6 @@ exports.place = {
 	latitude: '37.368132',
 	longitude: '-121.913641'
 };
-
 exports.tempPlace = {
 	name: 'University of Huddersfield',
 	address: 'Queensgate',
@@ -57,7 +43,6 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
-
 exports.acl = {
 	name: 'Axway ACL Test'
 };

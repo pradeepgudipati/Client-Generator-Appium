@@ -1,9 +1,7 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver;
-
 describe('User Show - Negative', () => {
 	before(() => {
 		return driver
@@ -14,11 +12,9 @@ describe('User Show - Negative', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Show Current User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Check User Details Are Correct', () => {
 		return driver
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)

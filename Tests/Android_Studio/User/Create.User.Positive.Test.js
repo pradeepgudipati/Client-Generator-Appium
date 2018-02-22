@@ -1,10 +1,8 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	newUser = require(`${global.projRoot}/Config/data_config.js`).newUserCreate;
-
+	newUser = require(`${global.projRoot}/Config/data_config.js`).newUserCreateAndDetails;
 describe('User Creation - Positive', () => {
 	before(() => {
 		return driver
@@ -15,11 +13,9 @@ describe('User Creation - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Create User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
@@ -27,21 +23,18 @@ describe('User Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_create_username_field')
 			.text().should.become(newUser.username);
 	});
-
 	it('Enter Password', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_field')
 			.sendKeys(newUser.password)
-			.sleep(2000) // Wait for all of the password to be dotted out
+			.sleep(2000); // Wait for all of the password to be dotted out
 	});
-
 	it('Enter Password Again', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_conf_field')
 			.sendKeys(newUser.password)
-			.sleep(2000) // Wait for all of the password to be dotted out
+			.sleep(2000); // Wait for all of the password to be dotted out
 	});
-
 	it('Enter First Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
@@ -49,7 +42,6 @@ describe('User Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_create_first_name_field')
 			.text().should.become(newUser.firstName);
 	});
-
 	it('Enter Last Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
@@ -58,7 +50,6 @@ describe('User Creation - Positive', () => {
 			.text().should.become(newUser.lastName)
 			.hideKeyboard();
 	});
-
 	it('Enter Email', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_email_field')
@@ -67,7 +58,6 @@ describe('User Creation - Positive', () => {
 			.text().should.become(newUser.email)
 			.hideKeyboard();
 	});
-
 	it('Should Successfully Create the User', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_button1')

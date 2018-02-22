@@ -1,10 +1,8 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserDetails;
-
+	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserCreateAndDetails;
 describe('Update user - Positive', () => {
 	before(() => {
 		return driver
@@ -28,11 +26,9 @@ describe('Update user - Positive', () => {
 			.waitForElementById('android:id/button1', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Open the page, and check that the details auto fill', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_update_username_field')
@@ -46,9 +42,7 @@ describe('Update user - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_update_last_name_field')
 			.text().should.become(userDetails.lastName)
 			.hideKeyboard();
-			
 	});
-
 	it('Change the Email of the User', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_update_email_field')
@@ -64,6 +58,5 @@ describe('Update user - Positive', () => {
 				text.should.include('"code":200');
 				text.should.include('"method_name":"updateUser"');
 			});
-			
 	});
 });

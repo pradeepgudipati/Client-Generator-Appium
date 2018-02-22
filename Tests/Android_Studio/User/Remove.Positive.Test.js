@@ -1,11 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserDetails;
-
+	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserCreateAndDetails;
 describe('User Remove - Positive', () => {
 	before(() => {
 		return driver
@@ -27,18 +25,15 @@ describe('User Remove - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Remove User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Accept Prompt', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Are you Admin User?")', webdriver.asserters.isDisplayed, 10000)
 			.elementById('android:id/button1')
 			.click();
 	});
-
 	it('Enter Username', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
@@ -46,7 +41,6 @@ describe('User Remove - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
 			.text().should.become(userDetails.username);
 	});
-
 	it('Remove the Normal User', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_remove_button1')

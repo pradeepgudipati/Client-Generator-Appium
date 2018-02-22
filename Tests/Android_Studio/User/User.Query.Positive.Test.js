@@ -1,9 +1,7 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver;
-	
 describe('User Query - Positive', () => {
 	before(() => {
 		return driver
@@ -14,11 +12,9 @@ describe('User Query - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Query User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Should the details checked the response', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("11")', webdriver.asserters.isDisplayed, 10000)
@@ -28,8 +24,6 @@ describe('User Query - Positive', () => {
 			.then(text => {
 				text.should.include('ok');
 				text.should.include('200');
-				
 			});
-
 	});
 });

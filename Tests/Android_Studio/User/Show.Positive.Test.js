@@ -1,10 +1,8 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
 describe('User Show - Positive', () => {
 	before(() => {
 		return driver
@@ -26,11 +24,9 @@ describe('User Show - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Show Current User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Check User Details Are Correct', () => {
 		return driver
 			.waitForElementById('com.example.axway.mbaas:id/users_show_me_text_view', 10000)
