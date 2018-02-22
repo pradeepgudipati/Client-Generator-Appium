@@ -20,7 +20,7 @@ class mocha_helper {
 			let mocha = new Mocha({
 				fullTrace: false,
 				useColors: true,
-				timeout: 30000,
+				timeout: 50000,
 				slow: 25000,
 				reporter: 'mocha-jenkins-reporter',
 				reporterOptions: {

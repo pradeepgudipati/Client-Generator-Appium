@@ -43,7 +43,7 @@ describe('ACL Creation - Positive', () => {
 			.text().should.become(acl.name);
 	});
 
-	it('Add User to Read List', () => {
+	it('Add User to Readers List', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_select_readers_button1')
 			.click()
@@ -51,34 +51,33 @@ describe('ACL Creation - Positive', () => {
 			.click()
 			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.readerName}")`)
 			.getAttribute('checked')
-			.then(checked => {
-				checked.should.equal('true');
-				return driver.back();
-			})
+			.then(checked => checked.should.equal('true'))
+			.back()
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
-			.elementById('android:id/button1')
-			.click();	
+			.text().should.become('Selected');	
 	});
 
 	it('Add User to Writers List', () => {
 		return driver
+			.elementById('android:id/button1')
+			.click()
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_select_writers_button2')
 			.click()
 			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${acl.writerName}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementByAndroidUIAutomator(`new UiSelector().text("${acl.writerName}")`)
 			.getAttribute('checked')
-			.then(checked => {
-				checked.should.equal('true');
-				return driver.back();
-			})
+			.then(checked => checked.should.equal('true'))
+			.back()
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Selected")', webdriver.asserters.isDisplayed, 10000)
-			.elementById('android:id/button1')
-			.click();	
+			.text().should.become('Selected');	
+						
 	});
 
 	it('Create the ACL', () => {
 		return driver
+			.elementById('android:id/button1')
+			.click()	
 			.elementById('com.example.axway.mbaas:id/access_control_lists_create_create_button3')
 			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
