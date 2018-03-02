@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "8"
+install:
+  - npm install eslint-changes
+  - npm install jshint
+  - npm install travis-github-lint-status;
+  - npm install
+  
+script:
+  - eslint .
+  - ./node_modules/travis-github-lint-status/index.js
