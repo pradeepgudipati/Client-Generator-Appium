@@ -32,8 +32,8 @@ describe('Chat Create - Positive', () => {
 	it('Select any user to start chatting', () => {
 
 		return driver
-			.sleep(5000)
-			.waitForElementById('Create New Group', webdriver.asserters.isDisplayed, 5000)
+			// .sleep(5000) // When entering into this screen we have getchats api in order to get response and refresh the table sleep is being included
+		    .waitForElementById('Create New Group', webdriver.asserters.isDisplayed, 5000)
 			.click()
 			.sleep(5000)
 			.waitForElementById('Wilson Luu', webdriver.asserters.isDisplayed, 5000)
@@ -51,10 +51,10 @@ describe('Chat Create - Positive', () => {
 			.elementById('Done')
 			.click()
 			.sleep(10000)
-			.getAttribute('value')//Help me out in completing this test case as in this module we are not displaying any alert after service call we are refreshing table so how could this be achieved
-			.then(text => { 
+			.getAttribute('value') // Help me out in completing this test case as in this module we are not displaying any alert after service call we are refreshing table so how could this be achieved
+			.then(text => {
 				console.log(text);
 			});
-			
+
 	});
 });

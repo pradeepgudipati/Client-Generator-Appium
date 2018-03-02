@@ -21,19 +21,20 @@ describe('Chat Query - Negative', () => {
 
 	it('Navigate to Query Chat Groups', () => {
 		return driver
-			.waitForElementById('Ad,Wilson', webdriver.asserters.isDisplayed, 5000)
+			.sleep(5000) // When entering into this screen we have getchats api in order to get response and refresh the table sleep is being included
+			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 
 	});
 
-	it('Load the Current Chats', () => {
+	it('Query Chat Groups', () => {
 
 		return driver
-			.elementById('Ad,Wilson')
+			.elementById('Query Chat Groups')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
-			.then(text => { //Api response is handled
+			.then(text => { // Api response is handled
 				text.should.include('code = 400');
 				text.should.include('message = "Failed to authenticate user"');
 			});
