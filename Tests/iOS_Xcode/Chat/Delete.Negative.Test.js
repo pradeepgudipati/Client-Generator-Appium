@@ -1,42 +1,43 @@
 'use strict';
+
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
 
-describe('Chat Create - Negative', () => {
+describe('Chat Delete - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Axway')
 			.click()
 			.elementById('Chats')
+			.click()
+			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.click();
-
 	});
+
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Select any user to start chatting', () => {
-		return driver
-			.sleep(5000)
-			.waitForElementById('Create New Group', webdriver.asserters.isDisplayed, 5000)
-			.click()
-			.sleep(5000)
-			.waitForElementById('Wilson Luu', webdriver.asserters.isDisplayed, 5000)
-			.click()
-			.waitForElementById('START CHATTING..!', webdriver.asserters.isDisplayed, 5000)
-			.isDisplayed().should.become(true);
 
-	});
-	it('Create a chat group', () => {
+	it('Load the Current Chats', () => {
 		return driver
-			.elementById('START CHATTING..!')
-			.click()
-			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
-			.sendKeys(chat.message)
-			.elementById('Done')
-			.click()
+			.waitForElementById('Ad,Wilson', webdriver.asserters.isDisplayed, 10000)
+			.isDisplayed().should.become(true);
+	});
+
+	it('Delete selected chat', () => {
+		return driver
+			.elementById('Ad,Wilson')
+            .click()
+            .waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
+            .elementById(chat.message)
+            .click()
+            .sleep(10000)
+            .waitForElementById('Delete',webdriver.asserters.isDisplayed, 5000)
+            .elementById('Ok')
+            .click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => { //Api response is handled

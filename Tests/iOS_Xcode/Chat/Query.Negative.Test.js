@@ -5,16 +5,14 @@ const
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-// FIXME: There isn't anything on this page
-
 describe('Chat Query - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Axway')
 			.click()
 			.elementById('Chats')
-            .click()   
-			
+			.click();
+
 	});
 
 	after(() => {
@@ -22,21 +20,22 @@ describe('Chat Query - Negative', () => {
 	});
 
 	it('Navigate to Query Chat Groups', () => {
-        return driver
-        .sleep(5000)
-        .waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 10000)
-        .click();
-       
-    });
-    
-    it('Load the Current Chats', () => {
+		return driver
+			.waitForElementById('Ad,Wilson', webdriver.asserters.isDisplayed, 5000)
+			.isDisplayed().should.become(true);
 
-        return driver
-        .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-        .getAttribute('value')
-		.then(text => { //Api response is handled
-			text.should.include('code = 400');
-			text.should.include('message = "Failed to authenticate user"');
+	});
+
+	it('Load the Current Chats', () => {
+
+		return driver
+			.elementById('Ad,Wilson')
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			.getAttribute('value')
+			.then(text => { //Api response is handled
+				text.should.include('code = 400');
+				text.should.include('message = "Failed to authenticate user"');
 			});
-    })
+	})
 });

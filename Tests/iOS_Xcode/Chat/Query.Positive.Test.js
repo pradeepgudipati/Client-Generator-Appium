@@ -6,9 +6,6 @@ const
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
 
-
-// FIXME: There isn't anything on this page
-
 describe('Chat Query - Positive', () => {
 	before(() => {
 		return driver
@@ -38,15 +35,22 @@ describe('Chat Query - Positive', () => {
 
 	it('Load the Current Chats', () => {
 		return driver
-		.waitForElementById('Ad,Wilson',webdriver.asserters.isDisplayed, 5000)
-		.click()
+			.waitForElementById('Ad,Wilson', webdriver.asserters.isDisplayed, 5000)
+			.isDisplayed().should.become(true);
 	});
 
 	it('Chat with selected user', () => {
 		return driver
-		.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
-		.sendKeys(chat.message)
-		.elementById('Done')
-		.click();
+			.elementById('Ad,Wilson')
+			.click()
+			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
+			.sendKeys(chat.message)
+			.elementById('Done')
+			.click()
+			.sleep(10000)
+			.getAttribute('value') //Help me out in completing this test case as in this module we are not displaying any alert after service call we are refreshing table so how could this be achieved
+			.then(text => {
+				console.log(text);
+			});
 	});
 });
