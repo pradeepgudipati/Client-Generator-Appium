@@ -14,4 +14,4 @@ exports.tests = [
 	'User/Show.Negative.Test.js',
 	'User/Update.Positive.Test.js',
 	'User/Remove.Positive.Test.js'
-];
+]
