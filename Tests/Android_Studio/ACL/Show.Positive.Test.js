@@ -49,6 +49,6 @@ describe('ACL Show - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.text().should.become('Shown!')
 			.elementById('android:id/button1')
-			.click();
+			.click()
 	});
 });
