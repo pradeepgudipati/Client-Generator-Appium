@@ -26,7 +26,7 @@ describe('Query Remove Object - Negative', () => {
 		return driver
 			.elementById('Query')
 			.click()
-			.waitForElementById(`${customObject.queryId}`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeApplication[@name="Axway-Test"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
 			.click()

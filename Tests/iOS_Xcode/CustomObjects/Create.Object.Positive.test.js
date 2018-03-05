@@ -58,7 +58,7 @@ describe('Create Object - Positive', () => {
 	});
 	it('Create a Custom Object', () => {
 		return driver
-			.elementById('Create')
+			.elementById('Create') // will search for element id namely create object
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')

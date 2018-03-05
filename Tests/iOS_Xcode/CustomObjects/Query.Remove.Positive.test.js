@@ -33,15 +33,15 @@ describe('Query Remove Object - Positive', () => {
 	it('Enter a class name', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Class Name"]')
-			.sendKeys(customObject.className)
+			.sendKeys(customObject.className) // binding static information to input fields to search object
 			.elementByXPath(`//XCUIElementTypeTextField[@value="${customObject.className}"]`)
 			.isDisplayed().should.become(true);
 	});
 	it('Remove Query Object', () => {
 		return driver
-			.elementById('Query')
+			.elementById('Query') // will search for element id namely to get list of objects
 			.click()
-			.waitForElementById(`${customObject.loginQueryId}`, webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeApplication[@name="Axway-Test"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
