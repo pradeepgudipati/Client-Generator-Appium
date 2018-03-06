@@ -41,7 +41,7 @@ describe('Query Remove Object - Positive', () => {
 		return driver
 			.elementById('Query') // will search for element id namely to get list of objects
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeApplication[@name="Axway-Test"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="Remove"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
