@@ -9,7 +9,7 @@ describe('Photo Update - Negative', () => {
 			.click()
 			.elementById('Query Photo')
 			.click()
-			.waitForElementById('0 .png', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
 	after(() => {
@@ -21,11 +21,11 @@ describe('Photo Update - Negative', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="OK"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeCell[@name="Photo, Landscape, August 08, 2012, 11:52 AM"]')
+			.waitForElementByXPath('//XCUIElementTypeCell[2]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Choose')
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 50000)
 			.getAttribute('name')
 			.then(text => {
 				text.includes('code = 400').should.equal(true);

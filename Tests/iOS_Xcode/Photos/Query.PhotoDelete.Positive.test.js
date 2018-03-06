@@ -24,7 +24,7 @@ describe('Photo Delete - Positive', () => {
 			.click()
 			.waitForElementById('Query Photo', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementById('0 .png', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
 	after(() => {

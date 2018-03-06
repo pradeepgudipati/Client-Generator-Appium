@@ -24,7 +24,7 @@ describe('Photo Update - Positive', () => {
 			.click()
 			.waitForElementById('Query Photo', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementById('0 .png', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
 	after(() => {
@@ -36,7 +36,7 @@ describe('Photo Update - Positive', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="OK"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeCell[@name="Photo, Landscape, August 08, 2012, 11:52 AM"]')
+			.waitForElementByXPath('//XCUIElementTypeCell[2]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Choose')
 			.click()

@@ -19,7 +19,7 @@ describe('Photo Create - Negative', () => {
 		return driver
 			.waitForElementByXPath('//XCUIElementTypeButton[@name="OK"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeCell[@name="Photo, Landscape, August 08, 2012, 11:52 AM"]')
+			.waitForElementByXPath('//XCUIElementTypeCell[2]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Choose')
 			.click()

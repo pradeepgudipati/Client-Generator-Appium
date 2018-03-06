@@ -9,7 +9,7 @@ describe('Photo Delete - Negative', () => {
 			.click()
 			.elementById('Query Photo')
 			.click()
-			.waitForElementById('0 .png', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click();
 	});
 	after(() => {
