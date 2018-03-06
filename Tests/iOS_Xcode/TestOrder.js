@@ -3,17 +3,16 @@
 exports.tests = [
 
 	// Tests for the Place module
-	
-	
 	'Place/Create.Positive.Test.js',
 	'Place/Create.Negative.Test.js',
 	'Place/Update.Negative.Test.js',
 	'Place/Update.Positive.Test.js',
-	'Place/Delete.Negative.Test.js',
-	'Place/Delete.Positive.Test.js',
 	'Place/Search.Positive.Test.js',
 	'Place/Search.Negative.Test.js',
-	
+	'Place/Delete.Negative.Test.js',
+	'Place/Delete.Positive.Test.js',
+
+
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',
@@ -43,4 +42,4 @@ exports.tests = [
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
 	'User/Remove.Positive.Test.js'
-]
+];
