@@ -51,7 +51,7 @@ describe('Update - Photo Collection - Positive', () => {
 	});
 	it('Update', () => {
 		return driver
-			.elementById('Update') // will update the selected photo subcollection
+			.elementById('Update') // will update the selected photo collection
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
