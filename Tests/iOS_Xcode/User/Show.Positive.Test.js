@@ -33,7 +33,6 @@ describe('User Show - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				console.log(text);
 				text.includes(`"first_name" = ${user.firstName}`).should.equal(true);
 				text.includes(`"last_name" = ${user.lastName}`).should.equal(true);
 				text.includes(`username = ${user.username}`).should.equal(true);
