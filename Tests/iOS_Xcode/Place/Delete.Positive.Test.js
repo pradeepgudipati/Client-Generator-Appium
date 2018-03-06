@@ -3,7 +3,8 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
+	user = require(`${global.projRoot}/Config/data_config.js`).user,
+	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
 describe('Place Delete - Positive', () => {
 	before(() => {
@@ -26,7 +27,7 @@ describe('Place Delete - Positive', () => {
 			.click()
 			.waitForElementById('Query Place', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.waitForElementByXPath('//XCUIElementTypeStaticText[@name="tempPlace.name"]', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath(`//XCUIElementTypeStaticText[@name="tempPlace.name"]`, webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementById('Delete Place', webdriver.asserters.isDisplayed, 10000)
 			.isDisplayed().should.become(true);

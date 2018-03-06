@@ -3,6 +3,7 @@
 const
 	path = require('path'),
 	program = require('commander'),
+	spawn = require('child_process').spawn,
 	Git = require('../Helpers/git_helper.js'),
 	Build = require('../Helpers/build_helper.js'),
 	Mocha = require('../Helpers/mocha_helper.js'),
@@ -24,9 +25,10 @@ let appium = new Appium();
 
 // Validate that the platforms passed are valid
 platforms.forEach(platform => {
-	const notSupported = platform !== 'iOS_Xcode'
-		&& platform !== 'Android_Studio';
-	if (notSupported) {
+	const notSupported =
+		platform !== 'iOS_Xcode' &&
+		platform !== 'Android_Studio';
+	if(notSupported) {
 		Output.error(`'${platform}' is not a valid platform.`);
 		process.exit(1);
 	}
