@@ -41,5 +41,25 @@ exports.tempPlace = {
 };
 
 exports.acl = {
-	name: 'Axway ACL Test'
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
+};
+
+exports.geoFence = {
+
+	name: 'Banglore',
+	latitude: '17.368132',
+	longitude: '28.913641',
+	radius: '1'
+};
+
+exports.UpdateGeoFence = {
+
+	name: 'Delhi',
+	latitude: '47.368132',
+	longitude: '78.913641',
+	radius: '1'
 };
