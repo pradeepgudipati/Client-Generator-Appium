@@ -1,6 +1,12 @@
 'use strict';
-
 exports.tests = [
+	// Tests for the Checkin module
+	'Checkin/Create.Checkin.Negative.test.js',
+	'Checkin/Create.Checkin.Positive.test.js',
+	'Checkin/Checkin.Query.Positive.test.js',
+	'Checkin/Checkin.Delete.Negative.test.js',
+	'Checkin/Checkin.Delete.Positive.test.js',
+
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
 	'ACL/Show.Positive.Test.js',
