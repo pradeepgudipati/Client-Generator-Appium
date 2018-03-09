@@ -14,6 +14,16 @@ exports.tempUser = {
 	email: 'wluu@appcelerator.com',
 	secondEmail: 'wluu@axway.com'
 };
+
+exports.newUserDetails = {
+	username: 'wluu2',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
+};
+
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -49,4 +59,5 @@ exports.updategeofence = {
 	latitude: '28.45',
 	longitude: '77.456',
 	radius: '1'
+};
 };

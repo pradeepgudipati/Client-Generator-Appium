@@ -6,7 +6,7 @@ const
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	tempUser = require(`${global.projRoot}/Config/data_config.js`).tempUser;
 
-describe('User Creation - Positive', () => {
+describe('User Creation - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -46,8 +46,8 @@ describe('User Creation - Positive', () => {
 	it('Enter an email', () => {
 		return driver
 			.elementByXPath('//XCUIElementTypeTextField[@value="Email ID"]')
-			.sendKeys(tempUser.email)
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempUser.email}"]`)
+			.sendKeys('test')
+			.elementByXPath(`//XCUIElementTypeTextField[@value="test"]`)
 			.isDisplayed().should.become(true);
 	});
 
@@ -78,7 +78,10 @@ describe('User Creation - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
-				text.should.include('code = 200');
+				text.includes('status = fail').should.equal(true);
+				text.includes('message = "Invalid Email Address."').should.equal(true);
+				text.includes('"method_name" = createUser').should.equal(true);
+				text.includes('code = 400').should.equal(true);
 			});
 	});
 });
