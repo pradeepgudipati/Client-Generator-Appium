@@ -1,6 +1,11 @@
 'use strict';
 
 exports.tests = [
+
+	// Tests for the Custom Objects module
+	'CustomObject/Query.Object.Update.Negative.test.js',
+    'CustomObject/Query.Object.Update.Positive.test.js',
+
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
 	'ACL/Show.Positive.Test.js',
