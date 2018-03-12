@@ -35,8 +35,7 @@ describe('Checkin Delete - Positive', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${place.name}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.sleep(10000)
-			.elementById('com.example.axway.mbaas:id/checkins_show_remove_button1')
+			.waitForElementById('com.example.axway.mbaas:id/checkins_show_remove_button1', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('com.example.axway.mbaas:id/checkins_remove_button1')
 			.click()
