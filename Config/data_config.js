@@ -38,6 +38,10 @@ exports.tempPlace = {
 	longitude: '-1.777756'
 };
 exports.acl = {
-	name: 'Axway ACL Test'
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
 };
 
