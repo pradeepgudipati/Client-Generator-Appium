@@ -6,14 +6,6 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-exports.tempUser = {
-	username: 'wluu',
-	password: 'MonkeyLord!',
-	firstName: 'Wilson',
-	lastName: 'Luu',
-	email: 'wluu@appcelerator.com',
-	secondEmail: 'wluu@axway.com'
-};
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
