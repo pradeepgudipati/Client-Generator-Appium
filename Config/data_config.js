@@ -6,14 +6,16 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-exports.tempUser = {
-	username: 'wluu',
+
+exports.newUserDetails = {
+	username: 'wluu2',
 	password: 'MonkeyLord!',
-	firstName: 'Wilson',
-	lastName: 'Luu',
-	email: 'wluu@appcelerator.com',
-	secondEmail: 'wluu@axway.com'
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
 };
+
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -38,3 +40,4 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Axway ACL Test'
 };
+
