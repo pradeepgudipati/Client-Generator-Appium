@@ -3,9 +3,9 @@
 const driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	place = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
+	place = require(`${global.projRoot}/Config/data_config.js`).place;
 
-describe('Checkin Create - Positive', () => {
+describe('Place Create - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')

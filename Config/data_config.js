@@ -6,6 +6,7 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
+
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
@@ -14,6 +15,7 @@ exports.newUserDetails = {
 	email: 'wluu2@appcelerator.com',
 	secondEmail: 'wluu2@axway.com'
 };
+
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -42,3 +44,5 @@ exports.photocollection = {
 	name: 'Axway Test Photo Collection',
 	updatedName: 'Test Axway Test Photo Collection'
 };
+
+
