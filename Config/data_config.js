@@ -37,12 +37,16 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
-exports.acl = {
-	name: 'Appcelerator Test ACL'
-};
+
 exports.photocollection = {
 	name: 'Axway Test Photo Collection',
 	updatedName: 'Test Axway Test Photo Collection'
 };
 
-
+exports.acl = {
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
+};
