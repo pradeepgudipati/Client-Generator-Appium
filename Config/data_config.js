@@ -50,5 +50,9 @@ exports.tempPlace = {
 };
 
 exports.acl = {
-	name: 'Appcelerator Test ACL'
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
 };
