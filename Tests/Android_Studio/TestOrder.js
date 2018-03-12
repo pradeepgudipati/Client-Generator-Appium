@@ -1,6 +1,13 @@
 'use strict';
 
 exports.tests = [
+
+	// Tests for the Places module
+	'Places/Create.Positive.Test.js',
+	'Places/Create.Negative.Test.js',
+	'Places/Delete.Negative.Test.js',
+	'Places/Delete.Positive.Test.js',
+
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
 	'ACL/Show.Positive.Test.js',

@@ -18,7 +18,7 @@ exports.tempUser = {
 };
 
 exports.place = {
-	name: 'Appcelerator',
+	name: 'Delhi',
 	address: '1732 N. First Street',
 	city: 'San Jose',
 	state: 'California',
