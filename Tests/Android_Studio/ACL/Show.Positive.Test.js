@@ -44,7 +44,7 @@ describe('ACL Show - Positive', () => {
 			.text().should.become(acl.name);
 	});
 
-	it('Show the ACL', () => {
+	it('Show ACL', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/access_control_lists_show_show_button3')
 			.click()
@@ -54,5 +54,4 @@ describe('ACL Show - Positive', () => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
 			});
-	});
 });

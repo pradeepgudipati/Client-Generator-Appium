@@ -1,12 +1,10 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	//creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
 describe('ACL Delete - Positive', () => {
 	before(() => {
 		return driver
@@ -30,20 +28,17 @@ describe('ACL Delete - Positive', () => {
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Show"]', webdriver.asserters.isDisplayed, 10000);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter ACL name', () => {
 		return driver
-		.elementById('Enter ACL name')
-		.sendKeys(acl.name) //binding static information to input fields
-		.hideKeyboard()
-		.elementById(acl.name)
-		.isDisplayed().should.become(true)
+			.elementById('Enter ACL name')
+			.sendKeys(acl.name) //binding static information to input fields
+			.hideKeyboard()
+			.elementById(acl.name)
+			.isDisplayed().should.become(true)
 	});
-
 	it('Delete  ACL', () => { //will search for element id namely delete acl
 		return driver
 			.elementById('Delete ACL')

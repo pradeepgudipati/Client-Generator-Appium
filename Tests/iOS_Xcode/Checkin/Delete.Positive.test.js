@@ -3,9 +3,9 @@
 const driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	place = require(`${global.projRoot}/Config/data_config.js`).place;
+	place = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
-describe('Place Create - Positive', () => {
+describe('Checkin Query Delete - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -33,24 +33,19 @@ describe('Place Create - Positive', () => {
 		return driver.resetApp();
 	});
 
-	it('Get Checkin Details', () => {
+	it('Get Details and  Delete Checkin', () => {
 		return driver
 			.elementById(`Checked in to ${place.name}`)
 			.click()
-			.waitForElementByClassName('XCUIElementTypeTextView', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Delete', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementById('Ok', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
 			.then(text => {
 				text.should.include('code = 200');
-				text.should.include('"method_name" = showCheckins');
-				text.should.include(`message = "Checked in to ${place.name}"`);
-				text.should.include(`address = "${place.address}"`);
-				text.should.include(`city = "${place.city}"`);
-				text.should.include(`country = "${place.country}"`);
-				text.should.include(`latitude = "${place.latitude}"`);
-				text.should.include(`longitude = "${place.longitude}"`);
-				text.should.include(`name = ${place.name}`);
-				text.should.include(`"postal_code" = ${place.postcode}`);
-				text.should.include(`state = ${place.state}`);
+				text.should.include('"method_name" = deleteCheckin');
 			});
 	});
 });

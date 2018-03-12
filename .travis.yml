@@ -1,18 +1,12 @@
 language: node_js
 node_js:
   - "8"
-before_install:
-  - npm install -g grunt-cli
-  - npm install -g bower
-  - npm install
+install:
+  - npm install eslint-changes
+  - npm install jshint
   - npm install travis-github-lint-status;
+  - npm install
+  
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_NODE_VERSION" == "node" ]; then
-     ./node_modules/travis-github-lint-status/index.js;
-     fi;
-     npm run coverage;
-  - grunt travis -v
-    grunt.registerTask('travis', [
-    'if-missing:esri_slurp:travis',
-    'jshint'
-    ]);
+  - eslint .
+  - ./node_modules/travis-github-lint-status/index.js
