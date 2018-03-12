@@ -20,10 +20,10 @@ describe('Checkin Delete - Negative', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${place.name}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Remove Checkin")')
+			.sleep(10000)
+			.elementById('com.example.axway.mbaas:id/checkins_show_remove_button1')
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Are you sure?")')
-			.click()
+			.elementById('com.example.axway.mbaas:id/checkins_remove_button1')			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
