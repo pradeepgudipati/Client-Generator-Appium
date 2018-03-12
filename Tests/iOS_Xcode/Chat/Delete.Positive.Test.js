@@ -58,4 +58,3 @@ describe('Chat Delete - Positive', () => {
                 console.log(text);
             });
     });
-});

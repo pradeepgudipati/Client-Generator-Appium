@@ -17,6 +17,15 @@ exports.tempUser = {
 	secondEmail: 'wluu@axway.com'
 };
 
+exports.newUserDetails = {
+	username: 'wluu2',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
+};
+
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -39,11 +48,13 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
-
-exports.acl = {
-	name: 'Appcelerator Test ACL'
-};
-
 exports.chat = {
 	message: 'Hello axway group'
+};
+exports.acl = {
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
 };

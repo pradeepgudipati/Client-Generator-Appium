@@ -6,17 +6,17 @@ module.exports = {
 		appName: 'Axway-Test',
 		appium: {
 			platformVersion: '11.0',
-			deviceName: 'iPhone 7'
+			deviceName: 'iPhone 6'
 		}
 	},
 	Android_Studio: {
 		git: 'https://github.com/pradeepgudipati/mbaas_android_test',
 		appName: 'Axway-Test',
 		appium: {
-			platformVersion: '7.1.1',
-			deviceName: 'Google_Pixel',
+			platformVersion: '7.0',
+			deviceName: 'Nexus_6_API 26',
 			appPackage: 'com.example.axway.mbaas',
 			appActivity: '.LoginActivity'
 		}
 	}
-};
+}
