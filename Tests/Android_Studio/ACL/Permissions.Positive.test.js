@@ -1,13 +1,13 @@
+
 'use strict';
 
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
+	user = require(`${global.projRoot}/Config/data_config.js`).user;
 
-
-describe('ACL Show - Positive', () => {
+describe('ACL Permissions - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -28,8 +28,9 @@ describe('ACL Show - Positive', () => {
 			.back()
 			.elementByAndroidUIAutomator('new UiSelector().text("Access Control Lists")')
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Show ACL")')
+			.elementByAndroidUIAutomator('new UiSelector().text("Check Permission of ACL")')
 			.click();
+			
 	});
 
 	after(() => {
@@ -38,15 +39,16 @@ describe('ACL Show - Positive', () => {
 
 	it('Enter ACL Name', () => {
 		return driver
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
+			.elementById('com.example.axway.mbaas:id/access_control_lists_check_permission_name_field')
 			.sendKeys(acl.name)
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_name_field')
+			.elementById('com.example.axway.mbaas:id/access_control_lists_check_permission_name_field')
 			.text().should.become(acl.name);
 	});
 
-	it('Show ACL', () => {
+	
+	it('Check ACL Permissions', () => {
 		return driver
-			.elementById('com.example.axway.mbaas:id/access_control_lists_show_show_button3')
+			.elementById('com.example.axway.mbaas:id/access_control_lists_check_permission_button1')
 			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
@@ -54,4 +56,5 @@ describe('ACL Show - Positive', () => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
 			});
+	});
 });
