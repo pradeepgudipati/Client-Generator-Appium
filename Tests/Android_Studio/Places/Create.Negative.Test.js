@@ -16,6 +16,7 @@ describe('Create Place - Negative', () => {
 	after(() => {
 		return driver.resetApp();
 	});
+	// binding data to textfields
 	it('Enter Place Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/places_create_name_field')
@@ -66,7 +67,7 @@ describe('Create Place - Negative', () => {
 			.elementById('com.example.axway.mbaas:id/places_create_longitude_field')
 			.text().should.become(place.longitude);
 	});
-	it('Create Place', () => {
+	it('Create Place', () => { // creates a place with given details
 		return driver
 			.elementById('com.example.axway.mbaas:id/places_create_button1')
 			.click()

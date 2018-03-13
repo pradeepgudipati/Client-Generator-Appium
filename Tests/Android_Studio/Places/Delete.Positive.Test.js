@@ -3,9 +3,8 @@ const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	place = require(`${global.projRoot}/Config/data_config.js`).place,
 	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
-describe('Update Place - Positive', () => {
+describe('Delete Place - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -32,31 +31,27 @@ describe('Update Place - Positive', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Enter Place Name', () => {
+	it('Choose Place Name', () => {
 		return driver
 			.sleep(5000)
-			.elementByAndroidUIAutomator(`new UiSelector().text("${place.name}")`)
-			.click()
-			.elementById('com.example.axway.mbaas:id/places_show_update_button2')
-  			.click()
-			.elementById('com.example.axway.mbaas:id/places_update_name_field')
-			.clear()
-			.sendKeys(tempPlace.name) // updates the selected place
-			.elementById('com.example.axway.mbaas:id/places_update_name_field')
-			.text().should.become(tempPlace.name)
-			.hideKeyboard();
+			.elementByAndroidUIAutomator(`new UiSelector().text("${tempPlace.name}")`)			
+			.text().should.become(tempPlace.name);
 	});
 
-	it('Update Place', () => {
-		return driver
-			.elementById('com.example.axway.mbaas:id/places_update_button1')
-			.click()
+	it('Delete Place', () => {
+        return driver
+            .elementByAndroidUIAutomator(`new UiSelector().text("${tempPlace.name}")`)
+            .click()		
+			.elementById('com.example.axway.mbaas:id/places_show_remove_button1')
+            .click()
+            .elementById('com.example.axway.mbaas:id/places_remove_button1')
+            .click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
-			.then(text => {
+			.then(text => { // will remove selected place
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
-				text.should.include('"method_name":"updatePlace"');
+				text.should.include('"method_name":"deletePlace"');
 			});
 	});
 });
