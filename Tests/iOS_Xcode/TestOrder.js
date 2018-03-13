@@ -1,6 +1,13 @@
 'use strict';
-
 exports.tests = [
+
+	// Tests for the Photo module
+	'Photos/Create.Photo.Positive.test.js',
+	'Photos/Create.Photo.Negative.test.js',
+	'Photos/Query.PhotoUpdate.Positive.test.js',
+	'Photos/Query.PhotoUpdate.Negative.test.js',
+	'Photos/Query.PhotoDelete.Negative.test.js',
+	'Photos/Query.PhotoDelete.Positive.test.js',
 
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
@@ -44,15 +51,13 @@ exports.tests = [
 
 	// Tests for the User module
 	'User/Create.Positive.Test.js',
-	'User/Create.Negative.Test.js',
 	'User/Login.Positive.Test.js',
 	'User/Login.Negative.Test.js',
 	'User/Logout.Positive.Test.js',
-	'User/Query.Positive.Test.js',
+	'User/Query.Negative.Test.js',
 	'User/Show.Positive.Test.js',
 	'User/Show.Negative.Test.js',
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
-	'User/Remove.Negative.Test.js',
 	'User/Remove.Positive.Test.js'
 ];
