@@ -4,24 +4,11 @@ const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	// creating instance to get data placed in data config file
-	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
-describe('Place Delete - Positive', () => {
+describe('Place Delete - Negative', () => {
 	before(() => {
 		return driver
-			.elementById('Users')
-			.click()
-			.elementById('Login User')
-			.click()
-			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
-			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
-			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
-			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
-			.click()
 			.elementById('Axway')
 			.click()
 			.elementById('Places')
@@ -43,8 +30,8 @@ describe('Place Delete - Positive', () => {
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('name')
 			.then(text => {
-				text.should.include('code = 200');
-				text.should.include('"method_name" = deletePlace');
+				text.should.include('code = 400');
+				text.should.include('message = "Failed to authenticate user"');
 			});
 	});
 });
