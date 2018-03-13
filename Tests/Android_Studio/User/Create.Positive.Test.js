@@ -89,7 +89,7 @@ describe('User Creation - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.equal(`User ${tempUser.username}Created!!`);
+				text.should.equal(`User ${tempUser.username}Created!!`)
 			});
 	});
 });

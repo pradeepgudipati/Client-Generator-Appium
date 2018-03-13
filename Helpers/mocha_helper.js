@@ -2,25 +2,26 @@
 
 const
 	path = require('path'),
+	fs = require('fs-extra'),
 	Mocha = require('mocha'),
 	Output = require('./output_helper.js');
 
 class mocha_helper {
-	/** ***************************************************************************
+	/*****************************************************************************
 	 * Runs through the Mocha tests outlined in device_config.js
 	 *
 	 * @param {String} config - The object containing the test requirements
 	 * @param {String} project - The current project being tested
 	 ****************************************************************************/
 	static mochaTest(config, project) {
-		return new Promise(resolve => {
+		return new Promise((resolve, reject) => {
 			Output.info('Starting Tests\n');
 
 			// Create the new Mocha instance
 			let mocha = new Mocha({
 				fullTrace: false,
 				useColors: true,
-				timeout: 30000,
+				timeout: 50000,
 				slow: 25000,
 				reporter: 'mocha-jenkins-reporter',
 				reporterOptions: {
@@ -42,13 +43,13 @@ class mocha_helper {
 			// Start the Mocha execution
 			mocha.run()
 				.on('test end', data => {
-					if (data.pending) {
+					if(data.pending) {
 						Output.log(`${data.title}: skipped`);
 					} else {
 						Output.log(`${data.title}: ${data.state}`);
 					}
 				})
-				.on('end', () => {
+				.on('end', data => {
 					resolve();
 				});
 		});

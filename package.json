@@ -4,7 +4,6 @@
   "description": "Appium test suite for the SDK Client Generator project",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .js",
     "test": "node Commands/test.js",
     "testios": "node Commands/test.js -p iOS_Xcode",
     "testandroid": "node Commands/test.js -p Android_Studio"
@@ -14,13 +13,9 @@
   "dependencies": {
     "appcelerator": "^4.2.10",
     "appium": "^1.7.1",
-    "auto-updater": "^1.0.2",
-    "brew": "0.0.8",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "colors": "^1.1.2",
-    "eslint": "^4.16.0",
-    "eslint-config-axway": "^2.0.11",
     "fs-extra": "^2.0.0",
     "mocha": "^3.5.3",
     "mocha-jenkins-reporter": "^0.3.10",
@@ -30,7 +25,6 @@
     "request": "^2.83.0",
     "tiapp.xml": "^0.2.2",
     "titanium": "^5.0.14",
-    "update-notifier": "^2.3.0",
     "wd": "^1.4.1"
   }
 }

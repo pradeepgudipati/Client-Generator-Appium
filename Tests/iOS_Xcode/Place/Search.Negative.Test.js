@@ -3,41 +3,44 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
+	// creating instance to get data placed in data config file
+	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
 
 describe('Place Search - Negative', () => {
 	before(() => {
 		return driver
-			.elementById('Users')
-			.click()
-			.elementById('Login User')
-			.click()
-			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
-			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
-			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
-			.click()
-			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
-			.click()
 			.elementById('Axway')
 			.click()
 			.elementById('Places')
 			.click()
 			.waitForElementById('Search Place', webdriver.asserters.isDisplayed, 10000)
-			.click()
-			.waitForElementById('Search', webdriver.asserters.isDisplayed, 10000);
+			.click();
 	});
 
 	after(() => {
 		return driver.resetApp();
 	});
 
-	it('Try searching for a place with an empty field', () => {
+	it('Enter the Place Name', () => {
 		return driver
-			.elementById('Search')
+			.waitForElementById('Axway', webdriver.asserters.isDisplayed, 10000)
+			.elementById('Allow')
 			.click()
-			.elementById('Error in current location')
+			.waitForElementById('Place Name', webdriver.asserters.isDisplayed, 10000)
+			.sendKeys(tempPlace.name) // binding static information to input fields 
+			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempPlace.name}"]`)
 			.isDisplayed().should.become(true);
+	});
+
+	it('Search for the Place', () => {
+		return driver
+			.elementById('Search') // will search for element id namely search to search the given place
+			.click()
+			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
+			.getAttribute('name')
+			.then(text => {
+				text.should.include('code = 400');
+				text.should.include('message = "Failed to authenticate user"');
+			})
 	});
 });
