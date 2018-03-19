@@ -42,17 +42,12 @@ describe('Query Object Update - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_query_query_button')
 			.click() // Get list of custom objects
-			.waitForElementByXPath(
-				'/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ListView/android.widget.LinearLayout[1]', webdriver.asserters
-				.isDisplayed, 10000)
+			.waitForElementByXPath('//android.widget.LinearLayout[@instance="1"]', webdriver.asserters.isDisplayed, 10000)
 			.click() // Displays object details
-			.waitForElementByXPath(
-				'/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.EditText[2]',
-				webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//android.widget.EditText[@instance="1"]', webdriver.asserters.isDisplayed, 10000)
+			.clear()
 			.sendKeys(customObject.propertyValueUpdate) // binding updated information to input field 
-			.elementByXPath(
-				'/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.EditText[2]'
-			)
+			.elementByXPath('//android.widget.EditText[@instance="1"]')
 			.text().should.become(customObject.propertyValueUpdate);
 	});
 	it('Update Query Object', () => {
