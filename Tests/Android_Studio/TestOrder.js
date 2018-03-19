@@ -1,5 +1,4 @@
 'use strict';
-
 exports.tests = [
 
 	// Tests for the Custom Objects module
