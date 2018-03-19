@@ -27,9 +27,7 @@ describe('Remove Object - Negative', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_query_query_button')
 			.click() // Get list of custom objects
-			.waitForElementByXPath(
-				'/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ListView/android.widget.LinearLayout[1]', webdriver.asserters
-				.isDisplayed, 10000)
+			.waitForElementByXPath('//android.widget.LinearLayout[@instance="1"]', webdriver.asserters.isDisplayed, 10000)
 			.click() // Displays object details
 			.waitForElementById('com.example.axway.mbaas:id/customobjects_update_remove_button', webdriver.asserters.isDisplayed, 10000)
 			.click()
