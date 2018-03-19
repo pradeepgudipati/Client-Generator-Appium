@@ -22,7 +22,8 @@ describe('Checkin Delete - Negative', () => {
 			.click()
 			.waitForElementById('com.example.axway.mbaas:id/checkins_show_remove_button1', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementById('com.example.axway.mbaas:id/checkins_remove_button1')			.click()
+			.elementById('com.example.axway.mbaas:id/checkins_remove_button1')
+			.click()
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {

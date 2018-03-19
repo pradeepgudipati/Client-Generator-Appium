@@ -36,11 +36,13 @@ describe('Query Checkin - Positive', () => {
 			.waitForElementByAndroidUIAutomator(`new UiSelector().text("${place.name}")`, webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.sleep(10000) // Sleep is included to wait for api response as its taking time to get response
-			.waitForElementById('com.example.axway.mbaas:id/checkins_show_text_view', 10000)
+			.waitForElementById('com.example.axway.mbaas:id/checkins_show_text_view',webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
 				text.should.include('ok');
 				text.should.include('200');
+				text.should.include('showCheckins');
+				text.should.include(`Checked in to ${place.name}`);
 			});
 	});
 });
