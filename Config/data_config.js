@@ -6,7 +6,6 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
@@ -50,3 +49,14 @@ exports.acl = {
 	updateReaderName: 'Ad Ministrator',
 	updateWiterName: 'Ad Ministrator'
 };
+exports.customObject = {
+	className: 'Test',
+	propertyKey: 'UserName',
+	propertyValue: 'TestName',
+	propertyKeyUpdate: 'UserName1',
+	propertyValueUpdate: 'TestName1',
+	queryId: '5a68aece5bbb6a027502691a',
+	loginQueryId: '5a68adbd93e737027c026eec'
+
+};
+
