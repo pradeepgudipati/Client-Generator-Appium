@@ -3,7 +3,15 @@
 exports.tests = [
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
+	'ACL/Create.Negative.Test.js',
 	'ACL/Show.Positive.Test.js',
+	'ACL/Show.Negative.Test.js',
+	'ACL/Update.Negative.Test.js',
+	'ACL/Update.Positive.Test.js',
+	'ACL/Permissions.Negative.Test.js',
+	'ACL/Permissions.Positive.Test.js',
+	'ACL/Delete.Negative.Test.js',
+	'ACL/Delete.Positive.Test.js',
 
 	// Tests for the User module
 	'User/Create.Positive.Test.js',

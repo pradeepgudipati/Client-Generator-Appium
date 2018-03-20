@@ -15,15 +15,6 @@ exports.tempUser = {
 	secondEmail: 'wluu@axway.com'
 };
 
-exports.newUserDetails = {
-	username: 'wluu2',
-	password: 'MonkeyLord!',
-	firstName: 'Wilson2',
-	lastName: 'Luu2',
-	email: 'wluu2@appcelerator.com',
-	secondEmail: 'wluu2@axway.com'
-};
-
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -48,6 +39,7 @@ exports.tempPlace = {
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
+
 exports.geofence = {
 	name: 'Banglore',
 	latitude: '12.4567',
@@ -60,4 +52,14 @@ exports.updategeofence = {
 	longitude: '77.456',
 	radius: '1'
 };
+
+exports.customObject = {
+	className: 'Test',
+	propertyKey: 'UserName',
+	propertyValue: 'TestName',
+	propertyKeyUpdate: 'UserName1',
+	propertyValueUpdate: 'TestName1',
+	queryId: '5a68aece5bbb6a027502691a',
+	loginQueryId: '5a68adbd93e737027c026eec'
+
 };

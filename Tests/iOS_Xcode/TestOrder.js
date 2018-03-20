@@ -1,6 +1,5 @@
 'use strict';
 exports.tests = [
-
 	//Tests for the Geo Fence module
 	'GeoFence/Create.GeoFence.Positive.test.js',
 	'GeoFence/Create.GeoFence.Negative.test.js',
@@ -8,7 +7,12 @@ exports.tests = [
 	'GeoFence/Update.GeoFence.Positive.test',
 	'GeoFence/Delete.GeoFence.Negative.test',
 	'GeoFence/Delete.GeoFence.Positive.test',
-
+  
+	// Tests for the CustomObjects module
+	'CustomObjects/Create.Object.Positive.test.js',
+	'CustomObjects/Create.Object.Negative.test.js',
+	'CustomObjects/Query.Remove.Negative.test.js',
+	'CustomObjects/Query.Remove.Positive.test.js',
 
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
@@ -24,7 +28,6 @@ exports.tests = [
 	'Place/Search.Negative.Test.js',
 	'Place/Delete.Negative.Test.js',
 	'Place/Delete.Positive.Test.js',
-
 
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
@@ -52,15 +55,13 @@ exports.tests = [
 
 	// Tests for the User module
 	'User/Create.Positive.Test.js',
-	'User/Create.Negative.Test.js',
 	'User/Login.Positive.Test.js',
 	'User/Login.Negative.Test.js',
 	'User/Logout.Positive.Test.js',
-	'User/Query.Positive.Test.js',
+	'User/Query.Negative.Test.js',
 	'User/Show.Positive.Test.js',
 	'User/Show.Negative.Test.js',
 	'User/Update.Positive.Test.js',
 	'User/Update.Negative.Test.js',
-	'User/Remove.Negative.Test.js',
 	'User/Remove.Positive.Test.js'
 ];
