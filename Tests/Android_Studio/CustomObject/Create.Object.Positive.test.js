@@ -52,7 +52,7 @@ describe('Create Object - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("New Property Key")')
 			.sendKeys(customObject.propertyValue) // binding static information to input fields to create a property value
 			.elementByAndroidUIAutomator(`new UiSelector().text("${customObject.propertyValue}")`)
-			.text().should.become(customObject.propertyValue);
+			.isDisplayed().should.become(true);
 	});
 	it('Create a Custom Object', () => {
 		return driver
