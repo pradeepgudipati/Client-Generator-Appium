@@ -49,7 +49,7 @@ describe('Create Object - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_create_add_new_property_button')
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("New Property Key")')
+			.elementByAndroidUIAutomator(`new UiSelector().text("${customObject.propertyKey}")`)
 			.sendKeys(customObject.propertyValue) // binding static information to input fields to create a property value
 			.elementByAndroidUIAutomator(`new UiSelector().text("${customObject.propertyValue}")`)
 			.isDisplayed().should.become(true);
