@@ -36,7 +36,7 @@ describe('GeoFence Creation - Positive', () => {
 		return driver.resetApp();
 	});
 
-	// Enter Gefence details
+	// Enter Geofence details
 
 	it('Enter GeoFence Name', () => {
 		return driver

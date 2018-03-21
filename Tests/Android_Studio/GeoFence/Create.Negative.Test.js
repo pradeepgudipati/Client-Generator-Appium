@@ -21,7 +21,7 @@ describe('GeoFence Creation - Negative', () => {
         return driver.resetApp();
     });
 
-    // Enter Gefence details
+    // Enter Geofence details
 
     it('Enter GeoFence Name', () => {
         return driver
