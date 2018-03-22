@@ -6,15 +6,6 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-exports.tempUser = {
-	username: 'wluu',
-	password: 'MonkeyLord!',
-	firstName: 'Wilson',
-	lastName: 'Luu',
-	email: 'wluu@appcelerator.com',
-	secondEmail: 'wluu@axway.com'
-};
-
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
@@ -23,7 +14,14 @@ exports.newUserDetails = {
 	email: 'wluu2@appcelerator.com',
 	secondEmail: 'wluu2@axway.com'
 };
-
+exports.newUserDetails = {
+	username: 'wluu2',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
+};
 exports.place = {
 	name: 'Delhi',
 	address: '1732 N. First Street',
@@ -45,7 +43,10 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
-
+exports.photocollection = {
+	name: 'Axway Test Photo Collection',
+	updatedName: 'Test Axway Test Photo Collection'
+};
 exports.acl = {
 	name: 'Test_ACL',
 	readerName: 'Teja Sree',
@@ -53,7 +54,6 @@ exports.acl = {
 	updateReaderName: 'Ad Ministrator',
 	updateWiterName: 'Ad Ministrator'
 };
-
 exports.customObject = {
 	className: 'Test',
 	propertyKey: 'UserName',
