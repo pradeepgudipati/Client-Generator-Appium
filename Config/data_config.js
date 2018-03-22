@@ -1,5 +1,4 @@
 'use strict';
-
 exports.user = {
 	username: 'admin',
 	password: 'password',
@@ -7,14 +6,13 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-
-exports.tempUser = {
-	username: 'wluu',
+exports.newUserDetails = {
+	username: 'wluu2',
 	password: 'MonkeyLord!',
-	firstName: 'Wilson',
-	lastName: 'Luu',
-	email: 'wluu@appcelerator.com',
-	secondEmail: 'wluu@axway.com'
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
 };
 
 exports.place = {
@@ -27,7 +25,6 @@ exports.place = {
 	latitude: '37.368132',
 	longitude: '-121.913641'
 };
-
 exports.tempPlace = {
 	name: 'University of Huddersfield',
 	address: 'Queensgate',
@@ -40,8 +37,17 @@ exports.tempPlace = {
 	longitude: '-1.777756'
 };
 
+exports.photocollection = {
+	name: 'Axway Test Photo Collection',
+	updatedName: 'Test Axway Test Photo Collection'
+};
+
 exports.acl = {
-	name: 'Appcelerator Test ACL'
+	name: 'Test_ACL',
+	readerName: 'Teja Sree',
+	writerName: 'Teja Sree',
+	updateReaderName: 'Ad Ministrator',
+	updateWiterName: 'Ad Ministrator'
 };
 exports.customObject = {
 	className: 'Test',
@@ -53,3 +59,4 @@ exports.customObject = {
 	loginQueryId: '5a68adbd93e737027c026eec'
 
 };
+
