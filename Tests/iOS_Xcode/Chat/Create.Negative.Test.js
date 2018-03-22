@@ -4,7 +4,6 @@ const
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
-
 describe('Chat Create - Negative', () => {
 	before(() => {
 		return driver
@@ -12,7 +11,6 @@ describe('Chat Create - Negative', () => {
 			.click()
 			.elementById('Chats')
 			.click();
-
 	});
 	after(() => {
 		return driver.resetApp();
@@ -23,11 +21,10 @@ describe('Chat Create - Negative', () => {
 			.waitForElementById('Create New Group', webdriver.asserters.isDisplayed, 5000)
 			.click()
 			.sleep(5000) // Placed for api response 
-			.waitForElementById('Wilson Luu', webdriver.asserters.isDisplayed, 5000)
+			.waitForElementById(chat.userName, webdriver.asserters.isDisplayed, 5000)
 			.click()
 			.waitForElementById('START CHATTING..!', webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
-
 	});
 	it('Create a chat group', () => {
 		return driver

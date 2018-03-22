@@ -7,8 +7,8 @@ exports.tests = [
 	'Chat/Create.Negative.Test.js',
 	'Chat/Query.Positive.Test.js',
 	'Chat/Query.Negative.Test.js',
-	'Chat/Delete.Positive.Test.js',
 	'Chat/Delete.Negative.Test.js',
+	'Chat/Delete.Positive.Test.js',
 
 	//Tests for the Place module
 	'Place/Create.Positive.Test.js',
@@ -19,13 +19,7 @@ exports.tests = [
 	'Place/Search.Negative.Test.js',
 	'Place/Delete.Negative.Test.js',
 	'Place/Delete.Positive.Test.js',
-
-
-	// Tests for the Chat module
-	'Chat/Create.Negative.Test.js',
-	'Chat/Create.Positive.Test.js',
-	'Chat/Query.Positive.Test.js',
-
+	
 	// Tests for the Checkin module
 	'Checkin/Create.Checkin.Positive.test.js',
 	'Checkin/Create.Checkin.Negative.test.js',

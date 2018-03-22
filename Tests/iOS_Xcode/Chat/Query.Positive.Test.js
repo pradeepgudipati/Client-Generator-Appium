@@ -1,11 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
-
 describe('Chat Query - Positive', () => {
 	before(() => {
 		return driver
@@ -28,20 +26,17 @@ describe('Chat Query - Positive', () => {
 			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Load the Current Chats', () => {
 		return driver
-			.waitForElementById('Ad,Wilson', webdriver.asserters.isDisplayed, 5000)
+			.waitForElementById(chat.chatGroup, webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-
 	it('Query Chat Groups', () => {
 		return driver
-			.elementById('Ad,Wilson')
+			.elementById(chat.chatGroup)
 			.click()
 			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
 			.sendKeys(chat.message)
