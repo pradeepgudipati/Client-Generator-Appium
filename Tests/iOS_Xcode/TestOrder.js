@@ -1,5 +1,4 @@
 'use strict';
-
 exports.tests = [
 
 	// Tests for the Chat module
@@ -16,8 +15,7 @@ exports.tests = [
 	'Place/Search.Negative.Test.js',
 	'Place/Delete.Negative.Test.js',
 	'Place/Delete.Positive.Test.js',
-
-
+	
 	// Tests for the Chat module
 	'Chat/Create.Negative.Test.js',
 	'Chat/Create.Positive.Test.js',

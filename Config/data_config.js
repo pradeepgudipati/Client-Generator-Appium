@@ -1,5 +1,4 @@
 'use strict';
-
 exports.user = {
 	username: 'admin',
 	password: 'password',
@@ -7,7 +6,6 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
-
 exports.tempUser = {
 	username: 'wluu',
 	password: 'MonkeyLord!',
@@ -16,7 +14,6 @@ exports.tempUser = {
 	email: 'wluu@appcelerator.com',
 	secondEmail: 'wluu@axway.com'
 };
-
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
@@ -25,7 +22,6 @@ exports.newUserDetails = {
 	email: 'wluu2@appcelerator.com',
 	secondEmail: 'wluu2@axway.com'
 };
-
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -36,7 +32,6 @@ exports.place = {
 	latitude: '37.368132',
 	longitude: '-121.913641'
 };
-
 exports.tempPlace = {
 	name: 'University of Huddersfield',
 	address: 'Queensgate',
@@ -48,7 +43,6 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
-
 exports.acl = {
 	name: 'Test_ACL',
 	readerName: 'Teja Sree',
