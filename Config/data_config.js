@@ -14,14 +14,6 @@ exports.newUserDetails = {
 	email: 'wluu2@appcelerator.com',
 	secondEmail: 'wluu2@axway.com'
 };
-exports.newUserDetails = {
-	username: 'wluu2',
-	password: 'MonkeyLord!',
-	firstName: 'Wilson2',
-	lastName: 'Luu2',
-	email: 'wluu2@appcelerator.com',
-	secondEmail: 'wluu2@axway.com'
-};
 exports.place = {
 	name: 'Delhi',
 	address: '1732 N. First Street',
@@ -64,4 +56,3 @@ exports.customObject = {
 	loginQueryId: '5a68adbd93e737027c026eec'
 
 };
-
