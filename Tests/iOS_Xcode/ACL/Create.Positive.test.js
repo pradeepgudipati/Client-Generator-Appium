@@ -12,9 +12,9 @@ describe('ACL Create - Positive', () => {
 			.elementById('Login User')
 			.click()
 			.elementByXPath('//XCUIElementTypeTextField[@value="Username"]')
-			.sendKeys(user.username)
+			.sendKeys(user.username) // binding static information to input fields
 			.elementByXPath('//XCUIElementTypeSecureTextField[@value="Password"]')
-			.sendKeys(user.password)
+			.sendKeys(user.password) // binding static information to input fields
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
@@ -30,11 +30,10 @@ describe('ACL Create - Positive', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
-			.sendKeys(acl.name)
+			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
 			.elementById('Select Readers')
 			.click()
@@ -50,15 +49,15 @@ describe('ACL Create - Positive', () => {
 			.click()
 			.elementById('Create ACL')
 			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Create ACL', () => {
 		return driver
-			.elementById('Create ACL') //will search for element id namely create acl
+			.elementById('Create ACL') // will search for element id namely create acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
-			.then(text => {
+			.then(text => { // Api response is handled
 				text.should.include('code = 200');
 				text.should.include('"method_name" = createAcl');
 				text.should.include(`name = "${acl.name}"`);
