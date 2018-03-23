@@ -34,7 +34,7 @@ describe('Chat Query - Positive', () => {
 			.waitForElementById(chat.chatGroup, webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-	it('Query Chat Groups', () => {
+	it('Query Chat Groups', () => {  // query chat groups
 		return driver
 			.elementById(chat.chatGroup)
 			.click()

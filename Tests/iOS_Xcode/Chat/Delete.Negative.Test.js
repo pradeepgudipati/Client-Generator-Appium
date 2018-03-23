@@ -21,7 +21,7 @@ describe('Chat Delete - Negative', () => {
 			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-	it('Delete selected chat', () => {
+	it('Delete selected chat', () => { // delete selected chat
 		return driver
 			.elementById('Query Chat Groups')
 			.click()

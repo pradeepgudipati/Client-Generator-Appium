@@ -49,7 +49,10 @@ exports.tempPlace = {
 	longitude: '-1.777756'
 };
 exports.chat = {
-	message: 'Hello axway group'
+	message: 'Hello axway group',
+	userName: 'Teja Sree',
+	chatGroup: 'Teja,Ad'
+	
 };
 exports.acl = {
 	name: 'Test_ACL',

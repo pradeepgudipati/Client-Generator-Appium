@@ -20,7 +20,7 @@ describe('Chat Query - Negative', () => {
 			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-	it('Query Chat Groups', () => {
+	it('Query Chat Groups', () => { // query chat groups
 		return driver
 			.elementById('Query Chat Groups')
 			.click()

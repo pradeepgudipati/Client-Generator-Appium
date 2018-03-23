@@ -36,14 +36,14 @@ describe('Chat Delete - Postive', () => {
 			.waitForElementById(chat.chatGroup, webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-	it('Delete selected chat', () => {
+	it('Delete selected chat', () => { // delete selected chat
 		return driver
 			.elementById(chat.chatGroup)
 			.click()
 			.sleep(5000)
 			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
-            // .elementById(chat.message)
-            .waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
+			// .elementById(chat.message)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.sleep(10000)
 			.waitForElementById('Delete', webdriver.asserters.isDisplayed, 5000)

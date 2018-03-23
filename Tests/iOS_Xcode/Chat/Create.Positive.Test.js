@@ -43,7 +43,7 @@ describe('Chat Create - Positive', () => {
 			.elementById('START CHATTING..!')
 			.click()
 			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
-			.sendKeys(chat.message)
+			.sendKeys(chat.message) // dynamic chat message binding
 			.elementById('Done')
 			.click()
 			.sleep(10000)
