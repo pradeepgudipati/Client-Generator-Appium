@@ -44,6 +44,7 @@ describe('Checkin Delete - Positive', () => {
 			.then(text => {
 				text.should.include('"status":"ok"');
 				text.should.include('"code":200');
+				text.should.include('"method_name":"deleteCheckin"');
 			});
 	});
 });

@@ -28,6 +28,9 @@ describe('Checkin Delete - Negative', () => {
 			.getAttribute('text')
 			.then(text => {
 				text.should.include('"status":"fail"');
+				text.should.include('"code":403');
+				text.should.include('"method_name":"deleteCheckin"');
+				text.should.include('"message":"Current user cannot delete this checkin"');
 			});
 	});
 });
