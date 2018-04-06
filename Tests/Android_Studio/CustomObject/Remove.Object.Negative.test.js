@@ -38,6 +38,7 @@ describe('Remove Object - Negative', () => {
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":403');
+				text.should.include('"method_name":"deleteObjects"');
 			});
 	});
 });
