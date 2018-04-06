@@ -41,6 +41,7 @@ describe('Create Object - Negative', () => {
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":400');
+				text.should.include('"message":"Failed to authenticate user"');
 			});
 	});
 });

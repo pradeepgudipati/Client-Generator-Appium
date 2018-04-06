@@ -45,7 +45,7 @@ describe('Create Object - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/customobjects_create_new_property_key_field')
 			.text().should.become(customObject.propertyKey);
 	});
-	it('Add new property value and Create a Custom Object', () => {
+	it('Add property key value', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_create_add_new_property_button')
 			.click()
