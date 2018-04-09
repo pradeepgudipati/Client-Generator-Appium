@@ -28,18 +28,15 @@ describe('User Remove - Positive', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Accept Prompt', () => {
+	it('Accept Prompt and Enter EmailId', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Are you Admin User?")', webdriver.asserters.isDisplayed, 10000)
 			.elementById('android:id/button1')
-			.click();
-	});
-	it('Enter Username', () => {
-		return driver
+			.click()
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.sendKeys(userDetails.username)
+			.sendKeys(userDetails.secondEmail)
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.text().should.become(userDetails.username);
+			.text().should.become(userDetails.secondEmail);
 	});
 	it('Remove the Normal User', () => {
 		return driver

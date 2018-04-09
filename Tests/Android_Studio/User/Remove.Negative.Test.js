@@ -16,18 +16,15 @@ describe('User Remove - Negative', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Accept Prompt', () => {
+	it('Accept prompt and Enter EmailId', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Are you Admin User?")', webdriver.asserters.isDisplayed, 10000)
 			.elementById('android:id/button1')
-			.click();
-	});
-	it('Enter Username', () => {
-		return driver
+			.click()
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.sendKeys(userDetails.username)
+			.sendKeys(userDetails.secondEmail)
 			.elementById('com.example.axway.mbaas:id/users_delete_username_field')
-			.text().should.become(userDetails.username);
+			.text().should.become(userDetails.secondEmail);
 	});
 	it('Remove the Normal User', () => {
 		return driver
@@ -37,6 +34,8 @@ describe('User Remove - Negative', () => {
 			.getAttribute('text')
 			.then(text => {
 				text.should.include('"status":"fail"');
+				text.should.include('"code":403');
+				text.should.include('"message":"You are not authorized to perform this action."');
 			});
 	});
 });
