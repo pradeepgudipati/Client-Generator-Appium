@@ -2,25 +2,13 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	userDetails = require(`${global.projRoot}/Config/data_config.js`).newUserCreateAndDetails;
-describe('User Remove - Positive', () => {
+describe('User Remove - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
 			.click()
 			.elementByAndroidUIAutomator('new UiSelector().text("Users")')
-			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Login User")')
-			.click()
-			.elementById('com.example.axway.mbaas:id/users_login_username_field')
-			.sendKeys(user.username)
-			.elementById('com.example.axway.mbaas:id/users_login_password_field')
-			.sendKeys(user.password)
-			.elementById('com.example.axway.mbaas:id/users_login_button1')
-			.click()
-			.waitForElementByAndroidUIAutomator('new UiSelector().text("Success!")', webdriver.asserters.isDisplayed, 10000)
-			.elementById('android:id/button1')
 			.click()
 			.elementByAndroidUIAutomator('new UiSelector().text("Remove User")')
 			.click();
@@ -28,7 +16,7 @@ describe('User Remove - Positive', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Accept Prompt and Enter EmailId', () => {
+	it('Accept prompt and Enter EmailId', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Are you Admin User?")', webdriver.asserters.isDisplayed, 10000)
 			.elementById('android:id/button1')
@@ -45,9 +33,9 @@ describe('User Remove - Positive', () => {
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('"status":"ok"');
-				text.should.include('"code":200');
-				text.should.include('"method_name":"batchDelete"');
+				text.should.include('"status":"fail"');
+				text.should.include('"code":403');
+				text.should.include('"message":"You are not authorized to perform this action."');
 			});
 	});
 });

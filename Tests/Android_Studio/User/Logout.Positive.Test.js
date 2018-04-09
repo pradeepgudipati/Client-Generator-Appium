@@ -1,10 +1,8 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
 describe('User Logout - Positive', () => {
 	before(() => {
 		return driver
@@ -26,11 +24,9 @@ describe('User Logout - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Logout Current User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	it('User Should be able to Logout', () => {
 		return driver
 			.waitForElementByAndroidUIAutomator('new UiSelector().text("Logged out!")', webdriver.asserters.isDisplayed, 10000)

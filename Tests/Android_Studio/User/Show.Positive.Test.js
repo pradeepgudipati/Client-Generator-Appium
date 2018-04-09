@@ -1,13 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
-
-// FIXME: Appium hangs the suite if this page is loaded
-
-describe.skip('User Show - Positive', () => {
+describe('User Show - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/btn_login')
@@ -28,10 +24,17 @@ describe.skip('User Show - Positive', () => {
 			.elementByAndroidUIAutomator('new UiSelector().text("Show Current User")')
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
-	it('Check User Details Are Correct', () => {});
+	it('Check User Details Are Correct', () => {
+		return driver
+			.waitForElementById('com.example.axway.mbaas:id/users_show_me_text_view', 10000)
+			.getAttribute('text')
+			.then(text => {
+				text.should.include('"status": "ok"');
+				text.should.include('"code": 200');
+				text.should.include('"method_name": "showUsers"');
+			});
+	});
 });
