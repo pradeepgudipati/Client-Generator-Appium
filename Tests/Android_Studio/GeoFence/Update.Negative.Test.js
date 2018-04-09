@@ -62,7 +62,6 @@ describe('GeoFence Update - Negative', () => {
 			.then(text => {
 				text.should.include('"code":403');
 				text.should.include('"status":"fail"');
-				text.should.include('"method_name" : "UpdateGeoFence"');
 				text.should.include('"message":"You are not authorized to perform this action."');
 			});
 	});

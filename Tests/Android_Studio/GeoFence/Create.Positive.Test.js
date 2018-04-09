@@ -1,11 +1,9 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	geofence = require(`${global.projRoot}/Config/data_config.js`).geoFence;
-
 describe('GeoFence Creation - Positive', () => {
 	before(() => {
 		return driver
@@ -29,15 +27,11 @@ describe('GeoFence Creation - Positive', () => {
 			.click()
 			.elementByAndroidUIAutomator('new UiSelector().text("Create Geo Fence")')
 			.click();
-
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
 	// Enter Geofence details
-
 	it('Enter GeoFence Name', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/geofences_create_name_field')
@@ -45,7 +39,6 @@ describe('GeoFence Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/geofences_create_name_field')
 			.text().should.become(geofence.name);
 	});
-
 	it('Enter Latitude', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/geofences_create_latitude_field')
@@ -53,7 +46,6 @@ describe('GeoFence Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/geofences_create_latitude_field')
 			.text().should.become(geofence.latitude);
 	});
-
 	it('Enter Longitude', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/geofences_create_longitude_field')
@@ -61,7 +53,6 @@ describe('GeoFence Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/geofences_create_longitude_field')
 			.text().should.become(geofence.longitude);
 	});
-
 	it('Enter Radius', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/geofences_create_radius_field')
@@ -70,7 +61,6 @@ describe('GeoFence Creation - Positive', () => {
 			.text().should.become(geofence.radius)
 			.hideKeyboard();
 	});
-
 	it('Create GeoFence', () => { // Will create geofence with given inputs
 		return driver
 			.elementById('com.example.axway.mbaas:id/geofences_create_button1')
@@ -80,10 +70,7 @@ describe('GeoFence Creation - Positive', () => {
 			.then(text => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
-				text.should.include('"method_name" : "createGeoFence"');
 				text.should.include('"method_name":"createGeoFence"');
 			});
-
 	});
-
 });

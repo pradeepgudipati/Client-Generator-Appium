@@ -50,7 +50,6 @@ describe('GeoFence Delete - Positive', () => {
 			.then(text => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
-				text.should.include('"method_name" : "DeleteGeoFence"');
 				text.should.include('"method_name":"destroyGeoFence"');
 			});
 	});
