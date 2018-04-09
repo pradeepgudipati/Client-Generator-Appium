@@ -80,6 +80,7 @@ describe('GeoFence Creation - Positive', () => {
 			.then(text => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
+				text.should.include('"method_name" : "createGeoFence"');
 				text.should.include('"method_name":"createGeoFence"');
 			});
 

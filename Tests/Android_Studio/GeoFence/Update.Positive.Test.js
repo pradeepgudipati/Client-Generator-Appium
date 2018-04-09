@@ -77,6 +77,7 @@ describe('GeoFence Update - Positive', () => {
 			.then(text => {
 				text.should.include('"code":200');
 				text.should.include('"status":"ok"');
+				text.should.include('"method_name" : "UpdateGeoFence"');
 				text.should.include('"method_name":"updateGeoFence"');
 			});
 	});
