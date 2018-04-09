@@ -1,9 +1,15 @@
 'use strict';
 
 exports.tests = [
+
+	//Tests for PhotoCollection module
+	'PhotoCollection/Create.Positive.test.js',
+	'PhotoCollection/Create.Negative.test.js',
+
+
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
-	'ACL/Create.Negative.Test.js',
+	 'ACL/Create.Negative.Test.js',
 	'ACL/Show.Positive.Test.js',
 	'ACL/Show.Negative.Test.js',
 	'ACL/Update.Negative.Test.js',

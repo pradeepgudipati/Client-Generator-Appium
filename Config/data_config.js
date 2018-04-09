@@ -50,3 +50,7 @@ exports.acl = {
 	updateReaderName: 'Ad Ministrator',
 	updateWiterName: 'Ad Ministrator'
 };
+exports.photoCollection = {
+	name: 'Axway Photo Collection Events',
+	updatename: 'Axway Collection'
+};
