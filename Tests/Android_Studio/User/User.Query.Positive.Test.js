@@ -17,13 +17,14 @@ describe('User Query - Positive', () => {
 	});
 	it('Should the details checked the response', () => {
 		return driver
-			.waitForElementByAndroidUIAutomator('new UiSelector().text("11")', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementByXPath('//android.widget.TextView[@instance="1"]', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.waitForElementById('com.example.axway.mbaas:id/users_show_text_view', 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('ok');
-				text.should.include('200');
+				text.should.include('"code": 200');
+				text.should.include('"status": "ok"');
+				text.should.include('"method_name": "showUsers"');
 			});
 	});
 });
