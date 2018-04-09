@@ -39,10 +39,10 @@ describe('Query Checkin - Positive', () => {
 			.waitForElementById('com.example.axway.mbaas:id/checkins_show_text_view',webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('ok');
-				text.should.include('200');
-				text.should.include('showCheckins');
-				text.should.include(`Checked in to ${place.name}`);
+				text.should.include('"status": "ok"');
+				text.should.include('"code": 200');
+				text.should.include('"method_name": "showCheckins"');
+				text.should.include(`"message": "Checked in to ${place.name}"`);
 			});
 	});
 });
