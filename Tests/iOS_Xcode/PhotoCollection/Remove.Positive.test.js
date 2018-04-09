@@ -1,13 +1,11 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	// creating instance to get data placed in data config file
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
-	tempPlace = require(`${global.projRoot}/Config/data_config.js`).tempPlace;
-
-describe('Place Search - Positive', () => {
+	photocollection = require(`${global.projRoot}/Config/data_config.js`).photocollection;
+describe('Remove - Photo Collection - Positive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -24,36 +22,28 @@ describe('Place Search - Positive', () => {
 			.click()
 			.elementById('Axway')
 			.click()
-			.elementById('Places')
+			.elementById('Photo Collections')
 			.click()
-			.waitForElementById('Search Place', webdriver.asserters.isDisplayed, 10000)
+			.waitForElementById('Search Photo Collection', webdriver.asserters.isDisplayed, 5000)
+			.click()
+			.waitForElementById(photocollection.updatedName, webdriver.asserters.isDisplayed, 5000)
 			.click();
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
-	it('Enter the Place Name', () => {
+	it('Remove photo colection', () => {
 		return driver
-			.waitForElementById('Axway', webdriver.asserters.isDisplayed, 10000)
-			.elementById('Allow')
+			.elementById('Remove') // will remove the selected photo collection
 			.click()
-			.waitForElementById('Place Name', webdriver.asserters.isDisplayed, 10000)
-			.sendKeys(tempPlace.name) // binding static information to input fields 
-			.elementByXPath(`//XCUIElementTypeTextField[@value="${tempPlace.name}"]`)
-			.isDisplayed().should.become(true);
-	});
-
-	it('Search for the Place', () => {
-		return driver
-			.elementById('Search') // will search for element id namely search to search the given place
+			.elementById('Delete')
+			.elementById('Ok')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-			.getAttribute('name')
+			.getAttribute('value')
 			.then(text => {
 				text.should.include('code = 200');
-				text.should.include('"method_name" = searchPlace');
-			})
+				text.should.include('"method_name" = deleteCollection');
+			});
 	});
 });
