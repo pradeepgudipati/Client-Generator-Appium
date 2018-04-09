@@ -30,10 +30,17 @@ describe('Create Object - Negative', () => {
 			.elementById('com.example.axway.mbaas:id/customobjects_create_new_property_key_field')
 			.text().should.become(customObject.propertyKey);
 	});
-	it('Add new property and Create a Custom Object', () => {
+	it('Add property key value', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_create_add_new_property_button')
 			.click()
+			.elementByAndroidUIAutomator(`new UiSelector().text("${customObject.propertyKey}")`)
+			.sendKeys(customObject.propertyValue) // binding static information to input fields to create a property value
+			.elementByAndroidUIAutomator(`new UiSelector().text("${customObject.propertyValue}")`)
+			.isDisplayed().should.become(true);
+	});
+	it('Create a Custom Object', () => {
+		return driver
 			.elementById('com.example.axway.mbaas:id/customobjects_create_create_button')
 			.click() // It creates a custom object
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
