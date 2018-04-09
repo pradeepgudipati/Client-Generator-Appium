@@ -32,8 +32,9 @@ describe('User Show - Positive', () => {
 			.waitForElementById('com.example.axway.mbaas:id/users_show_me_text_view', 10000)
 			.getAttribute('text')
 			.then(text => {
-				text.should.include('ok');
-				text.should.include('200');
+				text.should.include('"status": "ok"');
+				text.should.include('"code": 200');
+				text.should.include('"method_name": "showUsers"');
 			});
 	});
 });

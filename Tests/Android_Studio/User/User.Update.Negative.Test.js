@@ -24,6 +24,7 @@ describe('Update user - Negative', () => {
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":401');
+				text.should.include('"message":"You need to sign in or sign up before continuing.');
 			});
 	});
 });

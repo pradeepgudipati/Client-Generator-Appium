@@ -22,6 +22,8 @@ describe('User Show - Negative', () => {
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":400');
+				text.should.include('"method_name":"showUsers"');
+				text.should.include('"message":"Invalid user id"');
 			});
 	});
 });
