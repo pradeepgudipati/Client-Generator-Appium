@@ -27,7 +27,8 @@ describe('User Login - Negative', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_login_password_field')
 			.sendKeys('IncorrectPassword')
-			.sleep(2000); // Wait for all of the password to be dotted out
+			.elementById('com.example.axway.mbaas:id/users_login_password_field')
+			.text().should.become(''); // Wait for all of the password to be dotted out
 	});
 	it('Should get an Invalid User Warning', () => {
 		return driver
@@ -38,6 +39,7 @@ describe('User Login - Negative', () => {
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":401');
+				text.should.include('"message":"Invalid email\\/username or password."');
 			});
 	});
 });

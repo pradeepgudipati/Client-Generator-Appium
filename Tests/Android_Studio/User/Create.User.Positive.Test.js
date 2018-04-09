@@ -27,13 +27,15 @@ describe('User Creation - Positive', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_field')
 			.sendKeys(newUser.password)
-			.sleep(2000); // Wait for all of the password to be dotted out
+			.elementById('com.example.axway.mbaas:id/users_create_password_field')
+			.text().should.become('');
 	});
 	it('Enter Password Again', () => {
 		return driver
 			.elementById('com.example.axway.mbaas:id/users_create_password_conf_field')
 			.sendKeys(newUser.password)
-			.sleep(2000); // Wait for all of the password to be dotted out
+			.elementById('com.example.axway.mbaas:id/users_create_password_conf_field')
+			.text().should.become('');
 	});
 	it('Enter First Name', () => {
 		return driver
@@ -47,8 +49,7 @@ describe('User Creation - Positive', () => {
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
 			.sendKeys(newUser.lastName)
 			.elementById('com.example.axway.mbaas:id/users_create_last_name_field')
-			.text().should.become(newUser.lastName)
-			.hideKeyboard();
+			.text().should.become(newUser.lastName);
 	});
 	it('Enter Email', () => {
 		return driver
