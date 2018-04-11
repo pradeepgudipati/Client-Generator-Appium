@@ -50,9 +50,11 @@ describe('Chat Delete - Postive', () => {
 			.elementById('Ok')
 			.click()
 			.sleep(10000)
-			.getAttribute('value') // Help me out in completing this test case as in this module we are not displaying any alert after service call we are refreshing table so how could this be achieved
+			.getAttribute('value')
 			.then(text => {
-				console.log(text);
-			});
+				console.log(text)
+			})
+			.elementsById('Hello Axway group Ad Ministrator')
+			.then(elements => elements.length.should.equal(0));
 	});
 });
