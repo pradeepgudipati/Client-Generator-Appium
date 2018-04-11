@@ -47,9 +47,16 @@ describe('Chat Create - Positive', () => {
 			.elementById('Done')
 			.click()
 			.sleep(10000)
-			.getAttribute('value') // Help me out in completing this test case as in this module we are not displaying any alert after service call we are refreshing table so how could this be achieved
+			.getAttribute('value')
 			.then(text => {
 				console.log(text);
-			});
+			})
+			.back()
+			.back()
+			.back()
+			.elementById('Chats')
+			.click()
+			.waitForElementById(chat.chatGroup, webdriver.asserters.isDisplayed, 10000)
+			.isDisplayed().should.become(true);
 	});
 });
