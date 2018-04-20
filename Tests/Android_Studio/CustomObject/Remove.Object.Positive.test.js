@@ -46,7 +46,7 @@ describe('Remove Object - Positive', () => {
 			.click() // Displays object details
 			.waitForElementById('com.example.axway.mbaas:id/customobjects_update_remove_button', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Are you sure?")')
+			.elementById('com.example.axway.mbaas:id/customobjects_remove_remove_button')
 			.click() // It removes the object
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')

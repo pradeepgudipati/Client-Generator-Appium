@@ -31,14 +31,15 @@ describe('Remove Object - Negative', () => {
 			.click() // Displays object details
 			.waitForElementById('com.example.axway.mbaas:id/customobjects_update_remove_button', webdriver.asserters.isDisplayed, 10000)
 			.click()
-			.elementByAndroidUIAutomator('new UiSelector().text("Are you sure?")')
+			.elementById('com.example.axway.mbaas:id/customobjects_remove_remove_button')
 			.click() // It removes the object
 			.waitForElementById('android:id/message', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('text')
 			.then(text => {
 				text.should.include('"status":"fail"');
 				text.should.include('"code":403');
-				text.should.include('"method_name":"deleteObjects"');
+				text.should.include('"method_name":"deleteObjects"')
+				text.should.include('"message":"You do not have permission to delete object');
 			});
 	});
 });
