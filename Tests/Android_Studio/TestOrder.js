@@ -7,6 +7,10 @@ exports.tests = [
 	'Checkin/Checkin.Delete.Negative.test.js',
 	'Checkin/Checkin.Delete.Positive.test.js',
 
+	// Tests for the Custom Objects module
+	'CustomObject/Remove.Object.Negative.test.js',
+    'CustomObject/Remove.Object.Positive.test.js',
+
 	// Tests for the ACL module
 	'ACL/Create.Positive.Test.js',
 	'ACL/Create.Negative.Test.js',

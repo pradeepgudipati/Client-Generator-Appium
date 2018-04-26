@@ -2,9 +2,8 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	//creating instance to get data placed in data config file
-	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
-	user = require(`${global.projRoot}/Config/data_config.js`).user;
+	// creating instance to get data placed in data config file
+	acl = require(`${global.projRoot}/Config/data_config.js`).acl;
 describe('ACL Update - Negative', () => {
 	before(() => {
 		return driver
@@ -22,14 +21,14 @@ describe('ACL Update - Negative', () => {
 	it('Enter ACL name', () => {
 		return driver
 			.elementById('Enter ACL name')
-			.sendKeys(acl.name) //binding static information to input fields
+			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
 			.elementById(acl.name)
-			.isDisplayed().should.become(true)
+			.isDisplayed().should.become(true);
 	});
 	it('Update ACL', () => {
 		return driver
-			.elementById('Update ACL') //will search for element id namely update acl
+			.elementById('Update ACL') // will search for element id namely update acl
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')
