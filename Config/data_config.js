@@ -6,6 +6,14 @@ exports.user = {
 	lastName: 'Ministrator',
 	email: 'admin@appcelerator.com'
 };
+exports.tempUser = {
+	username: 'wluu',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson',
+	lastName: 'Luu',
+	email: 'wluu@appcelerator.com',
+	secondEmail: 'wluu@axway.com'
+};
 exports.newUserDetails = {
 	username: 'wluu2',
 	password: 'MonkeyLord!',
@@ -40,11 +48,7 @@ exports.photocollection = {
 	updatedName: 'Test Axway Test Photo Collection'
 };
 exports.acl = {
-	name: 'Test_ACL',
-	readerName: 'Teja Sree',
-	writerName: 'Teja Sree',
-	updateReaderName: 'Ad Ministrator',
-	updateWiterName: 'Ad Ministrator'
+	name: 'Appcelerator Test ACL'
 };
 exports.geoFence = {
 	name: 'Banglore',
@@ -66,6 +70,4 @@ exports.customObject = {
 	propertyValueUpdate: 'TestName1',
 	queryId: '5a68aece5bbb6a027502691a',
 	loginQueryId: '5a68adbd93e737027c026eec'
-
 };
-
