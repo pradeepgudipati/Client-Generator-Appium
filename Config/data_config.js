@@ -23,7 +23,7 @@ exports.newUserDetails = {
 	secondEmail: 'wluu2@axway.com'
 };
 exports.place = {
-	name: 'Appcelerator',
+	name: 'Delhi',
 	address: '1732 N. First Street',
 	city: 'San Jose',
 	state: 'California',

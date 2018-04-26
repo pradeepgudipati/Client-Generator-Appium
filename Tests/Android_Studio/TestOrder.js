@@ -1,6 +1,15 @@
 'use strict';
 exports.tests = [
 
+	// Tests for the Places module
+	'Places/Create.Positive.Test.js',
+	'Places/Create.Negative.Test.js',
+	'Places/Search.Positive.Test.js',
+	'Places/Update.Negative.Test.js',
+	'Places/Update.Positive.Test.js',
+	'Places/Delete.Negative.Test.js',
+    'Places/Delete.Positive.Test.js',
+
 	// Tests for the GeoFence module
 	'GeoFence/Create.Positive.Test.js',
 	'GeoFence/Create.Negative.Test.js',
