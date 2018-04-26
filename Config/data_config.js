@@ -43,8 +43,24 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
+exports.photocollection = {
+	name: 'Axway Test Photo Collection',
+	updatedName: 'Test Axway Test Photo Collection'
+};
 exports.acl = {
 	name: 'Appcelerator Test ACL'
+};
+exports.geoFence = {
+	name: 'Banglore',
+	latitude: '17.368132',
+	longitude: '28.913641',
+	radius: '1'
+};
+exports.UpdateGeoFence = {
+	name: 'Delhi',
+	latitude: '47.368132',
+	longitude: '78.913641',
+	radius: '1'
 };
 exports.customObject = {
 	className: 'Test',
