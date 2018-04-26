@@ -14,7 +14,14 @@ exports.tempUser = {
 	email: 'wluu@appcelerator.com',
 	secondEmail: 'wluu@axway.com'
 };
-
+exports.newUserDetails = {
+	username: 'wluu2',
+	password: 'MonkeyLord!',
+	firstName: 'Wilson2',
+	lastName: 'Luu2',
+	email: 'wluu2@appcelerator.com',
+	secondEmail: 'wluu2@axway.com'
+};
 exports.place = {
 	name: 'Appcelerator',
 	address: '1732 N. First Street',
@@ -36,23 +43,25 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
+exports.photocollection = {
+	name: 'Axway Test Photo Collection',
+	updatedName: 'Test Axway Test Photo Collection'
+};
 exports.acl = {
 	name: 'Appcelerator Test ACL'
 };
-
-exports.geofence = {
+exports.geoFence = {
 	name: 'Banglore',
-	latitude: '12.4567',
-	longitude: '77.256',
+	latitude: '17.368132',
+	longitude: '28.913641',
 	radius: '1'
 };
-exports.updategeofence = {
+exports.UpdateGeoFence = {
 	name: 'Delhi',
-	latitude: '28.45',
-	longitude: '77.456',
+	latitude: '47.368132',
+	longitude: '78.913641',
 	radius: '1'
 };
-
 exports.customObject = {
 	className: 'Test',
 	propertyKey: 'UserName',
@@ -61,5 +70,4 @@ exports.customObject = {
 	propertyValueUpdate: 'TestName1',
 	queryId: '5a68aece5bbb6a027502691a',
 	loginQueryId: '5a68adbd93e737027c026eec'
-
 };
