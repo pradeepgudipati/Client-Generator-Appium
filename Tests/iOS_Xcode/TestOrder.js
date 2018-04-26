@@ -1,6 +1,14 @@
 'use strict';
 exports.tests = [
-  
+
+	//Tests for the Geo Fence module
+	'GeoFence/Create.GeoFence.Positive.test.js',
+	'GeoFence/Create.GeoFence.Negative.test.js',
+	'GeoFence/Update.GeoFence.Negative.test',
+	'GeoFence/Update.GeoFence.Positive.test',
+	'GeoFence/Delete.GeoFence.Negative.test',
+	'GeoFence/Delete.GeoFence.Positive.test',
+
 	//Tests for the Photo Collection module
 	'PhotoCollection/Create.Positive.test.js',
 	'PhotoCollection/Create.Negative.test.js',
