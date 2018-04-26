@@ -1,15 +1,10 @@
 'use strict';
-
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
-
-
-// FIXME: Can't do anything once the chat page is open
-
-describe('Chat Delete - Positive', () => {
+describe('Chat Delete - Postive', () => {
 	before(() => {
 		return driver
 			.elementById('Users')
@@ -27,37 +22,39 @@ describe('Chat Delete - Positive', () => {
 			.elementById('Axway')
 			.click()
 			.elementById('Chats')
-			.click();
-			
+			.click()
+			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
+			.isDisplayed().should.become(true);
 	});
-
 	after(() => {
 		return driver.resetApp();
 	});
-
-	it('Select any user to start chatting',() => {
-	return driver
-		.sleep(10000) //Here sleep is placed as to wait for api call response as tableview reloads upon api hit
-		.waitForElementById('Query Chat Groups',webdriver.asserters.isDisplayed,5000)
-		.click()
-		.waitForElementById('Ad,testios',webdriver.asserters.isDisplayed,5000)
-        .click()
-        .sleep(5000)
-        .elementByXPath('(//XCUIElementTypeStaticText[@name="Hello axway group Ad Ministrator"])[1]',webdriver.asserters.isDisplayed,10000)
-        .click();
-	
+	it('Load the Current Chats', () => {
+		return driver
+			.elementById('Query Chat Groups')
+			.click()
+			.waitForElementById(chat.chatGroup, webdriver.asserters.isDisplayed, 5000)
+			.isDisplayed().should.become(true);
 	});
-
-	it('Create a chat group', () => {
-        return driver
-        .waitForElementById('Delete',webdriver.asserters.isDisplayed,5000)
-        .elementById('Ok')
-        .click()
-        .waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
-		.getAttribute('name')
-		.then(text => {
-			text.should.include('code = 200');
-			text.should.include('"method_name" = deleteChat');
-		});
+	it('Delete selected chat', () => { // delete selected chat
+		return driver
+			.elementById(chat.chatGroup)
+			.click()
+			.sleep(5000)
+			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
+			// .elementById(chat.message)
+			.waitForElementByXPath('//XCUIElementTypeCell[1]', webdriver.asserters.isDisplayed, 10000)
+			.click()
+			.sleep(10000)
+			.waitForElementById('Delete', webdriver.asserters.isDisplayed, 5000)
+			.elementById('Ok')
+			.click()
+			.sleep(10000)
+			.getAttribute('value')
+			.then(text => {
+				console.log(text)
+			})
+			.elementsById('Hello Axway group Ad Ministrator')
+			.then(elements => elements.length.should.equal(0));
 	});
 });

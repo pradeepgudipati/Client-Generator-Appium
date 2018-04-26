@@ -1,6 +1,14 @@
 'use strict';
 exports.tests = [
   
+	// Tests for the Chat module
+	'Chat/Create.Positive.Test.js',
+	'Chat/Create.Negative.Test.js',
+	'Chat/Query.Positive.Test.js',
+	'Chat/Query.Negative.Test.js',
+	'Chat/Delete.Negative.Test.js',
+	'Chat/Delete.Positive.Test.js',
+
 	//Tests for the Photo Collection module
 	'PhotoCollection/Create.Positive.test.js',
 	'PhotoCollection/Create.Negative.test.js',
@@ -15,7 +23,7 @@ exports.tests = [
 	'CustomObjects/Query.Remove.Negative.test.js',
 	'CustomObjects/Query.Remove.Positive.test.js',
 
-	// Tests for the Place module
+	//Tests for the Place module
 	'Place/Create.Positive.Test.js',
 	'Place/Create.Negative.Test.js',
 	'Place/Update.Negative.Test.js',
@@ -24,11 +32,6 @@ exports.tests = [
 	'Place/Search.Negative.Test.js',
 	'Place/Delete.Negative.Test.js',
 	'Place/Delete.Positive.Test.js',
-
-	// Tests for the Chat module
-	'Chat/Create.Negative.Test.js',
-	'Chat/Create.Positive.Test.js',
-	'Chat/Query.Positive.Test.js',
 
 	// Tests for the Checkin module
 	'Checkin/Create.Checkin.Positive.test.js',

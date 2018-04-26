@@ -2,7 +2,6 @@
 const
 	driver = global.driver,
 	webdriver = global.webdriver,
-	// creating instance to get data placed in data config file
 	acl = require(`${global.projRoot}/Config/data_config.js`).acl,
 	user = require(`${global.projRoot}/Config/data_config.js`).user;
 describe('ACL Create - Positive', () => {
@@ -18,7 +17,6 @@ describe('ACL Create - Positive', () => {
 			.sendKeys(user.password) // binding static information to input fields
 			.elementByXPath('//XCUIElementTypeButton[@name="Login"]')
 			.click()
-			// will wait for 10000 seconds when alert is being display
 			.waitForElementById('OK', webdriver.asserters.isDisplayed, 10000)
 			.click()
 			.elementById('Axway')
@@ -37,6 +35,19 @@ describe('ACL Create - Positive', () => {
 			.elementById('Enter ACL name')
 			.sendKeys(acl.name) // binding static information to input fields
 			.hideKeyboard()
+			.elementById('Select Readers')
+			.click()
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
+			.elementById('Done')
+			.click()
+			.elementById('Select Writers')
+			.click()
+			.waitForElementById(`${user.firstName} ${user.lastName}`)
+			.click()
+			.elementById('Done')
+			.click()
+			.elementById('Create ACL')
 			.elementById(acl.name)
 			.isDisplayed().should.become(true);
 	});

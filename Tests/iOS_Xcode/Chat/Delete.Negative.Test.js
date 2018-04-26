@@ -4,7 +4,7 @@ const
 	webdriver = global.webdriver,
 	user = require(`${global.projRoot}/Config/data_config.js`).user,
 	chat = require(`${global.projRoot}/Config/data_config.js`).chat;
-describe('Chat Create - Negative', () => {
+describe('Chat Delete - Negative', () => {
 	before(() => {
 		return driver
 			.elementById('Axway')
@@ -15,24 +15,15 @@ describe('Chat Create - Negative', () => {
 	after(() => {
 		return driver.resetApp();
 	});
-	it('Select any user to start chatting', () => {
+	it('Load the Current Chats', () => {
 		return driver
 			.sleep(5000) // When entering into this screen we have getchats api in order to get response and refresh the table sleep is being included
-			.waitForElementById('Create New Group', webdriver.asserters.isDisplayed, 5000)
-			.click()
-			.sleep(5000) // Placed for api response 
-			.waitForElementById(chat.userName, webdriver.asserters.isDisplayed, 5000)
-			.click()
-			.waitForElementById('START CHATTING..!', webdriver.asserters.isDisplayed, 5000)
+			.waitForElementById('Query Chat Groups', webdriver.asserters.isDisplayed, 5000)
 			.isDisplayed().should.become(true);
 	});
-	it('Create a chat group', () => {
+	it('Delete selected chat', () => { // delete selected chat
 		return driver
-			.elementById('START CHATTING..!')
-			.click()
-			.waitForElementById('Enter chat message', webdriver.asserters.isDisplayed, 10000)
-			.sendKeys(chat.message) // dynamic chat message binding
-			.elementById('Done')
+			.elementById('Query Chat Groups')
 			.click()
 			.waitForElementByXPath('//XCUIElementTypeStaticText[2]', webdriver.asserters.isDisplayed, 10000)
 			.getAttribute('value')

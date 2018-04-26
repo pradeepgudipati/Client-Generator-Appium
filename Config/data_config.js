@@ -43,6 +43,11 @@ exports.tempPlace = {
 	latitude: '53.643126',
 	longitude: '-1.777756'
 };
+exports.chat = {
+	message: 'Hello axway group',
+	userName: 'Teja Sree',
+	chatGroup: 'Teja,Ad'
+}
 exports.photocollection = {
 	name: 'Axway Test Photo Collection',
 	updatedName: 'Test Axway Test Photo Collection'
