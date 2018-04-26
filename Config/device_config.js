@@ -14,7 +14,7 @@ module.exports = {
 		appName: 'Axway-Test',
 		appium: {
 			platformVersion: '7.0',
-			deviceName: 'Nexus_6_API 26',
+			deviceName: 'Nexus_6_API_26',
 			appPackage: 'com.example.axway.mbaas',
 			appActivity: '.LoginActivity'
 		}
